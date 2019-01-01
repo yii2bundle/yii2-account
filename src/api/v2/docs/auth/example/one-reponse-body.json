@@ -1,13 +1,12 @@
 {
-	"id": 361008,
-	"login": "77778891622",
+	"id": 123,
+	"login": "77771111111",
 	"status": 1,
 	"roles": [
-		"rUnknownUser",
-		"rWPFinanceSpecialist"
+		"rUnknownUser"
 	],
 	"assignments": null,
 	"token": null,
-	"email": "szhanabay@wooppay.com",
+	"email": "user@example.com",
 	"created_at": "2018-07-06T07:00:50Z"
 }

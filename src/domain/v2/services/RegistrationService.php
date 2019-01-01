@@ -80,7 +80,7 @@ class RegistrationService extends BaseService implements RegistrationInterface {
 			$email = $confirmEntity->data['email'];
 		}
 		if(empty($email)) {
-			$email = 'demo@wooppay.com';
+			$email = 'demo@example.com';
 		}
 		
 		$data = compact('login','password','email');

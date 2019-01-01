@@ -49,7 +49,7 @@ class RegistrationService extends BaseService {
         Helper::validateForm(RegistrationForm::class, $body, RegistrationForm::SCENARIO_CONFIRM);
 		$this->checkLoginExistsInTemp($login);
 		if(empty($email)) {
-			$email = 'demo@wooppay.com';
+			$email = 'demo@example.com';
 		}
 		$this->verifyActivationCode($login, $activation_code);
 		$data = compact('login','password','email');

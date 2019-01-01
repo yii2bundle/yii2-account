@@ -72,7 +72,7 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	
 	public function create($data) {
 		//$data['role'] = !empty($data['role']) ? $data['role'] : RoleEnum::UNKNOWN_USER;
-		$data['email'] = !empty($data['email']) ? $data['email'] : 'api@wooppay.com';
+		$data['email'] = !empty($data['email']) ? $data['email'] : 'api@example.com';
         Helper::validateForm(LoginForm::class, $data);
 		
 		try {

@@ -70,7 +70,7 @@ class JwtService extends BaseService implements JwtInterface {
  *
  *
  * $jwtEntity = new JwtEntity();
-//$jwtEntity->audience = ["http://api.wooppay.yii"];
+//$jwtEntity->audience = ["http://api.example.yii"];
 $jwtEntity->subject_id = \App::$domain->account->auth->identity->id;
 //$jwtEntity->subject_url = "http://api.core.yii/v1/user/" . $jwtEntity->subject_id;
 
