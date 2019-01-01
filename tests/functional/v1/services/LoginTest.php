@@ -12,7 +12,7 @@ use tests\functional\v1\enums\LoginEnum;
 
 class LoginTest extends Unit
 {
-	const PACKAGE = 'yii2module/yii2-account';
+	const PACKAGE = 'yii2bundle/yii2-account';
 	
 	public function testOneByLogin()
 	{
