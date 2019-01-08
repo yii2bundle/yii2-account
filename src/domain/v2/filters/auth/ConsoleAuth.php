@@ -27,7 +27,7 @@ class ConsoleAuth extends AuthMethod
 		$identity = null;
 		if(Yii::$app->user->isGuest) {
 			$identity = $this->getIdentity();
-			if(!$identity instanceof LoginEntity) {
+			if(!$identity instanceof IdentityInterface) {
 				$this->handleFailure(null);
 			}
 			\App::$domain->account->auth->login($identity, TimeEnum::SECOND_PER_MINUTE);

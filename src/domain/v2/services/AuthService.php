@@ -6,6 +6,7 @@ use Yii;
 use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
 use yii\web\ForbiddenHttpException;
+use yii\web\IdentityInterface;
 use yii\web\NotFoundHttpException;
 use yii\web\UnauthorizedHttpException;
 use yii2lab\domain\BaseEntity;
@@ -81,7 +82,7 @@ class AuthService extends BaseService implements AuthInterface {
 			$error->add('password', $e->getMessage());
 			throw new UnprocessableEntityHttpException($error);
 		}
-		if(!$loginEntity instanceof LoginEntity || empty($loginEntity->id)) {
+		if(!$loginEntity instanceof IdentityInterface || empty($loginEntity->id)) {
 			$error = new ErrorCollection();
 			$error->add('password', 'account/auth', 'incorrect_login_or_password');
 			throw new UnprocessableEntityHttpException($error);
@@ -110,7 +111,7 @@ class AuthService extends BaseService implements AuthInterface {
 		} catch(NotFoundHttpException $e) {
 			$loginEntity = false;
 		}
-		if(!$loginEntity instanceof LoginEntity || empty($loginEntity->id)) {
+		if(!$loginEntity instanceof IdentityInterface || empty($loginEntity->id)) {
 			$error = new ErrorCollection();
 			$error->add('password', 'account/auth', 'incorrect_login_or_password');
 			throw new UnprocessableEntityHttpException($error);
@@ -128,7 +129,7 @@ class AuthService extends BaseService implements AuthInterface {
 		return $loginEntity;
 	}
 	
-	private function checkStatus(LoginEntity $entity)
+	private function checkStatus(IdentityInterface $entity)
 	{
 	    if (\App::$domain->account->login->isForbiddenByStatus($entity->status)) {
 	        throw new ServerErrorHttpException(Yii::t('account/login', 'user_status_forbidden'));
@@ -148,7 +149,7 @@ class AuthService extends BaseService implements AuthInterface {
 		$this->login($loginEntity, $rememberMe);
 	}
 
-	public function login(LoginEntity $loginEntity, $rememberMe = false) {
+	public function login(IdentityInterface $loginEntity, $rememberMe = false) {
         if(empty($loginEntity)) {
             return null;
         }

@@ -4,6 +4,7 @@ namespace yii2module\account\domain\v2\services;
 
 use Yii;
 use yii\authclient\BaseOAuth;
+use yii\web\IdentityInterface;
 use yii\web\NotFoundHttpException;
 use yii2lab\app\domain\helpers\EnvService;
 use yii2lab\domain\enums\Driver;
@@ -50,7 +51,7 @@ class OauthService extends BaseService implements OauthInterface {
 		return Yii::$app->has('authClientCollection');
 	}
 	
-	public function oneById($id): LoginEntity {
+	public function oneById($id): IdentityInterface {
 		/** @var LoginEntity $loginEntity */
 		$loginEntity = $this->_arLoginRepository->oneById($id);
 		$loginEntity->roles = $this->defaultRoles;
@@ -62,7 +63,7 @@ class OauthService extends BaseService implements OauthInterface {
 		\App::$domain->account->auth->login($loginEntity, true);
 	}
 	
-	private function forgeAccount(BaseOAuth $client) : LoginEntity {
+	private function forgeAccount(BaseOAuth $client) : IdentityInterface {
 		try {
 			$loginEntity = $this->oneByClient($client);
 		} catch(NotFoundHttpException $e) {
@@ -71,14 +72,14 @@ class OauthService extends BaseService implements OauthInterface {
 		return $loginEntity;
 	}
 	
-	private function oneByClient(BaseOAuth $client): LoginEntity {
+	private function oneByClient(BaseOAuth $client): IdentityInterface {
 		$login = $this->generateLogin($client);
 		/** @var LoginEntity $loginEntity */
 		$loginEntity = $this->_arLoginRepository->oneByLogin($login);
 		return $loginEntity;
 	}
 	
-	private function insert(BaseOAuth $client) : LoginEntity {
+	private function insert(BaseOAuth $client) : IdentityInterface {
 		$loginEntity = new LoginEntity;
 		$loginEntity->login = $this->generateLogin($client);
 		$this->_arLoginRepository->insert($loginEntity);

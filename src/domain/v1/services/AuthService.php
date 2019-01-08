@@ -4,6 +4,7 @@ namespace yii2module\account\domain\v1\services;
 
 use Yii;
 use yii\web\ForbiddenHttpException;
+use yii\web\IdentityInterface;
 use yii\web\NotFoundHttpException;
 use yii\web\UnauthorizedHttpException;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
@@ -52,7 +53,7 @@ class AuthService extends BaseService implements AuthInterface {
 		return $user;
 	}
 	
-	private function checkStatus(LoginEntity $entity)
+	private function checkStatus(IdentityInterface $entity)
 	{
 	    if (\App::$domain->account->login->isForbiddenByStatus($entity->status)) {
 	        throw new ServerErrorHttpException(Yii::t('account/login', 'user_status_forbidden'));

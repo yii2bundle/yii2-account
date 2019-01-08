@@ -9,6 +9,7 @@ use yii2lab\domain\BaseEntity;
 use yii2lab\domain\values\TimeValue;
 use yii2lab\rbac\domain\entities\AssignmentEntity;
 use yii2module\account\domain\v2\helpers\LoginHelper;
+use yii2module\account\domain\v2\interfaces\entities\LoginEntityInterface;
 
 /**
  * Class LoginEntity
@@ -29,7 +30,7 @@ use yii2module\account\domain\v2\helpers\LoginHelper;
  * @property string           $parent_login
  * @property string           $subject_type
  */
-class LoginEntity extends BaseEntity implements IdentityInterface
+class LoginEntity extends BaseEntity implements LoginEntityInterface
 {
 	
 	protected $id;

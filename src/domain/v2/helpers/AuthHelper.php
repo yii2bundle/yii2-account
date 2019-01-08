@@ -4,6 +4,7 @@ namespace yii2module\account\domain\v2\helpers;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\web\IdentityInterface;
 use yii2lab\extension\registry\helpers\Registry;
 use yii2lab\extension\web\enums\HttpHeaderEnum;
 use yii2module\account\domain\v2\dto\TokenDto;
@@ -81,7 +82,7 @@ class AuthHelper {
 		if(Yii::$app->user->getIsGuest()) {
 			return null;
 		}
-		if(!Yii::$app->user->identity instanceof LoginEntity) {
+		if(!Yii::$app->user->identity instanceof IdentityInterface) {
 			return null;
 		}
 		$token = Yii::$app->user->identity->getAuthKey();

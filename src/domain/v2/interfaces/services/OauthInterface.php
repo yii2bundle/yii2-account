@@ -3,6 +3,7 @@
 namespace yii2module\account\domain\v2\interfaces\services;
 
 use yii\authclient\BaseOAuth;
+use yii\web\IdentityInterface;
 use yii2module\account\domain\v2\entities\LoginEntity;
 
 /**
@@ -15,7 +16,7 @@ use yii2module\account\domain\v2\entities\LoginEntity;
 interface OauthInterface {
 	
 	public function isEnabled() : bool;
-	public function oneById($id) : LoginEntity;
+	public function oneById($id) : IdentityInterface;
 	public function authByClient(BaseOAuth $client);
 	
 }

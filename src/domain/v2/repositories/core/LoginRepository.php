@@ -3,6 +3,7 @@
 namespace yii2module\account\domain\v2\repositories\core;
 
 use Yii;
+use yii\web\IdentityInterface;
 use yii\web\NotFoundHttpException;
 use yii2lab\extension\core\domain\helpers\CoreHelper;
 use yii2lab\extension\core\domain\repositories\base\BaseActiveCoreRepository;
@@ -31,7 +32,7 @@ class LoginRepository extends BaseActiveCoreRepository implements LoginInterface
 	
 	public function oneById($id, Query $query = null) {
 		$closure = function($data) {
-			return $data instanceof LoginEntity && $data->id > 0;
+			return $data instanceof IdentityInterface && $data->id > 0;
 		};
 		$userEntity = $this->cacheMethod(__FUNCTION__, func_get_args(), TimeEnum::SECOND_PER_HOUR, $closure);
 		return $userEntity;

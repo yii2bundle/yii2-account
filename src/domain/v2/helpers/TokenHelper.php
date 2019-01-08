@@ -4,6 +4,7 @@ namespace yii2module\account\domain\v2\helpers;
 
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\web\IdentityInterface;
 use yii2lab\extension\common\helpers\StringHelper;
 use yii2lab\extension\yii\helpers\ArrayHelper;
 use yii2module\account\domain\v2\dto\TokenDto;
@@ -36,7 +37,7 @@ class TokenHelper {
 	    $type = self::prepareType($type, $types);
 	    $definition = $types[$type];
         $loginEntity = self::runAuthFilter($definition, $token);
-        if(!$loginEntity instanceof LoginEntity) {
+        if(!$loginEntity instanceof IdentityInterface) {
 	        return null;
         }
 	    AuthHelper::setToken($token);
