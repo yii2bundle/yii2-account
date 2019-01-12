@@ -2,11 +2,11 @@
 
 namespace yii2module\account\domain\v2\repositories\filedb;
 
+use yii2lab\extension\filedb\repositories\base\BaseActiveFiledbRepository;
 use yii2module\account\domain\v2\interfaces\repositories\LoginInterface;
-use yii2lab\domain\repositories\ActiveFiledbRepository;
 use yii2module\account\domain\v2\repositories\traits\LoginTrait;
 
-class LoginRepository extends ActiveFiledbRepository implements LoginInterface {
+class LoginRepository extends BaseActiveFiledbRepository implements LoginInterface {
 	
 	use LoginTrait;
 	

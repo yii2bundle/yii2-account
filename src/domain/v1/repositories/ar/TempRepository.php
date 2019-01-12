@@ -2,9 +2,9 @@
 
 namespace yii2module\account\domain\v1\repositories\ar;
 
-use yii2lab\domain\repositories\ActiveArRepository;
+use yii2lab\extension\activeRecord\repositories\base\BaseActiveArRepository;
 
-class TempRepository extends ActiveArRepository {
+class TempRepository extends BaseActiveArRepository {
 	
 	protected $modelClass = 'yii2module\account\domain\v1\models\UserRegistration';
 	protected $primaryKey = 'login';

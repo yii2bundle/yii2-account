@@ -2,12 +2,12 @@
 
 namespace yii2module\account\domain\v1\repositories\ar;
 
+use yii2lab\domain\repositories\BaseRepository;
 use yii2module\account\domain\v1\helpers\ConfirmHelper;
 use yii2module\account\domain\v1\interfaces\repositories\RegistrationInterface;
-use yii2lab\domain\repositories\TpsRepository;
 use Yii;
 
-class RegistrationRepository extends TpsRepository implements RegistrationInterface {
+class RegistrationRepository extends BaseRepository implements RegistrationInterface {
 
 	public function generateActivationCode() {
 		return ConfirmHelper::generateCode();;

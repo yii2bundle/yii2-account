@@ -5,11 +5,11 @@ namespace yii2module\account\domain\v1\repositories\core;
 use yii\helpers\ArrayHelper;
 use yii\rbac\Assignment;
 use yii\web\NotFoundHttpException;
-use yii2lab\domain\repositories\ActiveCoreRepository;
+use yii2lab\extension\core\domain\repositories\base\BaseActiveCoreRepository;
 use yii2module\account\domain\v1\helpers\LoginEntityFactory;
 use yii2module\account\domain\v1\interfaces\repositories\LoginInterface;
 
-class LoginRepository extends ActiveCoreRepository implements LoginInterface {
+class LoginRepository extends BaseActiveCoreRepository implements LoginInterface {
 	
 	public $baseUri = 'user';
 	public $version = 'v4';

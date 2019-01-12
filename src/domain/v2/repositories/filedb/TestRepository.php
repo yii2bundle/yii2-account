@@ -3,10 +3,10 @@
 namespace yii2module\account\domain\v2\repositories\filedb;
 
 use yii2lab\domain\data\Query;
-use yii2lab\domain\repositories\ActiveFiledbRepository;
+use yii2lab\extension\filedb\repositories\base\BaseActiveFiledbRepository;
 use yii2module\account\domain\v2\interfaces\repositories\TestInterface;
 
-class TestRepository extends ActiveFiledbRepository implements TestInterface {
+class TestRepository extends BaseActiveFiledbRepository implements TestInterface {
 	
 	public function tableName()
 	{

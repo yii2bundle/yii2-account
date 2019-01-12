@@ -2,9 +2,9 @@
 
 namespace yii2module\account\domain\v1\repositories\ar;
 
-use yii2lab\domain\repositories\ActiveArRepository;
+use yii2lab\extension\activeRecord\repositories\base\BaseActiveArRepository;
 
-class ConfirmRepository extends ActiveArRepository {
+class ConfirmRepository extends BaseActiveArRepository {
 	
 	protected $modelClass = 'yii2module\account\domain\v1\models\UserConfirm';
 	protected $primaryKey = false;

@@ -3,9 +3,9 @@
 namespace yii2module\account\domain\v1\repositories\filedb;
 
 use yii2lab\domain\data\Query;
-use yii2lab\domain\repositories\ActiveFiledbRepository;
+use yii2lab\extension\filedb\repositories\base\BaseActiveFiledbRepository;
 
-class TestRepository extends ActiveFiledbRepository {
+class TestRepository extends BaseActiveFiledbRepository {
 	
 	public function tableName()
 	{

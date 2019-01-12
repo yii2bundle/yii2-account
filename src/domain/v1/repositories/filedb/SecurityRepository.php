@@ -2,11 +2,11 @@
 
 namespace yii2module\account\domain\v1\repositories\filedb;
 
-use yii2lab\domain\repositories\ActiveFiledbRepository;
+use yii2lab\extension\filedb\repositories\base\BaseActiveFiledbRepository;
 use yii2module\account\domain\v2\interfaces\repositories\SecurityInterface;
 use yii2module\account\domain\v2\repositories\traits\SecurityTrait;
 
-class SecurityRepository extends ActiveFiledbRepository implements SecurityInterface {
+class SecurityRepository extends BaseActiveFiledbRepository implements SecurityInterface {
 	
 	use SecurityTrait;
 	

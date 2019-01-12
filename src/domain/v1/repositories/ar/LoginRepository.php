@@ -7,14 +7,14 @@ use yii\rbac\Assignment;
 use yii\web\IdentityInterface;
 use yii\web\NotFoundHttpException;
 use yii2lab\domain\BaseEntity;
+use yii2lab\extension\activeRecord\repositories\base\BaseActiveArRepository;
 use yii2module\account\domain\v1\entities\LoginEntity;
 use yii2module\account\domain\v1\helpers\LoginEntityFactory;
-use yii2lab\domain\repositories\ActiveArRepository;
 use yii\helpers\ArrayHelper;
 use yii2module\account\domain\v1\interfaces\repositories\LoginInterface;
 use yii2module\account\domain\v1\models\User;
 
-class LoginRepository extends ActiveArRepository implements LoginInterface {
+class LoginRepository extends BaseActiveArRepository implements LoginInterface {
 
 	protected $modelClass = 'yii2module\account\domain\v1\models\User';
 	

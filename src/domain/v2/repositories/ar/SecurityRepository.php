@@ -2,11 +2,11 @@
 
 namespace yii2module\account\domain\v2\repositories\ar;
 
-use yii2lab\domain\repositories\ActiveArRepository;
+use yii2lab\extension\activeRecord\repositories\base\BaseActiveArRepository;
 use yii2module\account\domain\v2\interfaces\repositories\SecurityInterface;
 use yii2module\account\domain\v2\repositories\traits\SecurityTrait;
 
-class SecurityRepository extends ActiveArRepository implements SecurityInterface {
+class SecurityRepository extends BaseActiveArRepository implements SecurityInterface {
 	
 	use SecurityTrait;
 	
