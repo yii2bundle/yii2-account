@@ -52,7 +52,7 @@ class OauthController extends Controller
 	{
 		return [
 			'info' => [
-				'class' => 'yii2lab\domain\rest\UniAction',
+				'class' => 'yii2lab\rest\domain\rest\UniAction',
 				'service' => Yii::$app->user,
 				'successStatusCode' => 200,
 				'serviceMethod' => 'getIdentity',

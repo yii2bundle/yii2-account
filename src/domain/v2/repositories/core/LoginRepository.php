@@ -57,10 +57,6 @@ class LoginRepository extends BaseActiveCoreRepository implements LoginInterface
 			/*if(empty($response->data['id'])) {
 				throw new NotFoundHttpException(__METHOD__ . ': ' . __LINE__);
 			}*/
-			// todo: crutch
-			if($data['type'] == "yii2woop\\generated\\exception\\tps\\NotAuthenticatedException") {
-				throw new NotFoundHttpException(__METHOD__ . ': ' . __LINE__);
-			}
 			throw new NotFoundHttpException(__METHOD__ . ': ' . __LINE__);
 		}
 		

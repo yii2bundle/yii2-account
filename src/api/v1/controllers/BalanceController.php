@@ -26,7 +26,7 @@ class BalanceController extends Controller
 	public function actions() {
 		return [
 			'index' => [
-				'class' => 'yii2lab\domain\rest\IndexActionWithQuery',
+				'class' => 'yii2lab\rest\domain\rest\IndexActionWithQuery',
 				'serviceMethod' => 'oneSelf',
 			],
 		];

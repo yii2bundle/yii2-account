@@ -2,7 +2,7 @@
 
 namespace yii2module\account\domain\v2\services;
 
-use yii2lab\domain\services\ActiveBaseService;
+use yii2lab\domain\services\base\BaseActiveService;
 use yii2module\account\domain\v2\interfaces\services\TestInterface;
 
 /**
@@ -11,7 +11,7 @@ use yii2module\account\domain\v2\interfaces\services\TestInterface;
  * @package yii2module\account\domain\v2\services
  * @property \yii2module\account\domain\v2\interfaces\repositories\TestInterface $repository
  */
-class TestService extends ActiveBaseService implements TestInterface {
+class TestService extends BaseActiveService implements TestInterface {
 
 	public function getOneByRole($role) {
 		$user = $this->repository->getOneByRole($role);

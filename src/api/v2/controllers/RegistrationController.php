@@ -40,13 +40,13 @@ class RegistrationController extends Controller
 				'serviceMethodParams' => ['login', 'email'],
 			],
 			'activate-account' => [
-				'class' => 'yii2lab\domain\rest\UniAction',
+				'class' => 'yii2lab\rest\domain\rest\UniAction',
 				'successStatusCode' => 204,
 				'serviceMethod' => 'activateAccount',
 				'serviceMethodParams' => ['login', 'activation_code'],
 			],
 			'set-password' => [
-				'class' => 'yii2lab\domain\rest\UniAction',
+				'class' => 'yii2lab\rest\domain\rest\UniAction',
 				'successStatusCode' => 204,
 				'serviceMethod' => 'createTpsAccount',
 				'serviceMethodParams' => ['login', 'activation_code', 'password'],

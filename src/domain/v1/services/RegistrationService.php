@@ -4,7 +4,7 @@ namespace yii2module\account\domain\v1\services;
 
 use yii2lab\domain\helpers\Helper;
 use yii2module\account\domain\v1\helpers\LoginHelper;
-use yii2lab\domain\services\BaseService;
+use yii2lab\domain\services\base\BaseService;
 use Yii;
 use yii2module\account\domain\v1\forms\RegistrationForm;
 use yii2lab\domain\helpers\ErrorCollection;

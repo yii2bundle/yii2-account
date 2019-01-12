@@ -3,7 +3,7 @@
 namespace yii2module\account\domain\v1\services;
 
 use yii2lab\domain\interfaces\repositories\ReadInterface;
-use yii2lab\domain\services\BaseService;
+use yii2lab\domain\services\base\BaseService;
 use yii2woop\common\components\RBAC;
 use yii2woop\common\components\RBACRoles;
 

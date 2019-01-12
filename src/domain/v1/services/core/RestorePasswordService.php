@@ -3,10 +3,10 @@
 namespace yii2module\account\domain\v1\services\core;
 
 use yii2lab\domain\helpers\Helper;
+use yii2lab\extension\core\domain\services\base\BaseCoreService;
 use yii2module\account\domain\v1\forms\RestorePasswordForm;
-use yii2lab\domain\services\CoreBaseService;
 
-class RestorePasswordService extends CoreBaseService {
+class RestorePasswordService extends BaseCoreService {
 	
 	public $point = 'auth/restore-password';
 	

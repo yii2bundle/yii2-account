@@ -5,7 +5,7 @@ namespace yii2module\account\domain\v1\services;
 use yii2lab\domain\helpers\Helper;
 use yii2module\account\domain\v1\forms\ChangeEmailForm;
 use yii2module\account\domain\v1\forms\ChangePasswordForm;
-use yii2lab\domain\services\BaseService;
+use yii2lab\domain\services\base\BaseService;
 
 class SecurityService extends BaseService {
 	

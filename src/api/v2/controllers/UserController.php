@@ -26,10 +26,10 @@ class UserController extends Controller
 	public function actions() {
 		return [
 			'create' => [
-				'class' => 'yii2lab\domain\rest\CreateAction',
+				'class' => 'yii2lab\rest\domain\rest\CreateAction',
 			],
 			'view' => [
-				'class' => 'yii2lab\domain\rest\ViewActionWithQuery',
+				'class' => 'yii2lab\rest\domain\rest\ViewActionWithQuery',
 			],
 		];
 	}

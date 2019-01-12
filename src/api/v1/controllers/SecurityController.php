@@ -31,12 +31,12 @@ class SecurityController extends Controller
 	public function actions() {
 		$actions = parent::actions();
 		$actions['email'] = [
-			'class' => 'yii2lab\domain\rest\UniAction',
+			'class' => 'yii2lab\rest\domain\rest\UniAction',
 			'successStatusCode' => 204,
 			'serviceMethod' => 'changeEmail',
 		];
 		$actions['password'] = [
-			'class' => 'yii2lab\domain\rest\UniAction',
+			'class' => 'yii2lab\rest\domain\rest\UniAction',
 			'successStatusCode' => 204,
 			'serviceMethod' => 'changePassword',
 		];

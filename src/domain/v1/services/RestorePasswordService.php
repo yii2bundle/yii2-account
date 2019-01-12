@@ -5,7 +5,7 @@ namespace yii2module\account\domain\v1\services;
 use yii2lab\domain\helpers\Helper;
 use yii2module\account\domain\v1\forms\RestorePasswordForm;
 use yii2lab\domain\helpers\ErrorCollection;
-use yii2lab\domain\services\BaseService;
+use yii2lab\domain\services\base\BaseService;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 
 class RestorePasswordService extends BaseService {

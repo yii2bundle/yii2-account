@@ -4,7 +4,7 @@ namespace yii2module\account\domain\v1\services;
 
 use Yii;
 use yii\web\ForbiddenHttpException;
-use yii2lab\domain\services\BaseService;
+use yii2lab\domain\services\base\BaseService;
 use yii2module\account\domain\v1\interfaces\services\RbacInterface;
 
 class RbacService extends BaseService implements RbacInterface {

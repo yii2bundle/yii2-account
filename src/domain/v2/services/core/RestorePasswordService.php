@@ -4,8 +4,8 @@ namespace yii2module\account\domain\v2\services\core;
 
 use yii2lab\extension\core\domain\repositories\base\BaseCoreRepository;
 use yii2lab\domain\helpers\Helper;
+use yii2lab\extension\core\domain\services\base\BaseCoreService;
 use yii2module\account\domain\v2\forms\RestorePasswordForm;
-use yii2lab\domain\services\CoreBaseService;
 use yii2module\account\domain\v2\interfaces\services\RestorePasswordInterface;
 
 /**
@@ -15,7 +15,7 @@ use yii2module\account\domain\v2\interfaces\services\RestorePasswordInterface;
  *
  * @property-read BaseCoreRepository $repository
  */
-class RestorePasswordService extends CoreBaseService implements RestorePasswordInterface {
+class RestorePasswordService extends BaseCoreService implements RestorePasswordInterface {
 	
 	public $point = 'auth/restore-password';
 	public $tokenExpire;

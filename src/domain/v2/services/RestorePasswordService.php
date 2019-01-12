@@ -7,7 +7,7 @@ use yii2lab\domain\helpers\Helper;
 use yii2lab\extension\enum\enums\TimeEnum;
 use yii2module\account\domain\v2\forms\RestorePasswordForm;
 use yii2lab\domain\helpers\ErrorCollection;
-use yii2lab\domain\services\BaseService;
+use yii2lab\domain\services\base\BaseService;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2module\account\domain\v2\interfaces\services\RestorePasswordInterface;
 

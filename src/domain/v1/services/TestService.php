@@ -2,9 +2,9 @@
 
 namespace yii2module\account\domain\v1\services;
 
-use yii2lab\domain\services\ActiveBaseService;
+use yii2lab\domain\services\base\BaseActiveService;
 
-class TestService extends ActiveBaseService {
+class TestService extends BaseActiveService {
 
 	public function getOneByRole($role) {
 		$user = $this->repository->getOneByRole($role);

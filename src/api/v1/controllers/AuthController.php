@@ -56,7 +56,7 @@ class AuthController extends Controller {
 	public function actions() {
 		return [
 			'info' => [
-				'class' => 'yii2lab\domain\rest\UniAction',
+				'class' => 'yii2lab\rest\domain\rest\UniAction',
 				'service' => 'account.auth',
 				'successStatusCode' => 200,
 				'serviceMethod' => 'getIdentity',

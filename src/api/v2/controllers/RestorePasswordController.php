@@ -26,19 +26,19 @@ class RestorePasswordController extends Controller
 	public function actions() {
 		return [
 			'request' => [
-				'class' => 'yii2lab\domain\rest\UniAction',
+				'class' => 'yii2lab\rest\domain\rest\UniAction',
 				'successStatusCode' => 201,
 				'serviceMethod' => 'request',
 				'serviceMethodParams' => ['login'],
 			],
 			'check-code' => [
-				'class' => 'yii2lab\domain\rest\UniAction',
+				'class' => 'yii2lab\rest\domain\rest\UniAction',
 				'successStatusCode' => 204,
 				'serviceMethod' => 'checkActivationCode',
 				'serviceMethodParams' => ['login', 'activation_code'],
 			],
 			'confirm' => [
-				'class' => 'yii2lab\domain\rest\UniAction',
+				'class' => 'yii2lab\rest\domain\rest\UniAction',
 				'successStatusCode' => 204,
 				'serviceMethod' => 'confirm',
 				'serviceMethodParams' => ['login', 'activation_code', 'password'],

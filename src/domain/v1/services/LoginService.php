@@ -5,10 +5,10 @@ namespace yii2module\account\domain\v1\services;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii2lab\domain\helpers\Helper;
+use yii2lab\domain\services\base\BaseActiveService;
 use yii2module\account\domain\v1\interfaces\services\LoginInterface;
 use yii2module\account\domain\v1\forms\LoginForm;
 use yii2lab\domain\helpers\ErrorCollection;
-use yii2lab\domain\services\ActiveBaseService;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii\web\NotFoundHttpException;
 
@@ -19,7 +19,7 @@ use yii\web\NotFoundHttpException;
  *
  * @property \yii2module\account\domain\v1\interfaces\repositories\LoginInterface $repository
  */
-class LoginService extends ActiveBaseService implements LoginInterface {
+class LoginService extends BaseActiveService implements LoginInterface {
 
 	public $relations = [];
 	public $prefixList = [];
