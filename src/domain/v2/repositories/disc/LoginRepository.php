@@ -3,13 +3,13 @@
 namespace yii2module\account\domain\v2\repositories\disc;
 
 use yii2lab\domain\BaseEntity;
+use yii2lab\extension\arrayTools\repositories\base\BaseActiveDiscRepository;
 use yii2module\account\domain\v2\interfaces\repositories\LoginInterface;
 use yii2lab\domain\data\Query;
-use yii2lab\domain\repositories\ActiveDiscRepository;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 
-class LoginRepository extends ActiveDiscRepository implements LoginInterface {
+class LoginRepository extends BaseActiveDiscRepository implements LoginInterface {
 	
 	public $table = 'user';
 	protected $schemaClass = true;

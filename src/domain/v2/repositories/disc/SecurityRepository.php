@@ -2,10 +2,10 @@
 
 namespace yii2module\account\domain\v2\repositories\filedb;
 
-use yii2lab\domain\repositories\ActiveDiscRepository;
+use yii2lab\extension\arrayTools\repositories\base\BaseActiveDiscRepository;
 use yii2module\account\domain\v2\interfaces\repositories\SecurityInterface;
 
-class SecurityRepository extends ActiveDiscRepository implements SecurityInterface {
+class SecurityRepository extends BaseActiveDiscRepository implements SecurityInterface {
 	
 	public $table = 'user_security';
 	
