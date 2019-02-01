@@ -4,6 +4,7 @@ namespace yii2module\account\module\controllers;
 use yii2lab\domain\base\Model;
 use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\extension\web\helpers\Behavior;
+use yii2module\account\domain\v2\enums\AccountConfirmActionEnum;
 use yii2module\account\domain\v2\forms\RegistrationForm;
 use yii2module\account\domain\v2\services\RegistrationService;
 use yii2module\account\module\forms\SetSecurityForm;
@@ -53,7 +54,7 @@ class RegistrationController extends Controller
 		if(empty($session['login']) || empty($session['activation_code'])) {
 			return $this->redirect(['/user/registration']);
 		}
-		$isExists = \App::$domain->account->confirm->isHas($session['login'], RegistrationService::CONFIRM_ACTION);
+		$isExists = \App::$domain->account->confirm->isHas($session['login'], AccountConfirmActionEnum::REGISTRATION);
 		if(!$isExists) {
 			\App::$domain->navigation->alert->create(['account/registration', 'temp_user_not_found'], Alert::TYPE_DANGER);
 			return $this->redirect(['/user/registration']);

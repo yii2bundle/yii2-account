@@ -8,6 +8,7 @@ use yii2lab\domain\helpers\Helper;
 use yii2lab\domain\services\base\BaseService;
 use yii2lab\extension\enum\enums\TimeEnum;
 use yii2module\account\domain\v2\entities\ConfirmEntity;
+use yii2module\account\domain\v2\enums\AccountConfirmActionEnum;
 use yii2module\account\domain\v2\exceptions\ConfirmIncorrectCodeException;
 use yii2module\account\domain\v2\helpers\LoginHelper;
 use Yii;
@@ -18,9 +19,7 @@ use yii2module\account\domain\v2\interfaces\repositories\LoginInterface;
 use yii2module\account\domain\v2\interfaces\services\RegistrationInterface;
 
 class RegistrationService extends BaseService implements RegistrationInterface {
-	
-	const CONFIRM_ACTION = 'registration';
-	
+
 	public $expire = TimeEnum::SECOND_PER_MINUTE * 1;
 	public $requiredEmail = false;
 	
@@ -44,7 +43,7 @@ class RegistrationService extends BaseService implements RegistrationInterface {
 		}
         Helper::validateForm(RegistrationForm::class, $body, $scenario);
 		$this->checkLoginExistsInTps($login);
-		\App::$domain->account->confirm->send($login, self::CONFIRM_ACTION, $this->expire, ArrayHelper::toArray($body));
+		\App::$domain->account->confirm->send($login, AccountConfirmActionEnum::REGISTRATION, $this->expire, ArrayHelper::toArray($body));
 		/*try {
 		
 		} catch(ConfirmAlreadyExistsException $e) {
@@ -64,7 +63,7 @@ class RegistrationService extends BaseService implements RegistrationInterface {
 	public function activateAccount($login, $activation_code) {
 		$login = $this->validateLogin($login);
 		$this->checkActivationCode($login, $activation_code);
-		\App::$domain->account->confirm->activate($login, self::CONFIRM_ACTION, $activation_code);
+		\App::$domain->account->confirm->activate($login, AccountConfirmActionEnum::REGISTRATION, $activation_code);
 	}
 	
 	public function createTpsAccount($login, $activation_code, $password, $email = null) {
@@ -85,7 +84,7 @@ class RegistrationService extends BaseService implements RegistrationInterface {
 		
 		$data = compact('login','password','email');
 		\App::$domain->account->login->create($data);
-		\App::$domain->account->confirm->delete($login, self::CONFIRM_ACTION);
+		\App::$domain->account->confirm->delete($login, AccountConfirmActionEnum::REGISTRATION);
 	}
 
 	private function checkLoginExistsInTps($login) {
@@ -103,7 +102,7 @@ class RegistrationService extends BaseService implements RegistrationInterface {
 	private function verifyActivationCode($login, $activation_code) {
 		$login = LoginHelper::pregMatchLogin($login);
 		try {
-			return \App::$domain->account->confirm->verifyCode($login, self::CONFIRM_ACTION, $activation_code);
+			return \App::$domain->account->confirm->verifyCode($login, AccountConfirmActionEnum::REGISTRATION, $activation_code);
 		} catch(ConfirmIncorrectCodeException $e) {
 			$error = new ErrorCollection();
 			$error->add('activation_code', 'account/confirm', 'incorrect_code');
