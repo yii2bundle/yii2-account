@@ -2,10 +2,10 @@
 
 namespace yii2module\account\domain\v2;
 
-use yii2lab\extension\jwt\filters\token\JwtFilter;
+use yii2rails\extension\jwt\filters\token\JwtFilter;
 use yii2module\account\domain\v2\enums\AccountRoleEnum;
-use yii2lab\domain\enums\Driver;
-use yii2lab\extension\enum\enums\TimeEnum;
+use yii2rails\domain\enums\Driver;
+use yii2rails\extension\enum\enums\TimeEnum;
 use yii2module\account\domain\v2\filters\login\LoginValidator;
 use yii2module\account\domain\v2\filters\token\DefaultFilter;
 
@@ -30,7 +30,7 @@ use yii2module\account\domain\v2\filters\token\DefaultFilter;
  * @property-read \yii2module\account\domain\v2\interfaces\services\ActivityInterface $activity
  * @property-read \yii2module\account\domain\v2\interfaces\services\OauthInterface $oauth
  */
-class Domain extends \yii2lab\domain\Domain {
+class Domain extends \yii2rails\domain\Domain {
 	
 	public function config() {
 		$remoteServiceDriver = $this->primaryDriver == Driver::CORE ? Driver::CORE : null;

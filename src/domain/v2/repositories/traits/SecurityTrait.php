@@ -4,10 +4,10 @@ namespace yii2module\account\domain\v2\repositories\traits;
 
 use Yii;
 use yii\web\NotFoundHttpException;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
-use yii2lab\domain\helpers\ErrorCollection;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\helpers\ErrorCollection;
 use yii2module\account\domain\v2\entities\SecurityEntity;
 
 trait SecurityTrait {

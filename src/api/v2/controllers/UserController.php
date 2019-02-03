@@ -2,7 +2,7 @@
 
 namespace yii2module\account\api\v2\controllers;
 
-use yii2lab\extension\web\helpers\Behavior;
+use yii2rails\extension\web\helpers\Behavior;
 use yii2lab\rest\domain\rest\ActiveController as Controller;
 
 class UserController extends Controller

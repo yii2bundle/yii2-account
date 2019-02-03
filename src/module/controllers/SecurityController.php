@@ -3,11 +3,11 @@
 namespace yii2module\account\module\controllers;
 
 use yii\web\Controller;
-use yii2lab\extension\web\helpers\Behavior;
+use yii2rails\extension\web\helpers\Behavior;
 use yii2module\account\domain\v2\entities\SecurityEntity;
 use yii2module\account\module\forms\ChangePasswordForm;
 use Yii;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\navigation\domain\widgets\Alert;
 use yii2module\account\domain\v2\forms\ChangeEmailForm;
 use yii2module\account\module\helpers\SecurityMenu;

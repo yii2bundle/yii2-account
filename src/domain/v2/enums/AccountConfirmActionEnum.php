@@ -2,7 +2,7 @@
 
 namespace yii2module\account\domain\v2\enums;
 
-use yii2lab\extension\enum\base\BaseEnum;
+use yii2rails\extension\enum\base\BaseEnum;
 
 class AccountConfirmActionEnum extends BaseEnum
 {

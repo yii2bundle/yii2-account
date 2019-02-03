@@ -3,10 +3,10 @@
 namespace yii2module\account\console\controllers;
 
 use Yii;
-use yii2lab\extension\console\helpers\Output;
-use yii2lab\extension\console\base\Controller;
-use yii2lab\extension\console\helpers\input\Enter;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\extension\console\helpers\Output;
+use yii2rails\extension\console\base\Controller;
+use yii2rails\extension\console\helpers\input\Enter;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2module\account\console\forms\LoginForm;
 
 class LoginController extends Controller

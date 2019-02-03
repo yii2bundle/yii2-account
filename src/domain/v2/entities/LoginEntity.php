@@ -4,9 +4,9 @@ namespace yii2module\account\domain\v2\entities;
 
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
-use yii2lab\app\domain\helpers\EnvService;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\values\TimeValue;
+use yii2rails\app\domain\helpers\EnvService;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\values\TimeValue;
 use yii2lab\rbac\domain\entities\AssignmentEntity;
 use yii2module\account\domain\v2\helpers\LoginHelper;
 use yii2module\account\domain\v2\interfaces\entities\LoginEntityInterface;

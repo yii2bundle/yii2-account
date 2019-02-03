@@ -3,7 +3,7 @@
 namespace yii2module\account\domain\v2\repositories\test;
 
 use yii2module\account\domain\v2\interfaces\repositories\RestorePasswordInterface;
-use yii2lab\domain\repositories\BaseRepository;
+use yii2rails\domain\repositories\BaseRepository;
 
 /**
  * Class RestorePasswordRepository

@@ -3,10 +3,10 @@
 namespace yii2module\account\domain\v2\behaviors;
 
 use yii\base\Behavior;
-use yii2lab\domain\enums\EventEnum;
-use yii2lab\domain\events\MethodEvent;
-use yii2lab\domain\repositories\BaseRepository;
-use yii2lab\domain\services\base\BaseService;
+use yii2rails\domain\enums\EventEnum;
+use yii2rails\domain\events\MethodEvent;
+use yii2rails\domain\repositories\BaseRepository;
+use yii2rails\domain\services\base\BaseService;
 
 class UserActivityFilter extends Behavior {
 	

@@ -7,10 +7,10 @@ use yii\filters\auth\AuthMethod;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use yii\web\UnauthorizedHttpException;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
-use yii2lab\extension\console\helpers\Error;
-use yii2lab\extension\console\helpers\input\Enter;
-use yii2lab\extension\enum\enums\TimeEnum;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\extension\console\helpers\Error;
+use yii2rails\extension\console\helpers\input\Enter;
+use yii2rails\extension\enum\enums\TimeEnum;
 use yii2module\account\domain\v2\entities\LoginEntity;
 use yii2module\account\domain\v2\forms\LoginForm;
 

@@ -3,8 +3,8 @@
 namespace yii2module\account\domain\v2\interfaces\repositories;
 
 use yii\web\NotFoundHttpException;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
-use yii2lab\domain\interfaces\repositories\CrudInterface;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\interfaces\repositories\CrudInterface;
 use yii2module\account\domain\v2\entities\SecurityEntity;
 
 interface SecurityInterface extends CrudInterface {

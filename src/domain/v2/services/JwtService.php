@@ -4,12 +4,12 @@ namespace yii2module\account\domain\v2\services;
 
 use yii\base\InvalidConfigException;
 use yii\base\Object;
-use yii2lab\app\domain\helpers\EnvService;
-use yii2lab\extension\jwt\entities\JwtEntity;
+use yii2rails\app\domain\helpers\EnvService;
+use yii2rails\extension\jwt\entities\JwtEntity;
 use yii2module\account\domain\v2\interfaces\services\JwtInterface;
-use yii2lab\domain\services\base\BaseService;
-use yii2lab\domain\Alias;
-use yii2lab\extension\yii\helpers\ArrayHelper;
+use yii2rails\domain\services\base\BaseService;
+use yii2rails\domain\Alias;
+use yii2rails\extension\yii\helpers\ArrayHelper;
 
 /**
  * Class JwtService
@@ -59,7 +59,7 @@ class JwtService extends BaseService implements JwtInterface {
 'profiles' => [
 'default' => [
 'key' => 'qwerty123',
-'life_time' => \yii2lab\extension\enum\enums\TimeEnum::SECOND_PER_MINUTE * 20,
+'life_time' => \yii2rails\extension\enum\enums\TimeEnum::SECOND_PER_MINUTE * 20,
 'allowed_algs' => ['HS256', 'SHA512', 'HS384'],
 'default_alg' => 'HS256',
 'audience' => ["http://api.core.yii"],

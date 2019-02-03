@@ -2,11 +2,11 @@
 
 namespace yii2module\account\domain\v2\repositories\filedb;
 
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\repositories\BaseRepository;
-use yii2lab\extension\activeRecord\repositories\base\BaseActiveArRepository;
-use yii2lab\extension\filedb\repositories\base\BaseActiveFiledbRepository;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\repositories\BaseRepository;
+use yii2rails\extension\activeRecord\repositories\base\BaseActiveArRepository;
+use yii2rails\extension\filedb\repositories\base\BaseActiveFiledbRepository;
 use yii2module\account\domain\v2\entities\TokenEntity;
 use yii2module\account\domain\v2\interfaces\repositories\TokenInterface;
 

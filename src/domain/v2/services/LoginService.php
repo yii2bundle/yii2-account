@@ -2,17 +2,17 @@
 
 namespace yii2module\account\domain\v2\services;
 
-use yii2lab\domain\data\Query;
-use yii2lab\domain\helpers\Helper;
-use yii2lab\domain\services\base\BaseActiveService;
-use yii2lab\extension\common\helpers\InstanceHelper;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\helpers\Helper;
+use yii2rails\domain\services\base\BaseActiveService;
+use yii2rails\extension\common\helpers\InstanceHelper;
 use yii2module\account\domain\v2\entities\LoginEntity;
 use yii2module\account\domain\v2\filters\login\LoginValidator;
 use yii2module\account\domain\v2\interfaces\LoginValidatorInterface;
 use yii2module\account\domain\v2\interfaces\services\LoginInterface;
 use yii2module\account\domain\v2\forms\LoginForm;
-use yii2lab\domain\helpers\ErrorCollection;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\helpers\ErrorCollection;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii\web\NotFoundHttpException;
 
 /**

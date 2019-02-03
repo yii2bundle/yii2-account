@@ -4,8 +4,8 @@ namespace yii2module\account\domain\v2\entities;
 
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\values\TimeValue;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\values\TimeValue;
 
 /**
  * Class ActivityEntity

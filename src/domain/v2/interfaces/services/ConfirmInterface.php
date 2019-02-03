@@ -3,7 +3,7 @@
 namespace yii2module\account\domain\v2\interfaces\services;
 
 use yii\web\NotFoundHttpException;
-use yii2lab\domain\interfaces\services\CrudInterface;
+use yii2rails\domain\interfaces\services\CrudInterface;
 use yii2module\account\domain\v2\exceptions\ConfirmAlreadyExistsException;
 use yii2module\account\domain\v2\exceptions\ConfirmIncorrectCodeException;
 

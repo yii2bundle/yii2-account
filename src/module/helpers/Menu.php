@@ -3,8 +3,8 @@
 namespace yii2module\account\module\helpers;
 
 use Yii;
-use yii2lab\extension\menu\interfaces\MenuInterface;
-use yii2lab\extension\yii\helpers\Html;
+use yii2rails\extension\menu\interfaces\MenuInterface;
+use yii2rails\extension\yii\helpers\Html;
 use yii2module\account\domain\v2\helpers\LoginHelper;
 use yii2module\profile\domain\v2\entities\PersonEntity;
 use yii2module\profile\widget\Avatar;

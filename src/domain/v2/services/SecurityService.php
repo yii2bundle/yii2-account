@@ -3,9 +3,9 @@
 namespace yii2module\account\domain\v2\services;
 
 use Yii;
-use yii2lab\domain\data\Query;
-use yii2lab\domain\helpers\Helper;
-use yii2lab\domain\services\base\BaseActiveService;
+use yii2rails\domain\data\Query;
+use yii2rails\domain\helpers\Helper;
+use yii2rails\domain\services\base\BaseActiveService;
 use yii2module\account\domain\v2\entities\SecurityEntity;
 use yii2module\account\domain\v2\forms\ChangeEmailForm;
 use yii2module\account\domain\v2\forms\ChangePasswordForm;

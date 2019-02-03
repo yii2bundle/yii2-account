@@ -2,10 +2,10 @@
 
 namespace yii2module\account\domain\v2\repositories\disc;
 
-use yii2lab\domain\BaseEntity;
-use yii2lab\extension\arrayTools\repositories\base\BaseActiveDiscRepository;
+use yii2rails\domain\BaseEntity;
+use yii2rails\extension\arrayTools\repositories\base\BaseActiveDiscRepository;
 use yii2module\account\domain\v2\interfaces\repositories\LoginInterface;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\data\Query;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 

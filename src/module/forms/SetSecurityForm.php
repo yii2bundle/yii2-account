@@ -3,7 +3,7 @@
 namespace yii2module\account\module\forms;
 
 use Yii;
-use yii2lab\domain\base\Model;
+use yii2rails\domain\base\Model;
 
 class SetSecurityForm extends Model
 {

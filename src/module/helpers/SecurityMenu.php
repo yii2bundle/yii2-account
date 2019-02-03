@@ -2,8 +2,8 @@
 
 namespace yii2module\account\module\helpers;
 
-use yii2lab\extension\menu\base\BaseMenu;
-use yii2lab\extension\menu\interfaces\MenuInterface;
+use yii2rails\extension\menu\base\BaseMenu;
+use yii2rails\extension\menu\interfaces\MenuInterface;
 
 class SecurityMenu extends BaseMenu implements MenuInterface {
 	

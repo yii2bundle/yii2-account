@@ -6,12 +6,12 @@ use Yii;
 use yii\authclient\BaseOAuth;
 use yii\web\IdentityInterface;
 use yii\web\NotFoundHttpException;
-use yii2lab\app\domain\helpers\EnvService;
-use yii2lab\domain\enums\Driver;
-use yii2lab\domain\helpers\factory\RepositoryFactoryHelper;
+use yii2rails\app\domain\helpers\EnvService;
+use yii2rails\domain\enums\Driver;
+use yii2rails\domain\helpers\factory\RepositoryFactoryHelper;
 use yii2module\account\domain\v2\entities\LoginEntity;
 use yii2module\account\domain\v2\interfaces\services\OauthInterface;
-use yii2lab\domain\services\base\BaseService;
+use yii2rails\domain\services\base\BaseService;
 
 /**
  * Class OauthService

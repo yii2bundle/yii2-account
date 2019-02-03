@@ -2,7 +2,7 @@
 
 namespace yii2module\account\domain\v2\dto;
 
-use yii2lab\domain\base\BaseDto;
+use yii2rails\domain\base\BaseDto;
 
 /**
  * Class TokenDto

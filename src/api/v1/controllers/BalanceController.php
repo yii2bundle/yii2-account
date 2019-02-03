@@ -3,7 +3,7 @@
 namespace yii2module\account\api\v1\controllers;
 
 use yii2lab\rest\domain\rest\Controller;
-use yii2lab\extension\web\helpers\Behavior;
+use yii2rails\extension\web\helpers\Behavior;
 
 class BalanceController extends Controller
 {

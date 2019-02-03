@@ -5,8 +5,8 @@ namespace yii2module\account\domain\v2\helpers;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
-use yii2lab\extension\registry\helpers\Registry;
-use yii2lab\extension\web\enums\HttpHeaderEnum;
+use yii2rails\extension\registry\helpers\Registry;
+use yii2rails\extension\web\enums\HttpHeaderEnum;
 use yii2module\account\domain\v2\dto\TokenDto;
 use yii2module\account\domain\v2\entities\LoginEntity;
 

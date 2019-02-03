@@ -2,7 +2,7 @@
 
 namespace yii2module\account\domain\v2\repositories\filedb;
 
-use yii2lab\extension\arrayTools\repositories\base\BaseActiveDiscRepository;
+use yii2rails\extension\arrayTools\repositories\base\BaseActiveDiscRepository;
 use yii2module\account\domain\v2\interfaces\repositories\SecurityInterface;
 
 class SecurityRepository extends BaseActiveDiscRepository implements SecurityInterface {

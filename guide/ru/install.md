@@ -62,7 +62,7 @@ return [
 	'components' => [
 		// ...
 		'account' => [
-			'class' => 'yii2lab\domain\Domain',
+			'class' => 'yii2rails\domain\Domain',
 			'path' => 'yii2module\account\domain',
 			'repositories' => [
 				'auth' => Driver::remote(),

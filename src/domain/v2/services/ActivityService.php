@@ -2,10 +2,10 @@
 
 namespace yii2module\account\domain\v2\services;
 
-use yii2lab\extension\web\helpers\ClientHelper;
-use yii2lab\extension\yii\helpers\ArrayHelper;
+use yii2rails\extension\web\helpers\ClientHelper;
+use yii2rails\extension\yii\helpers\ArrayHelper;
 use yii2module\account\domain\v2\interfaces\services\ActivityInterface;
-use yii2lab\domain\services\base\BaseActiveService;
+use yii2rails\domain\services\base\BaseActiveService;
 
 /**
  * Class ActivityService

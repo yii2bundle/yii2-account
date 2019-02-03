@@ -4,7 +4,7 @@
 /* @var $model LoginForm */
 
 use yii\helpers\Html;
-use yii2lab\app\domain\helpers\EnvService;
+use yii2rails\app\domain\helpers\EnvService;
 use yii2module\account\domain\v2\forms\LoginForm;
 
 $this->title = Yii::t('account/auth', 'login_title');

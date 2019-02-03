@@ -2,7 +2,7 @@
 
 namespace yii2module\account\domain\v2\services;
 
-use yii2lab\domain\services\base\BaseActiveService;
+use yii2rails\domain\services\base\BaseActiveService;
 use yii2module\account\domain\v2\interfaces\services\TestInterface;
 
 /**

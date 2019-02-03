@@ -4,7 +4,7 @@ namespace tests\functional\v1\services;
 
 use yii2lab\test\Test\Unit;
 use Yii;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\data\Query;
 use tests\functional\v1\enums\LoginEnum;
 use yii2module\account\domain\v2\entities\AssignmentEntity;
 

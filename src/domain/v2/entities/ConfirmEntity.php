@@ -3,8 +3,8 @@
 namespace yii2module\account\domain\v2\entities;
 
 use paulzi\jsonBehavior\JsonValidator;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\values\TimeValue;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\values\TimeValue;
 use yii2module\account\domain\v2\exceptions\ConfirmIncorrectCodeException;
 use yii2module\account\domain\v2\helpers\ConfirmHelper;
 use yii2module\account\domain\v2\helpers\LoginHelper;

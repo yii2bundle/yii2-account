@@ -4,14 +4,14 @@ namespace yii2module\account\domain\v2\services;
 
 use Yii;
 use yii\web\NotFoundHttpException;
-use yii2lab\extension\web\helpers\ClientHelper;
-use yii2lab\extension\enum\enums\TimeEnum;
-use yii2lab\extension\yii\helpers\FileHelper;
+use yii2rails\extension\web\helpers\ClientHelper;
+use yii2rails\extension\enum\enums\TimeEnum;
+use yii2rails\extension\yii\helpers\FileHelper;
 use yii2module\account\domain\v2\entities\TokenEntity;
 use yii2module\account\domain\v2\exceptions\InvalidIpAddressException;
 use yii2module\account\domain\v2\exceptions\NotFoundLoginException;
 use yii2module\account\domain\v2\interfaces\services\TokenInterface;
-use yii2lab\domain\services\base\BaseActiveService;
+use yii2rails\domain\services\base\BaseActiveService;
 
 /**
  * Class TokenService

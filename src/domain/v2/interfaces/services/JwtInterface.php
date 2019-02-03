@@ -2,7 +2,7 @@
 
 namespace yii2module\account\domain\v2\interfaces\services;
 
-use yii2lab\extension\jwt\entities\JwtEntity;
+use yii2rails\extension\jwt\entities\JwtEntity;
 
 
 /**

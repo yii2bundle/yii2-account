@@ -2,8 +2,8 @@
 
 namespace yii2module\account\domain\v2\repositories\disc;
 
-use yii2lab\domain\data\Query;
-use yii2lab\extension\arrayTools\repositories\base\BaseActiveDiscRepository;
+use yii2rails\domain\data\Query;
+use yii2rails\extension\arrayTools\repositories\base\BaseActiveDiscRepository;
 use yii2module\account\domain\v2\interfaces\repositories\TestInterface;
 
 class TestRepository extends BaseActiveDiscRepository implements TestInterface {

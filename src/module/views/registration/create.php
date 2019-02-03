@@ -6,7 +6,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use yii2lab\app\domain\helpers\EnvService;
+use yii2rails\app\domain\helpers\EnvService;
 use yii2lab\rest\domain\helpers\ApiVersionConfig;
 
 $this->title = Yii::t('account/registration', 'create_title');

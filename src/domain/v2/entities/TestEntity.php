@@ -2,7 +2,7 @@
 
 namespace yii2module\account\domain\v2\entities;
 
-use yii2lab\domain\BaseEntity;
+use yii2rails\domain\BaseEntity;
 
 /**
  * Class TestEntity

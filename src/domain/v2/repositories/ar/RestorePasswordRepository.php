@@ -3,8 +3,8 @@
 namespace yii2module\account\domain\v2\repositories\ar;
 
 use Yii;
-use yii2lab\domain\repositories\BaseRepository;
-use yii2lab\extension\enum\enums\TimeEnum;
+use yii2rails\domain\repositories\BaseRepository;
+use yii2rails\extension\enum\enums\TimeEnum;
 use yii2module\account\domain\v2\entities\LoginEntity;
 use yii2module\account\domain\v2\entities\SecurityEntity;
 use yii2module\account\domain\v2\helpers\LoginHelper;

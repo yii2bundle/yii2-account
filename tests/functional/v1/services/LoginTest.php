@@ -5,8 +5,8 @@ namespace tests\functional\v1\services;
 use yii2lab\test\helpers\DataHelper;
 use yii2lab\test\Test\Unit;
 use yii\web\NotFoundHttpException;
-use yii2lab\domain\BaseEntity;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
 use yii2module\account\domain\v2\entities\LoginEntity;
 use tests\functional\v1\enums\LoginEnum;
 

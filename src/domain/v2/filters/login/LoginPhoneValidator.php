@@ -5,8 +5,8 @@ namespace yii2module\account\domain\v2\filters\login;
 use Yii;
 use yii\web\NotFoundHttpException;
 
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
-use yii2lab\domain\helpers\ErrorCollection;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\helpers\ErrorCollection;
 use yii2module\account\domain\v2\interfaces\LoginValidatorInterface;
 
 class LoginPhoneValidator implements LoginValidatorInterface {

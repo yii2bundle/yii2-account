@@ -7,7 +7,7 @@
 use yii\bootstrap\Tabs;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii2lab\extension\menu\helpers\MenuHelper;
+use yii2rails\extension\menu\helpers\MenuHelper;
 
 $this->title = Yii::t('account/security', 'email');
 \App::$domain->navigation->breadcrumbs->create($this->title);

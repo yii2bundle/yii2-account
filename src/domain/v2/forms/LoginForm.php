@@ -3,7 +3,7 @@
 namespace yii2module\account\domain\v2\forms;
 
 use Yii;
-use yii2lab\domain\base\Model;
+use yii2rails\domain\base\Model;
 use yii2module\lang\domain\helpers\LangHelper;
 
 class LoginForm extends Model

@@ -4,7 +4,7 @@ namespace yii2module\account\domain\v2\helpers;
 
 use Yii;
 use yii\web\NotFoundHttpException;
-use yii2lab\domain\data\Query;
+use yii2rails\domain\data\Query;
 
 class LoginHelper {
 
@@ -19,7 +19,7 @@ class LoginHelper {
 	/**
 	 * @param $id
 	 *
-	 * @return \yii2lab\domain\BaseEntity
+	 * @return \yii2rails\domain\BaseEntity
 	 *
 	 * @deprecated
 	 */

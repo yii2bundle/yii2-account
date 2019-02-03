@@ -3,7 +3,7 @@
 namespace yii2module\account\domain\v2\interfaces\services;
 
 use yii\web\IdentityInterface;
-use yii2lab\domain\BaseEntity;
+use yii2rails\domain\BaseEntity;
 use yii2module\account\domain\v2\entities\LoginEntity;
 
 /**

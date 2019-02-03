@@ -3,10 +3,10 @@
 namespace yii2module\account\api\v2\controllers;
 
 use Yii;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
-use yii2lab\domain\helpers\Helper;
-use yii2lab\extension\web\helpers\Behavior;
-use yii2lab\extension\web\helpers\ClientHelper;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\helpers\Helper;
+use yii2rails\extension\web\helpers\Behavior;
+use yii2rails\extension\web\helpers\ClientHelper;
 use yii2lab\rest\domain\rest\Controller;
 use yii2woop\common\domain\account\v2\forms\AuthPseudoForm;
 use yii2module\account\domain\v2\interfaces\services\AuthInterface;

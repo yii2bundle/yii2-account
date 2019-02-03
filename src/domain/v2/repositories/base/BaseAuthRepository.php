@@ -3,11 +3,11 @@
 namespace yii2module\account\domain\v2\repositories\base;
 
 use yii\web\NotFoundHttpException;
-use yii2lab\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2module\account\domain\v2\entities\LoginEntity;
 use yii2module\account\domain\v2\entities\SecurityEntity;
 use yii2module\account\domain\v2\interfaces\repositories\AuthInterface;
-use yii2lab\domain\repositories\BaseRepository;
+use yii2rails\domain\repositories\BaseRepository;
 
 /**
  * Class BaseAuthRepository
