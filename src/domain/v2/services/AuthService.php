@@ -44,7 +44,8 @@ class AuthService extends BaseService implements AuthInterface {
     public $tokenAuthMethods = [
 	    'bearer' => DefaultFilter::class,
     ];
-	
+	private $_identity = null;
+
 	public function behaviors() {
 		return [
 			[
@@ -137,11 +138,16 @@ class AuthService extends BaseService implements AuthInterface {
 	}
 
 	public function getIdentity() {
-		if(Yii::$app->user->isGuest) {
+	    if(isset(Yii::$app->user)) {
+            if(Yii::$app->user->isGuest) {
+                $this->breakSession();
+            }
+            return Yii::$app->user->identity;
+        }
+        if($this->_identity === null) {
             $this->breakSession();
-
-		}
-		return Yii::$app->user->identity;
+        }
+        return $this->_identity;
 	}
 
 	public function authenticationFromWeb($login, $password, $rememberMe = false) {
@@ -154,7 +160,10 @@ class AuthService extends BaseService implements AuthInterface {
             return null;
         }
         $duration = $rememberMe ? $this->rememberExpire : 0;
-        Yii::$app->user->login($loginEntity, $duration);
+        if(isset(Yii::$app->user)) {
+            Yii::$app->user->login($loginEntity, $duration);
+        }
+        $this->_identity = $loginEntity;
         AuthHelper::setToken($loginEntity->token);
     }
 

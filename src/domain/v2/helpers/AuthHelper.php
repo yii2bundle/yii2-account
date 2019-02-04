@@ -63,18 +63,21 @@ class AuthHelper {
 		if(APP == CONSOLE) {
 			return null;
 		}
-		$token = Yii::$app->request->headers->get(HttpHeaderEnum::AUTHORIZATION);
-		if(!empty($token)) {
-			return $token;
-		}
-		$token = Yii::$app->request->getQueryParam(strtolower(HttpHeaderEnum::AUTHORIZATION));
-		if(!empty($token)) {
-			return $token;
-		}
-		$token = Yii::$app->request->getQueryParam(HttpHeaderEnum::AUTHORIZATION);
-		if(!empty($token)) {
-			return $token;
-		}
+        $token = null;
+		if(isset(Yii::$app->request)) {
+            $token = Yii::$app->request->headers->get(HttpHeaderEnum::AUTHORIZATION);
+            if(!empty($token)) {
+                return $token;
+            }
+            $token = Yii::$app->request->getQueryParam(strtolower(HttpHeaderEnum::AUTHORIZATION));
+            if(!empty($token)) {
+                return $token;
+            }
+            $token = Yii::$app->request->getQueryParam(HttpHeaderEnum::AUTHORIZATION);
+            if(!empty($token)) {
+                return $token;
+            }
+        }
 		return null;
 	}
 	
