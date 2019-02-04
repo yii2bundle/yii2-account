@@ -111,7 +111,7 @@ class TokenService extends BaseActiveService implements TokenInterface {
 	
 	private function generate($userId, $ip, $expire) {
 		$token = $this->generateUniqueToken();
-		$agentInfo = ClientHelper::getAgentInfo(1);
+		$agentInfo = ClientHelper::getAgentInfo();
 		$agentInfo['user_id'] = $userId;
 		$agentInfo['ip'] = $ip;
 		$agentInfo['token'] = $token;

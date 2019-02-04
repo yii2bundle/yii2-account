@@ -23,7 +23,7 @@ class ActivityService extends BaseActiveService implements ActivityInterface {
 		if(!self::isEnabled($data)) {
 			return null;
 		}
-		$agent = ClientHelper::getAgentInfo(1);
+		$agent = ClientHelper::getAgentInfo();
 		$data['platform'] = ArrayHelper::getValue($agent, 'platform');
 		$data['browser'] = ArrayHelper::getValue($agent, 'browser');
 		$data['version'] = ArrayHelper::getValue($agent, 'version');
