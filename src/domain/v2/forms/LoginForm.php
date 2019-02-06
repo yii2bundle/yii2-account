@@ -3,6 +3,7 @@
 namespace yii2module\account\domain\v2\forms;
 
 use Yii;
+use yii2module\account\domain\v2\validators\PasswordValidator;
 use yii2rails\domain\base\Model;
 use yii2module\lang\domain\helpers\LangHelper;
 
@@ -13,9 +14,9 @@ class LoginForm extends Model
 	
 	public $login;
 	public $password;
-	public $email;
-	public $role;
-	public $status;
+	//public $email;
+	//public $role;
+	//public $status;
 	public $token_type;
 	public $rememberMe = true;
 
@@ -27,13 +28,13 @@ class LoginForm extends Model
 		return [
 			[['login', 'password', 'token_type'], 'trim'],
 			[['login', 'password'], 'required'],
-			['email', 'email'],
+			//['email', 'email'],
 			//['login', 'match', 'pattern' => '/^[0-9_]{11,13}$/i', 'message' => Yii::t('account/registration', 'login_not_valid')],
 			//['login', LoginValidator::class],
-			'normalizeLogin' => ['login', 'normalizeLogin'],
-			[['password'], 'string', 'min' => 3],
+			//'normalizeLogin' => ['login', 'normalizeLogin'],
+			[['password'], PasswordValidator::class],
 			['rememberMe', 'boolean'],
-		    [['status'], 'safe'],
+		    //[['status'], 'safe'],
 		];
 	}
 	
@@ -62,7 +63,7 @@ class LoginForm extends Model
 	public function attributeLabels()
 	{
 		return [
-			'login' 		=> Yii::t('account/main', 'login'),
+			'login' 		=> Yii::t('user/auth', 'login'),
 			'password' 		=> Yii::t('account/main', 'password'),
 			'rememberMe' 		=> Yii::t('account/auth', 'remember_me'),
 		];

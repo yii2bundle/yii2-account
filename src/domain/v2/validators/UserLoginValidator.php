@@ -16,6 +16,11 @@ class UserLoginValidator extends BaseValidator {
             'pattern' => RegexpPatternEnum::LOGIN_REQUIRED,
         ]);
         $validator->validateAttribute($model, $attribute);
+        /*$validator = Yii::createObject([
+            'class' => RegularExpressionValidator::class,
+            'pattern' => '/^[a-zA-Z]$/',
+        ]);
+        $validator->validateAttribute($model, $attribute);*/
 	}
 
 }

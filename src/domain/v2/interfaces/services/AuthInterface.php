@@ -29,7 +29,7 @@ interface AuthInterface {
     /**
      * @return LoginEntity
      */
-	public function authenticationFromWeb($login, $password, $rememberMe = false);
+	//public function authenticationFromWeb($login, $password, $rememberMe = false);
 
     /**
      * @return LoginEntity
