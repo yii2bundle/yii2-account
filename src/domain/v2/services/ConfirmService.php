@@ -51,7 +51,7 @@ class ConfirmService extends BaseActiveService implements ConfirmInterface
 		$login = LoginHelper::getPhone($login);
 		$confirmEntity = $this->oneByLoginAndAction($login, $action);
 		if($confirmEntity->code != $code) {
-			throw new ConfirmIncorrectCodeException();
+			throw new ConfirmIncorrectCodeException(Yii::t('account/confirm', 'incorrect_code'));
 		}
 		return $confirmEntity;
 	}

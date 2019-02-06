@@ -8,5 +8,6 @@ class AccountConfirmActionEnum extends BaseEnum
 {
 
     const REGISTRATION = 'registration';
+	const RESTORE_PASSWORD = 'restore-password';
 
 }
