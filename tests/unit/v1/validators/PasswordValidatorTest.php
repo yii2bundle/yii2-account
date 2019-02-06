@@ -76,7 +76,23 @@ class PasswordValidatorTest extends Unit
         $model = new PasswordForm;
         $model->password = 'Wq1';
         $model->validate();
-        $this->tester->assertEquals([], $model->errors);
+        $this->tester->assertEquals([
+            'password' => [
+                'Password should contain at least 6 characters.',
+            ],
+        ], $model->errors);
+    }
+
+    public function testBig()
+    {
+        $model = new PasswordForm;
+        $model->password = 'Wq11111111111111111';
+        $model->validate();
+        $this->tester->assertEquals([
+            'password' => [
+                'Password should contain at most 18 characters.',
+            ],
+        ], $model->errors);
     }
 
     public function testValid()
