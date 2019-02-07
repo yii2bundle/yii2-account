@@ -2,9 +2,7 @@
 
 namespace yii2module\account\domain\v2\validators;
 
-use App;
 use Yii;
-use yii\validators\RequiredValidator;
 use yii\validators\StringValidator;
 use yii2rails\extension\validator\BaseValidator;
 
