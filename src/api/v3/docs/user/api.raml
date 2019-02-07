@@ -1,0 +1,14 @@
+description: "Пользователи"
+/{id}:
+    uriParameters:
+        id:
+            description: "ID пользователя"
+            type: integer
+    get:
+        description: "Возвращает пользователя"
+        is: !include /../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/simple/one.raml
+        responses:
+            200:
+                body:
+                    application/json:
+                        example: !include example/one-reponse-body.json
