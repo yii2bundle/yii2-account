@@ -6,6 +6,7 @@ use Yii;
 use yii2rails\domain\helpers\DomainHelper;
 use yii2rails\extension\web\helpers\ClientHelper;
 use yii2module\account\domain\v2\entities\LoginEntity;
+use yubundle\account\domain\v2\forms\LoginForm;
 
 class TestAuthHelper {
 	
@@ -21,7 +22,10 @@ class TestAuthHelper {
 	
 	public static function authByLogin($login, $password = self::ADMIN_PASSWORD) {
 		self::defineAccountDomain();
-		$userEntity = \App::$domain->account->auth->authentication($login, $password);
+        $loginForm = new LoginForm;
+        $loginForm->login = $login;
+        $loginForm->password = $password;
+		$userEntity = \App::$domain->account->auth->authenticationFromApi($loginForm);
 		Yii::$app->user->setIdentity($userEntity);
 	}
 	
