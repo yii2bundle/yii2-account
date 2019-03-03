@@ -22,10 +22,7 @@ class TestAuthHelper {
 	
 	public static function authByLogin($login, $password = self::ADMIN_PASSWORD) {
 		self::defineAccountDomain();
-        $loginForm = new LoginForm;
-        $loginForm->login = $login;
-        $loginForm->password = $password;
-		$userEntity = \App::$domain->account->auth->authenticationFromApi($loginForm);
+		$userEntity = \App::$domain->account->auth->authentication($login, $password);
 		Yii::$app->user->setIdentity($userEntity);
 	}
 	
