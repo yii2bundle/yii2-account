@@ -60,7 +60,7 @@ class RestorePasswordService extends BaseService implements RestorePasswordInter
 		} catch(NotFoundHttpException $e) {
 			$error = new ErrorCollection();
 			$error->add('login', 'account/restore-password', 'not_found_request');
-			throw new UnprocessableEntityHttpException($error);
+			throw new UnprocessableEntityHttpException($error, 0, $e);
 		}
 		if(!$isChecked) {
 			$error = new ErrorCollection();

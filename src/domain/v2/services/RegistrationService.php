@@ -106,11 +106,11 @@ class RegistrationService extends BaseService implements RegistrationInterface {
 		} catch(ConfirmIncorrectCodeException $e) {
 			$error = new ErrorCollection();
 			$error->add('activation_code', 'account/confirm', 'incorrect_code');
-			throw new UnprocessableEntityHttpException($error);
+			throw new UnprocessableEntityHttpException($error, 0, $e);
 		} catch(NotFoundHttpException $e) {
 			$error = new ErrorCollection();
 			$error->add('login', 'account/registration', 'temp_user_not_found');
-			throw new UnprocessableEntityHttpException($error);
+			throw new UnprocessableEntityHttpException($error, 0, $e);
 		}
 	}
 	

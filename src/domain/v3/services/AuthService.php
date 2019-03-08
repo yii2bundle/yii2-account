@@ -81,7 +81,7 @@ class AuthService extends BaseService implements AuthInterface {
 		} catch(InvalidArgumentException $e) {
 			$error = new ErrorCollection();
 			$error->add('password', $e->getMessage());
-			throw new UnprocessableEntityHttpException($error);
+			throw new UnprocessableEntityHttpException($error, 0, $e);
 		}
 		if(!$loginEntity instanceof IdentityInterface || empty($loginEntity->id)) {
 			$error = new ErrorCollection();

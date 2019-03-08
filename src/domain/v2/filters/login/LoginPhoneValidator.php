@@ -20,7 +20,7 @@ class LoginPhoneValidator implements LoginValidatorInterface {
 		} catch(NotFoundHttpException $e) {
 			$error = new ErrorCollection;
 			$error->add('login', Yii::t('account/login', 'not_valid'));
-			throw new UnprocessableEntityHttpException($error);
+			throw new UnprocessableEntityHttpException($error, 0, $e);
 		}
 	}
 	

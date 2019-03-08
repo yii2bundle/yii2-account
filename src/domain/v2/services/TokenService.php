@@ -31,7 +31,7 @@ class TokenService extends BaseActiveService implements TokenInterface {
 		try {
 			$this->domain->login->oneById($userId);
 		} catch(NotFoundHttpException $e) {
-			throw new NotFoundLoginException();
+			throw new NotFoundLoginException($e->getMessage(), 0, $e);
 		}
 		if(empty($expire)) {
 			$expire = $this->defaultExpire;
