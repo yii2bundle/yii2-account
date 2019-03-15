@@ -1,3 +1,4 @@
 @echo off
 cd ../..
-codecept run functional
+php "../../../vendor/codeception/base/codecept" run functional
+pause

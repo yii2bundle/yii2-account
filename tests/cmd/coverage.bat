@@ -1,3 +1,4 @@
 @echo off
 cd ../..
-codecept run --coverage-html
+php "../../../vendor/codeception/base/codecept" run --coverage-html
+pause
