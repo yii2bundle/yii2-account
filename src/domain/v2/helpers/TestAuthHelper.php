@@ -6,7 +6,7 @@ use Yii;
 use yii2rails\domain\helpers\DomainHelper;
 use yii2rails\extension\web\helpers\ClientHelper;
 use yii2module\account\domain\v2\entities\LoginEntity;
-use yubundle\account\domain\v2\forms\LoginForm;
+use yii2module\account\domain\v2\forms\LoginForm;
 
 class TestAuthHelper {
 	
