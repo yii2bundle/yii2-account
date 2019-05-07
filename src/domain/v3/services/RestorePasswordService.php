@@ -2,14 +2,19 @@
 
 namespace yii2module\account\domain\v3\services;
 
+use App;
+use Yii;
 use yii\web\NotFoundHttpException;
-use yii2rails\domain\helpers\Helper;
-use yii2rails\extension\enum\enums\TimeEnum;
-use yii2module\account\domain\v3\forms\RestorePasswordForm;
-use yii2rails\domain\helpers\ErrorCollection;
-use yii2rails\domain\services\base\BaseService;
+use yii2module\account\domain\v3\enums\AccountConfirmActionEnum;
+use yii2module\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
+use yii2rails\extension\common\exceptions\AlreadyExistsException;
+use yii2rails\extension\common\exceptions\CreatedHttpExceptionException;
+use yii2module\account\domain\v3\forms\LoginForm;
+use yii2module\account\domain\v3\forms\restorePassword\UpdatePasswordForm;
 use yii2module\account\domain\v3\interfaces\services\RestorePasswordInterface;
+use yii2rails\domain\services\base\BaseService;
+use yii2rails\extension\enum\enums\TimeEnum;
 
 /**
  * Class RestorePasswordService
@@ -20,52 +25,54 @@ use yii2module\account\domain\v3\interfaces\services\RestorePasswordInterface;
  * @property-read \yii2module\account\domain\v3\Domain $domain
  */
 class RestorePasswordService extends BaseService implements RestorePasswordInterface {
-
-    public $tokenExpire = TimeEnum::SECOND_PER_MINUTE * 1;
-
-	public function request($login, $mail = null) {
-		$body = compact(['login']);
-		Helper::validateForm(RestorePasswordForm::class, $body, RestorePasswordForm::SCENARIO_REQUEST);
-		$this->validateLogin($login);
-		$this->repository->requestNewPassword($login, $mail);
-	}
 	
-	public function checkActivationCode($login, $activation_code) {
-		$body = compact(['login', 'activation_code']);
-		Helper::validateForm(RestorePasswordForm::class, $body, RestorePasswordForm::SCENARIO_CHECK);
-		$this->validateLogin($login);
-		$this->verifyActivationCode($login, $activation_code);
-	}
+	public $smsCodeExpire = TimeEnum::SECOND_PER_MINUTE * 30;
 	
-	public function confirm($login, $activation_code, $password) {
-		$body = compact(['login', 'activation_code', 'password']);
-		Helper::validateForm(RestorePasswordForm::class, $body, RestorePasswordForm::SCENARIO_CONFIRM);
-		$this->validateLogin($login);
-		$this->verifyActivationCode($login, $activation_code);
-		$this->repository->setNewPassword($login, $activation_code, $password);
-	}
-	
-	protected function validateLogin($login) {
-		$user = $this->domain->login->isExistsByLogin($login);
-		if(empty($user)) {
-			$error = new ErrorCollection();
-			$error->add('login', 'account/main', 'login_not_found');
-			throw new UnprocessableEntityHttpException($error);
+	public function requestCode(UpdatePasswordForm $model) {
+		$model->scenario = UpdatePasswordForm::SCENARIO_REQUEST_CODE;
+		if(!$model->validate()) {
+			throw new UnprocessableEntityHttpException($model);
 		}
-	}
-	
-	protected function verifyActivationCode($login, $activation_code) {
+		if(!App::$domain->user->person->isExistsByPhone($model->phone)) {
+			throw new NotFoundHttpException(Yii::t('user/account', 'not_found'));
+		}
 		try {
-			$isChecked = $this->repository->checkActivationCode($login, $activation_code);
-		} catch(NotFoundHttpException $e) {
-			$error = new ErrorCollection();
-			$error->add('login', 'account/restore-password', 'not_found_request');
-			throw new UnprocessableEntityHttpException($error, 0, $e);
+			App::$domain->account->confirm->send($model->phone, AccountConfirmActionEnum::RESTORE_PASSWORD, $this->smsCodeExpire);
+		} catch(ConfirmAlreadyExistsException $e) {
+			throw new CreatedHttpExceptionException(Yii::t('account/registration', 'user_already_exists_but_not_activation'));
 		}
-		if(!$isChecked) {
-			$error = new ErrorCollection();
-			$error->add('activation_code', 'account/restore-password', 'invalid_activation_code');
-			throw new UnprocessableEntityHttpException($error);
+	}
+	
+	public function verifyCode(UpdatePasswordForm $model) {
+		$model->scenario = UpdatePasswordForm::SCENARIO_VERIFY_CODE;
+		if(!$model->validate()) {
+			throw new UnprocessableEntityHttpException($model);
+		}
+		App::$domain->account->confirm->verifyCode($model->phone, AccountConfirmActionEnum::RESTORE_PASSWORD, $model->activation_code);
+	}
+	
+	public function setNewPassword(UpdatePasswordForm $model) {
+		$model->scenario = UpdatePasswordForm::SCENARIO_SET_PASSWORD;
+		if(!$model->validate()) {
+			throw new UnprocessableEntityHttpException($model);
+		}
+		$this->verifyCode($model);
+		if($this->isOldPassword($model)) {
+			$model->addError('password', Yii::t('account/restore-password', 'old_password_message'));
+			throw new UnprocessableEntityHttpException($model);
+		}
+		$this->repository->setNewPassword($model->phone, null, $model->password);
+	}
+	
+	private function isOldPassword(UpdatePasswordForm $model) {
+		$loginForm = new LoginForm;
+		$loginForm->login = $model->phone;
+		$loginForm->password = $model->password;
+		try {
+			App::$domain->account->auth->authenticationFromApi($loginForm);
+			return true;
+		} catch(UnprocessableEntityHttpException $e) {
+			return false;
 		}
 	}
 	

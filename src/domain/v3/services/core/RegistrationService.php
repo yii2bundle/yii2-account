@@ -6,6 +6,7 @@ use yii2rails\extension\core\domain\repositories\base\BaseCoreRepository;
 use yii2rails\extension\core\domain\services\base\BaseCoreService;
 use yii2rails\domain\helpers\Helper;
 use yii2module\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
+use yii2module\account\domain\v3\forms\registration\PersonInfoForm;
 use yii2module\account\domain\v3\forms\RegistrationForm;
 use yii2module\account\domain\v3\interfaces\services\RegistrationInterface;
 
@@ -20,37 +21,45 @@ class RegistrationService extends BaseCoreService implements RegistrationInterfa
 	
 	public $point = 'registration';
 	public $version = 1;
-	public $requiredEmail = false;
-	
-	public function createTempAccount($login, $email = null) {
-		$body = compact('login', 'email');
-		$scenario = RegistrationForm::SCENARIO_REQUEST;
-		if($this->requiredEmail) {
-			$scenario = RegistrationForm::SCENARIO_REQUEST_WITH_EMAIL;
-		}
-		Helper::validateForm(RegistrationForm::class, $body, $scenario);
-		$response = $this->repository->post('create-account', $body);
-		if($response->status_code == 202) {
-			throw new ConfirmAlreadyExistsException();
-		}
-	}
-	
-	public function checkActivationCode($login, $activation_code) {
-		$body = compact('login', 'activation_code');
-		Helper::validateForm(RegistrationForm::class, $body, RegistrationForm::SCENARIO_CHECK);
-		$this->repository->post('activate-account', $body);
-	}
-	
-	public function activateAccount($login, $activation_code) {
-		$body = compact('login', 'activation_code');
-		Helper::validateForm(RegistrationForm::class, $body, RegistrationForm::SCENARIO_CHECK);
-		$this->repository->post('activate-account', $body);
-	}
-	
-	public function createTpsAccount($login, $activation_code, $password, $email = null) {
-		$body = compact('login', 'activation_code', 'password');
-		Helper::validateForm(RegistrationForm::class, $body, RegistrationForm::SCENARIO_CONFIRM);
-		$this->repository->post('set-password', $body);
-	}
+
+    public function requestCodeWithPersonInfo(PersonInfoForm $model) {
+        $model->scenario = PersonInfoForm::SCENARIO_PERSON_INFO;
+        if(!$model->validate()) {
+            throw new UnprocessableEntityHttpException($model);
+        }
+        $response = $this->repository->post('request-activation-code', $model->toArray());
+        if($response->status_code == 202) {
+            throw new ConfirmAlreadyExistsException();
+        }
+    }
+
+    public function requestCode(PersonInfoForm $model) {
+        $model->scenario = PersonInfoForm::SCENARIO_REQUEST_CODE;
+        if(!$model->validate()) {
+            throw new UnprocessableEntityHttpException($model);
+        }
+        $response = $this->repository->post('request-activation-code', $model->toArray());
+        if($response->status_code == 202) {
+            throw new ConfirmAlreadyExistsException();
+        }
+    }
+
+    public function verifyCode(PersonInfoForm $model) {
+        $model->scenario = PersonInfoForm::SCENARIO_VERIFY_CODE;
+        if(!$model->validate()) {
+            throw new UnprocessableEntityHttpException($model);
+        }
+        $this->repository->post('verify-activation-code', $model->toArray());
+    }
+
+    public function createAccountWeb(PersonInfoForm $model) {
+        $model->scenario = PersonInfoForm::SCENARIO_CREATE_ACCOUNT;
+        if(!$model->validate()) {
+            throw new UnprocessableEntityHttpException($model);
+        }
+        $data = $model->toArray();
+        $data['birthday'] = $data['birthday_year'] . '-' . $data['birthday_month'] . '-' . $data['birthday_day'];
+        $this->repository->post('create-account', $data);
+    }
 
 }

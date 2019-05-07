@@ -87,7 +87,11 @@ class ConfirmService extends BaseActiveService implements ConfirmInterface
 	{
 		$login = LoginHelper::getPhone($login);
 		$this->cleanOld($login, $action);
-		return $this->repository->oneByLoginAndAction($login, $action);
+		try {
+            return $this->repository->oneByLoginAndAction($login, $action);
+        } catch (NotFoundHttpException $e) {
+		    throw new NotFoundHttpException(Yii::t('account/confirm', 'not_found'), 0, $e);
+        }
 	}
 	
 	public function send($login, $action, $expire, $data = null)

@@ -20,5 +20,7 @@ return [
 	'not_found_request' => 'Не найдено запроса на восстановление пароля.',
 	'invalid_activation_code' => 'Неверный код активации.',
 	'email_template_body' => 'Хеш %reset_hash%, для логина %login%',
-	'email_template_subject' => 'Восстановление пароля'
+	'email_template_subject' => 'Восстановление пароля',
+	'old_password_message' => 'Совпадает со старым паролем',
+	
 ];

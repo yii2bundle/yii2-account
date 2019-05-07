@@ -4,6 +4,7 @@ namespace yii2module\account\domain\v3\models;
 
 use yii\db\ActiveRecord;
 use yii2lab\db\domain\behaviors\json\JsonBehavior;
+use yii2lab\db\domain\helpers\TableHelper;
 
 /**
  * Class UserConfirm
@@ -25,7 +26,7 @@ class UserActivity extends ActiveRecord
 	 */
 	public static function tableName()
 	{
-		return '{{%user_activity}}';
+		return TableHelper::getGlobalName('user_activity');
 	}
 	
 	public static function primaryKey()

@@ -18,8 +18,8 @@ class PasswordValidator extends BaseValidator {
 		$lowerCharExists = preg_match('#[a-z]+#', $model->$attribute);
 		$upperCharExists = preg_match('#[A-Z]+#', $model->$attribute);
 		$numericExists = preg_match('#[0-9]+#', $model->$attribute);
-        $isMach = preg_match('#^[a-zA-Z0-9-_]+$#', $model->$attribute);
-		$isValid = $lowerCharExists && $upperCharExists && $numericExists && $isMach;
+        //$isMach = preg_match('#^[a-zA-Z0-9-_!]+$#', $model->$attribute);
+		$isValid = $lowerCharExists && $upperCharExists && $numericExists;
 		if(!$isValid) {
 			$this->addError($model, $attribute, Yii::t('account/main', 'bad_password'));
 		}

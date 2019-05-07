@@ -31,8 +31,8 @@ class LoginForm extends Model
 			//['email', 'email'],
 			//['login', 'match', 'pattern' => '/^[0-9_]{11,13}$/i', 'message' => Yii::t('account/registration', 'login_not_valid')],
 			//['login', LoginValidator::class],
-			//'normalizeLogin' => ['login', 'normalizeLogin'],
-			[['password'], PasswordValidator::class],
+			'normalizeLogin' => ['login', 'normalizeLogin'],
+			//[['password'], PasswordValidator::class],
 			['rememberMe', 'boolean'],
 		    //[['status'], 'safe'],
 		];
@@ -71,6 +71,9 @@ class LoginForm extends Model
 
 	public function normalizeLogin($attribute)
 	{
+
+        $this->$attribute = mb_strtolower($this->$attribute);
+        return;
 		//$this->$attribute = LoginHelper::pregMatchLogin($this->$attribute);
 		$isValid = \App::$domain->account->login->isValidLogin($this->$attribute);
 		if($isValid) {

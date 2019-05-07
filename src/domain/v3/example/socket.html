@@ -1,0 +1,108 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" ></script>
+	<script type="text/javascript" src="js/render.js" async ></script>
+	<script type="text/javascript" src="js/auth.js" async ></script>
+	<script type="text/javascript" src="js/api.js" async ></script>
+	<script type="text/javascript" src="js/test.js" async ></script>
+	<script type="text/javascript" src="js/socket.js" async ></script>
+	<script type="text/javascript" src="js/form.js" async ></script>
+	<script type="text/javascript" src="js/app.js" async ></script>
+	<title>Socket</title>
+</head>
+<body style="margin-top: 20px">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="row">
+
+					<div class="col-lg-12">
+						<div class="form-group">
+							<div>
+								<select class="form-control" id="url" onchange="socket.closeConnection()"></select>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-6">
+						<div class="form-group">
+							<div>
+								<select class="form-control" id="login" onchange="socket.closeConnection()"></select>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="form-group">
+							<div>
+								<input type="text" class="form-control" id="events" placeholder="Подписка на события" value="input_message,output_message" onkeypress="socket.closeConnection()">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="pull-right"><span id="status"></span></div>
+					<div class="btn btn-primary" onclick="app.openConnection(form.getWsUrl())">Соединиться</div>
+					<div class="btn btn-primary" onclick="app.closeConnection()">Отсоединиться</div>
+					<div class="btn btn-danger" onclick="render.clear()">Очистить</div>
+					<div class="btn btn-danger" onclick="autotest.run('tester2', 'Wwwqqq111');">Тест</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-9" id="content"></div>
+		</div>
+	</div>
+</body>
+<script>
+    $(function() {
+
+        render.showCloseStatus();
+
+        var logins = [
+			'tester1',
+			'tester2',
+			'reporter1',
+			'reporter2',
+			'vitaliy',
+			'nadya',
+			'nadya',
+			'gulzat',
+			'rustam',
+			'zhanara',
+			'timur123',
+			'vitaliy',
+			'alex',
+			'kate',
+			'meirlen',
+			'nadezhda1995',
+			'gulzat2',
+			'alex1',
+        ];
+
+        render.setLogins(logins);
+
+        var urls = [
+            'wss://test-api.yumail.kz',
+            'wss://api.yumail.kz',
+            'ws://127.0.0.1',
+        ];
+
+        render.setUrls(urls);
+
+        getUrl = function () {
+            var url = form.getData().url;
+            var re = /(ws)/;
+            var url = url.replace(re, "http");
+            return url;
+        },
+
+        api.setBaseUrl(getUrl() + '/v1');
+
+    });
+</script>
+</html>

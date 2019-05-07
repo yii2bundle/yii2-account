@@ -9,7 +9,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
  */
 class m181010_101652_create_user_activity_table extends Migration {
 
-	public $table = '{{%user_activity}}';
+	public $table = 'user_activity';
 
 	/**
 	 * @inheritdoc

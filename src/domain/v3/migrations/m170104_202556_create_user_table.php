@@ -5,7 +5,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
 class m170104_202556_create_user_table extends Migration
 {
 	
-	public  $table = '{{%user}}';
+	public  $table = 'user';
 	
 	public function getColumns()
 	{

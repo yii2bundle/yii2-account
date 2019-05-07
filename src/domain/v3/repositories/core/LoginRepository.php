@@ -20,6 +20,7 @@ class LoginRepository extends BaseActiveCoreRepository implements LoginInterface
 	use CacheTrait;
 	
 	public $point = 'user';
+	public $version = 1;
 	
 	public function isExistsByLogin($login) {
 		try {
@@ -38,11 +39,11 @@ class LoginRepository extends BaseActiveCoreRepository implements LoginInterface
 		return $userEntity;
 	}
 	
-	public function oneByLogin($login) {
+	public function oneByLogin($login, Query $query = null) {
 		return $this->oneById($login);
 	}
 	
-	public function oneByToken($token, $type = null) {
+	public function oneByToken(string $token, Query $query = null, $type = null) {
 		$url = CoreHelper::forgeUrl($this->version, 'auth');
 		$headers = CoreHelper::getHeaders();
 		$headers[HttpHeaderEnum::AUTHORIZATION] = $token;
@@ -71,5 +72,43 @@ class LoginRepository extends BaseActiveCoreRepository implements LoginInterface
 		}
 		return $entity;
 	}
-	
+
+    public function oneByPhone(string $phone, Query $query = null) : LoginEntity {
+        $query = Query::forge($query);
+        $personEntity = \App::$domain->user->person->oneByPhone($phone);
+        $query->where(['person_id' => $personEntity->id]);
+        $loginEntity = $this->one($query);
+        return $loginEntity;
+    }
+
+    public function oneByEmail(string $email, Query $query = null) : LoginEntity {
+        $query = Query::forge($query);
+        try {
+            $boxEntity = $this->oneBoxByEmail($email);
+        } catch (NotFoundHttpException $e) {
+            $error = new ErrorCollection;
+            $error->add('login', 'mail/box', 'not_found');
+            throw new UnprocessableEntityHttpException($error, 0, $e);
+        }
+        $query->where([
+            'login' => $boxEntity->person->user->login,
+            'company_id' => $boxEntity->domain->company_id,
+        ]);
+        $loginEntity = $this->one($query);
+        return $loginEntity;
+    }
+
+    public function oneByVirtual(string $login, Query $query = null) : LoginEntity
+    {
+        $query = Query::forge($query);
+        if(LoginTypeHelper::isPhone($login)) {
+            $loginEntity = $this->oneByPhone($login, $query);
+        } elseif(LoginTypeHelper::isEmail($login)) {
+            $loginEntity = $this->oneByEmail($login, $query);
+        } else {
+            $loginEntity = $this->oneByLogin($login, $query);
+        }
+        return $loginEntity;
+    }
+
 }

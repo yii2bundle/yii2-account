@@ -94,4 +94,12 @@ class TokenHelper {
         return $tokenDto;
     }
 
+    public static function extractToken($token) {
+	    if(empty($token)) {
+	        return null;
+        }
+        $tokenDto = TokenHelper::forgeDtoFromToken($token);
+        $token = $tokenDto->token;
+        return $token;
+    }
 }

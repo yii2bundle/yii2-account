@@ -2,9 +2,11 @@
 
 namespace yii2module\account\domain\v3\services\core;
 
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\extension\core\domain\repositories\base\BaseCoreRepository;
 use yii2rails\domain\helpers\Helper;
 use yii2rails\extension\core\domain\services\base\BaseCoreService;
+use yii2module\account\domain\v3\forms\restorePassword\UpdatePasswordForm;
 use yii2module\account\domain\v3\forms\RestorePasswordForm;
 use yii2module\account\domain\v3\interfaces\services\RestorePasswordInterface;
 
@@ -17,25 +19,32 @@ use yii2module\account\domain\v3\interfaces\services\RestorePasswordInterface;
  */
 class RestorePasswordService extends BaseCoreService implements RestorePasswordInterface {
 	
-	public $point = 'auth/restore-password';
+	public $point = 'restore-password';
+    public $version = 1;
 	public $tokenExpire;
-	
-	public function request($login, $mail = null) {
-		$body = compact(['login']);
-		Helper::validateForm(RestorePasswordForm::class, $body, RestorePasswordForm::SCENARIO_REQUEST);
-		$this->repository->post('request', $body);
-	}
-	
-	public function checkActivationCode($login, $activation_code) {
-		$body = compact(['login', 'activation_code']);
-		Helper::validateForm(RestorePasswordForm::class, $body, RestorePasswordForm::SCENARIO_CHECK);
-		$this->repository->post('check-code', $body);
-	}
-	
-	public function confirm($login, $activation_code, $password) {
-		$body = compact(['login', 'activation_code', 'password']);
-		Helper::validateForm(RestorePasswordForm::class, $body, RestorePasswordForm::SCENARIO_CONFIRM);
-		$this->repository->post('confirm', $body);
-	}
+
+    public function requestCode(UpdatePasswordForm $model) {
+        $model->scenario = UpdatePasswordForm::SCENARIO_REQUEST_CODE;
+        if(!$model->validate()) {
+            throw new UnprocessableEntityHttpException($model);
+        }
+        $response = $this->repository->post('request-activation-code', $model->toArray());
+    }
+
+    public function verifyCode(UpdatePasswordForm $model) {
+        $model->scenario = UpdatePasswordForm::SCENARIO_VERIFY_CODE;
+        if(!$model->validate()) {
+            throw new UnprocessableEntityHttpException($model);
+        }
+        $this->repository->post('verify-activation-code', $model->toArray());
+    }
+
+    public function setNewPassword(UpdatePasswordForm $model) {
+        $model->scenario = UpdatePasswordForm::SCENARIO_SET_PASSWORD;
+        if(!$model->validate()) {
+            throw new UnprocessableEntityHttpException($model);
+        }
+        $this->repository->post('set-password', $model->toArray());
+    }
 	
 }

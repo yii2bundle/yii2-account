@@ -2,12 +2,17 @@
 
 namespace yii2module\account\domain\v3;
 
+use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\extension\jwt\filters\token\JwtFilter;
 use yii2module\account\domain\v3\enums\AccountRoleEnum;
 use yii2rails\domain\enums\Driver;
 use yii2rails\extension\enum\enums\TimeEnum;
 use yii2module\account\domain\v3\filters\login\LoginValidator;
 use yii2module\account\domain\v3\filters\token\DefaultFilter;
+use yii2module\account\domain\v3\interfaces\services\LoginInterface;
+use yii2module\account\domain\v3\interfaces\services\RegistrationInterface;
+use yii2module\account\domain\v3\interfaces\services\RestorePasswordInterface;
+use yii2module\account\domain\v3\services\SocketIOService;
 
 // todo: описание докблоков в руководство
 
@@ -29,15 +34,29 @@ use yii2module\account\domain\v3\filters\token\DefaultFilter;
  * @property-read \yii2module\account\domain\v3\interfaces\services\JwtInterface $jwt
  * @property-read \yii2module\account\domain\v3\interfaces\services\ActivityInterface $activity
  * @property-read \yii2module\account\domain\v3\interfaces\services\OauthInterface $oauth
+ * @property-read \yii2module\account\domain\v3\interfaces\services\SocketInterface $socket
+ * @property-read \yii2module\account\domain\v3\interfaces\services\SocketInterface $socketio
+ * @property-read \yii2module\account\domain\v3\interfaces\services\IdentityInterface $identity
  */
 class Domain extends \yii2rails\domain\Domain {
 	
 	public function config() {
+
 		$remoteServiceDriver = $this->primaryDriver == Driver::CORE ? Driver::CORE : null;
-		$serviceNamespace = $this->primaryDriver == Driver::CORE ? 'yii2module\account\domain\v3\services\core' : 'yii2module\account\domain\v3\services';
+		//$serviceNamespace = $this->primaryDriver == Driver::CORE ? 'yii2module\account\domain\v3\services\core' : 'yii2module\account\domain\v3\services';
+		if(EnvService::getServer('core.host')) {
+            $remoteServiceDriver = Driver::CORE;
+            $remoteRepositoryDriver = Driver::CORE;
+        } else {
+            $remoteServiceDriver = null;
+            $remoteRepositoryDriver = Driver::ACTIVE_RECORD;
+        }
+
+        //$remoteRepositoryDriver = 'ldap';
+
 		return [
 			'repositories' => [
-				'auth' => $this->primaryDriver,
+				'auth' => $remoteRepositoryDriver,
 				'login' => $this->primaryDriver,
 				//'temp' => Driver::ACTIVE_RECORD,
 				'restorePassword' => $this->primaryDriver,
@@ -49,6 +68,7 @@ class Domain extends \yii2rails\domain\Domain {
 				'token' => Driver::ACTIVE_RECORD,
                 'jwt' => 'jwt',
 				'activity' => Driver::ACTIVE_RECORD,
+                'identity' => Driver::ACTIVE_RECORD,
 			],
 			'services' => [
 				'auth' => [
@@ -69,7 +89,7 @@ class Domain extends \yii2rails\domain\Domain {
 				],
 				'registration' => $remoteServiceDriver, //$serviceNamespace . '\RegistrationService',
 				//'temp',
-				'restorePassword' => $serviceNamespace . '\RestorePasswordService',
+				'restorePassword' => $remoteServiceDriver,
 				'security',
 				'test',
 				//'rbac',
@@ -79,6 +99,11 @@ class Domain extends \yii2rails\domain\Domain {
                 'jwt',
 				'activity',
 				'oauth',
+                'socket',
+                'socketio' => SocketIOService::class,
+                //TODO: либо прописывать вот так, если не хотим явно указывать класс, но тогда и во FlowService надо менять
+                //'socketIO',
+                'identity',
 			],
 		];
 	}

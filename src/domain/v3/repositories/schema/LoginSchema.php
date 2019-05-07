@@ -15,6 +15,22 @@ class LoginSchema extends BaseSchema {
 	
 	public function relations() {
 		return [
+            'person' => [
+                'type' => RelationEnum::ONE,
+                'field' => 'person_id',
+                'foreign' => [
+                    'id' => 'user.person',
+                    'field' => 'id',
+                ],
+            ],
+            'company' => [
+                'type' => RelationEnum::ONE,
+                'field' => 'company_id',
+                'foreign' => [
+                    'id' => 'staff.company',
+                    'field' => 'id',
+                ],
+            ],
 			'security' => [
 				'type' => RelationEnum::ONE,
 				'field' => 'id',
@@ -27,7 +43,7 @@ class LoginSchema extends BaseSchema {
 				'type' => RelationEnum::MANY,
 				'field' => 'id',
 				'foreign' => [
-					'id' => 'account.assignment',
+					'id' => 'rbac.assignment',
 					'field' => 'user_id',
 				],
 			],

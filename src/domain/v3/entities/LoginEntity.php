@@ -2,13 +2,17 @@
 
 namespace yii2module\account\domain\v3\entities;
 
+use yubundle\staff\domain\v1\entities\CompanyEntity;
+use yii\base\Behavior;
+use yii\base\Event;
+use yii\base\ModelEvent;
+use yii2lab\rbac\domain\entities\AssignmentEntity;
+use yii2rails\domain\behaviors\entity\TimeValueFilter;
+use yubundle\user\domain\v1\entities\PersonEntity;
 use yii\helpers\ArrayHelper;
-use yii\web\IdentityInterface;
-use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\domain\BaseEntity;
 use yii2rails\domain\values\TimeValue;
-use yii2lab\rbac\domain\entities\AssignmentEntity;
-use yii2module\account\domain\v3\helpers\LoginHelper;
+use yii2module\account\domain\v3\entities\SecurityEntity;
 use yii2module\account\domain\v3\interfaces\entities\LoginEntityInterface;
 
 /**
@@ -23,131 +27,117 @@ use yii2module\account\domain\v3\interfaces\entities\LoginEntityInterface;
  * @property array            $roles
  * @property string           $username
  * @property string           $created_at
+ *
  * @property SecurityEntity   $security
- * @property AssignmentEntity $assignments
- * @property-read string      $email
+ * @property integer $person_id
+ * @property integer $company_id
+ * @property PersonEntity $person
+ * @property CompanyEntity $company
+ * @property AssignmentEntity[] $assignments
  * @property string           $password
- * @property string           $parent_login
- * @property string           $subject_type
  */
-class LoginEntity extends BaseEntity implements LoginEntityInterface
-{
+class LoginEntity extends BaseEntity implements LoginEntityInterface {
 	
 	protected $id;
 	protected $login;
-	protected $status;
+	protected $status = 1;
 	protected $roles;
-	protected $security;
-	protected $assignments;
 	protected $token;
-	protected $email;
 	protected $created_at;
-	protected $password;
-	
-	public function init()
-	{
-		parent::init();
-		$this->created_at = new TimeValue;
-		$this->created_at->setNow();
-	}
-	
-	public function fieldType()
-	{
-		$fieldTypeConfig = [
+    protected $password;
+	protected $person_id;
+    protected $company_id;
+
+    protected $security;
+	protected $person;
+    protected $company;
+    protected $assignments;
+
+    public function fields()
+    {
+        $fields = parent::fields();
+        unset($fields['password']);
+        return $fields;
+    }
+
+    public function behaviors() {
+        return [
+            [
+                'class' => TimeValueFilter::class,
+            ],
+        ];
+    }
+
+	public function fieldType() {
+        return[
 			'id' => 'integer',
-			'parent_id' => 'integer',
-			'subject_type' => 'integer',
-			'created_at' => TimeValue::class,
+            'login' => 'string',
+            'status' => 'integer',
+            'token' => 'string',
+            'person_id' => 'integer',
+            'company_id' => 'integer',
+            'created_at' => TimeValue::class,
+            'security' => SecurityEntity::class,
+            'person' => PersonEntity::class,
+            'company' => CompanyEntity::class,
+            'assignments' => [
+                'type' => AssignmentEntity::class,
+                'isCollection' => true,
+            ],
 		];
-		return $fieldTypeConfig;
 	}
 	
-	public function rules()
-	{
+	public function rules() {
 		return [
 			[['login', 'status'], 'trim'],
 			[['login', 'status'], 'required'],
-			[['status'], 'integer'],
+			[['status', 'person_id', 'company_id'], 'integer'],
 		];
 	}
-	
-	public function getAvatar()
-	{
-		$avatar = EnvService::getUrl('frontend', 'images/avatars/_default.jpg');
-		return $avatar;
+
+	public function getUsername() {
+        return $this->login;
+    }
+
+    public function setLogin($login) {
+        $this->login = mb_strtolower($login);
+    }
+
+    public function getRoles() {
+        if(isset($this->roles)) {
+            return $this->roles;
+        }
+        if(!isset($this->assignments)) {
+            return null;
+        }
+        return ArrayHelper::getColumn($this->assignments, 'item_name');
+    }
+
+	public static function findIdentity($id) {
+		return \App::$domain->account->login->oneById($id);
 	}
 	
-	public function getUsername()
-	{
-		return LoginHelper::format($this->login);
+	public static function findIdentityByAccessToken($token, $type = null) {
 	}
 	
-	public function getIinFixed()
-	{
-		if(empty($this->iin_fixed)) {
-			return false;
-		}
-		return $this->iin_fixed;
-	}
-	
-	public function setRoles($value)
-	{
-		if(!empty($value)) {
-			$this->roles = ArrayHelper::toArray($value);
-		}
-	}
-	
-	public static function findIdentity($id)
-	{
-	}
-	
-	public static function findIdentityByAccessToken($token, $type = null)
-	{
-	}
-	
-	public function getId()
-	{
+	public function getId() {
 		return intval($this->id);
 	}
-	
-	public function getToken()
-	{
+
+	public function getToken() {
 		return $this->getAuthKey();
 	}
 	
-	/**
-	 * @return string
-	 * @deprecated после перехода на security выпилить
-	 */
-	public function getEmail()
-	{
-		if(!$this->security instanceof SecurityEntity) {
-			return $this->email;
-		}
-		return $this->security->email;
-	}
-	
-	public function getAuthKey()
-	{
-		if(!$this->security instanceof SecurityEntity) {
+	public function getAuthKey() {
+		if(isset($this->security)) {
+			return $this->security->token;
+		} else {
 			return $this->token;
 		}
-		return $this->security->token;
 	}
 	
-	public function validateAuthKey($authKey)
-	{
+	public function validateAuthKey($authKey) {
 		return $this->getAuthKey() === $authKey;
 	}
 	
-	public function fields()
-	{
-		$fields = parent::fields();
-		unset($fields['security']);
-		$fields['token'] = 'token';
-		if(empty($this->password)) {
-			unset($fields['password']);
-		}
-		return $fields;
-	}
 }

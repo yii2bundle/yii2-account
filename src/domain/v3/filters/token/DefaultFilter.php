@@ -3,12 +3,15 @@
 namespace yii2module\account\domain\v3\filters\token;
 
 use yii\web\IdentityInterface;
+use yii2rails\domain\data\Query;
 use yii2module\account\domain\v3\entities\LoginEntity;
 
 class DefaultFilter extends BaseTokenFilter {
 	
 	public function authByToken($token) {
-		$loginEntity = \App::$domain->account->repositories->login->oneByToken($token);
+	    $query = new Query;
+	    $query->with('assignments');
+		$loginEntity = \App::$domain->account->repositories->login->oneByToken($token, $query);
 		return $loginEntity;
 	}
 	

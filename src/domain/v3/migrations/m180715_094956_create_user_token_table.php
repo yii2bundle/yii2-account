@@ -9,7 +9,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
  */
 class m180715_094956_create_user_token_table extends Migration {
 
-	public $table = '{{%user_token}}';
+	public $table = 'user_token';
 
 	/**
 	 * @inheritdoc
@@ -18,6 +18,7 @@ class m180715_094956_create_user_token_table extends Migration {
 	{
 		return [
 			'user_id' => $this->integer(11)->notNull(),
+            'type' => $this->string(16),
 			'token' => $this->string(255)->notNull(),
 			'ip' => $this->string(40)->notNull(),
 			'platform' => $this->string(32),

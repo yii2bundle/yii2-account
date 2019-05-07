@@ -2,18 +2,23 @@
 
 namespace yii2module\account\domain\v3\services;
 
+use App;
+use Yii;
+use yii\helpers\ArrayHelper;
+use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\domain\data\Query;
-use yii2rails\domain\helpers\Helper;
+use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2module\account\domain\v3\forms\registration\PersonInfoForm;
+use yii2rails\extension\common\enums\StatusEnum;
+use yii\web\NotFoundHttpException;
+use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
+use yii2module\account\domain\v3\interfaces\services\LoginInterface;
+use yubundle\user\domain\v1\entities\ClientEntity;
+use yubundle\user\domain\v1\entities\PersonEntity;
 use yii2rails\domain\services\base\BaseActiveService;
 use yii2rails\extension\common\helpers\InstanceHelper;
-use yii2module\account\domain\v3\entities\LoginEntity;
 use yii2module\account\domain\v3\filters\login\LoginValidator;
 use yii2module\account\domain\v3\interfaces\LoginValidatorInterface;
-use yii2module\account\domain\v3\interfaces\services\LoginInterface;
-use yii2module\account\domain\v3\forms\LoginForm;
-use yii2rails\domain\helpers\ErrorCollection;
-use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
-use yii\web\NotFoundHttpException;
 
 /**
  * Class LoginService
@@ -24,7 +29,7 @@ use yii\web\NotFoundHttpException;
  * @property \yii2module\account\domain\v3\Domain $domain
  */
 class LoginService extends BaseActiveService implements LoginInterface {
-
+	
 	public $relations = [];
 	public $prefixList = [];
 	public $defaultRole;
@@ -33,6 +38,59 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	
 	/** @var LoginValidatorInterface|array|string $validator */
 	public $loginValidator = LoginValidator::class;
+	
+	public function oneByPhone(string $phone, Query $query = null) {
+		return $this->repository->oneByPhone($phone, $query);
+	}
+	
+	public function createWeb(PersonInfoForm $model) {
+		$model->scenario = PersonInfoForm::SCENARIO_CREATE_ACCOUNT;
+		if(!$model->validate()) {
+			throw new UnprocessableEntityHttpException($model);
+		}
+
+		if(App::$domain->user->person->isExistsByPhone($model->phone)) {
+			$model->addError('phone', Yii::t('account/registration', 'user_already_exists_and_activated'));
+			throw new UnprocessableEntityHttpException($model);
+		}
+
+        if(App::$domain->account->login->isExistsByLogin($model->login)) {
+			$model->addError('login', Yii::t('account/registration', 'user_already_exists_and_activated'));
+			throw new UnprocessableEntityHttpException($model);
+		}
+		
+        /** @var PersonEntity $personEntity */
+		$data = $model->toArray();
+        $data['company_id'] = EnvService::get('account.login.defaultCompanyId');
+		$personEntity = $this->createPerson($data);
+		$this->createClient($personEntity);
+		$loginEntity = $this->createUser($data, $personEntity);
+		return $loginEntity;
+	}
+	
+	private function createPerson(array $data) : PersonEntity {
+		$data['birthday'] = $data['birthday_year'] . '-' . $data['birthday_month'] . '-' . $data['birthday_day'];
+		$personEntity = App::$domain->user->person->create($data);
+		return $personEntity;
+	}
+	
+	private function createClient(PersonEntity $personEntity) : ClientEntity {
+		$clientEntity = new ClientEntity;
+		$clientEntity->person_id = $personEntity->id;
+		$clientEntity->status = StatusEnum::ENABLE;
+        \App::$domain->user->repositories->client->insert($clientEntity);
+		return $clientEntity;
+	}
+
+	private function createUser(array $data, PersonEntity $personEntity) : LoginEntity {
+		/** @var LoginEntity $loginEntity */
+		$data['person_id'] = $personEntity->id;
+		$loginEntity = $this->domain->factory->entity->create($this->id, $data);
+		$loginEntity->company_id = ArrayHelper::getValue($data, 'company_id');
+		$loginEntity->status = StatusEnum::ENABLE;
+		$this->repository->insert($loginEntity);
+		return $loginEntity;
+	}
 	
 	public function oneById($id, Query $query = null) {
 		try {
@@ -58,10 +116,16 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	 *
 	 * @throws NotFoundHttpException
 	 */
-	public function oneByLogin($login) {
-		return $this->repository->oneByLogin($login);
+	public function oneByLogin($login, Query $query = null) : LoginEntity {
+		return $this->repository->oneByLogin($login, $query);
 	}
-	
+
+    public function oneByPersonId(int $personId, Query $query = null) : LoginEntity {
+        $query = Query::forge($query);
+        $query->andWhere(['person_id' => $personId]);
+        return $this->repository->one($query);
+    }
+
 	public function isValidLogin($login) {
 		return $this->getLoginValidator()->isValid($login);
 	}
@@ -70,50 +134,8 @@ class LoginService extends BaseActiveService implements LoginInterface {
 		return $this->getLoginValidator()->normalize($login);
 	}
 	
-	public function create($data) {
-		//$data['role'] = !empty($data['role']) ? $data['role'] : RoleEnum::UNKNOWN_USER;
-		$data['email'] = !empty($data['email']) ? $data['email'] : 'api@example.com';
-        Helper::validateForm(LoginForm::class, $data);
-		
-		try {
-			$this->repository->oneByLogin($data['login']);
-			$error = new ErrorCollection();
-			$error->add('login', 'account/registration', 'user_already_exists_and_activated');
-			throw new UnprocessableEntityHttpException($error);
-		} catch(NotFoundHttpException $e) {
-			
-			//$data['roles'] = $data['role'];
-			/** @var LoginEntity $loginEntity */
-			$loginEntity = $this->domain->factory->entity->create($this->id, $data);
-			if(empty($loginEntity->roles)) {
-				$loginEntity->roles = [
-					$this->defaultRole
-				];
-			}
-			$this->repository->insert($loginEntity);
-			
-			/*if(!empty($loginEntity->id)) {
-				
-				$this->domain->security->create([
-					'id' => $loginEntity->id,
-					'email' => $data['email'],
-					'password' => $data['password'],
-				]);
-				if (!empty($data['role'])){
-					$role = ArrayHelper::toArray($data['role']);
-					foreach ($role as $item){
-						\App::$domain->rbac->assignment->assign($item, $loginEntity->id);
-					}
-				} else {
-					\App::$domain->rbac->assignment->assign($this->defaultRole, $loginEntity->id);
-				}
-			}*/
-			return $loginEntity;
-		}
-	}
-	
 	public function isForbiddenByStatus($status) {
-	    if(empty($this->forbiddenStatusList)) {
+		if(empty($this->forbiddenStatusList)) {
 			return false;
 		}
 		return in_array($status, $this->forbiddenStatusList);

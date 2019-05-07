@@ -4,7 +4,9 @@ namespace yii2module\account\domain\v3\interfaces\services;
 
 use yii\web\IdentityInterface;
 use yii2rails\domain\BaseEntity;
+use yii2rails\domain\data\Query;
 use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2module\account\domain\v3\forms\LoginForm;
 
 /**
  * Interface AuthInterface
@@ -15,21 +17,14 @@ use yii2module\account\domain\v3\entities\LoginEntity;
  * @property \yii2module\account\domain\v3\entities\LoginEntity $identity
  */
 interface AuthInterface {
-	
-	/**
-	 * @param      $login
-	 * @param      $password
-	 *
-	 * @param null $ip
-	 *
-	 * @return LoginEntity
-	 */
-	public function authentication($login, $password, $ip = null);
 
-    /**
-     * @return LoginEntity
-     */
-	//public function authenticationFromWeb($login, $password, $rememberMe = false);
+    public function oneSelf(Query $query = null);
+	
+	public function isGuest() : bool;
+
+    public function authenticationFromApi(LoginForm $model) : LoginEntity;
+
+    public function authenticationFromWeb(LoginForm $model) : LoginEntity;
 
     /**
      * @return LoginEntity

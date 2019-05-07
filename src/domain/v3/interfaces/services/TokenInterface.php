@@ -13,8 +13,14 @@ use yii2module\account\domain\v3\entities\TokenEntity;
  * @property-read \yii2module\account\domain\v3\interfaces\repositories\TokenInterface $repository
  */
 interface TokenInterface {
-	
-	public function forge($userId, $ip, $expire = null);
+
+    /**
+     * @param integer $userId
+     * @param string $ip
+     * @param null $expire
+     * @return string
+     */
+    public function forge($userId, $ip, $expire = null);
 	
 	/**
 	 * @param $token
@@ -23,8 +29,5 @@ interface TokenInterface {
 	 * @return null|TokenEntity
 	 */
 	public function validate($token, $ip);
-	public function deleteAllExpired();
-	public function deleteAll();
-	public function deleteOneByToken($token);
 	
 }

@@ -3,7 +3,7 @@
 return [
 	'title' => 'Аутентификация',
 
-	'login_title' => 'Вход в систему',
+	'login_title' => 'Вход',
 	'logout_title' => 'Выход из системы',
 
 	'remember_me' 		=> 'Запомнить',
@@ -16,8 +16,8 @@ return [
 	'login_is_blocked' 		=> 'Пользователь заблокирован',
 	
 	'forgot_title' => 'сбросить пароль',
-	'login_action' => 'Войти',
-	'logout_action' => 'Выйти',
+	'login_action' => 'Вход',
+	'logout_action' => 'Выход',
 	'signup_action' => 'Регистрация',
 
 	'login_success' => 'Вы вошли в систему!',
