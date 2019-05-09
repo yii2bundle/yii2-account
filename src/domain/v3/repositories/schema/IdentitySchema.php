@@ -51,7 +51,7 @@ class IdentitySchema extends BaseSchema {
 		        'field' => 'id',
 		        'foreign' => [
 			        'id' => 'account.contact',
-			        'field' => 'login_id',
+			        'field' => 'identity_id',
 		        ],
 	        ],
             'assignments' => [

@@ -25,7 +25,7 @@ class IdentityService extends BaseActiveService implements IdentityInterface {
             $query->removeWhere('phone');
             try {
 	            $contactEntity = \App::$domain->account->contact->oneByData($phone, 'phone');
-	            $query->andWhere(['id' => $contactEntity->login_id]);
+	            $query->andWhere(['id' => $contactEntity->identity_id]);
             } catch(NotFoundHttpException $e) {
 	            $query->andWhere(['id' => null]);
             }

@@ -22,7 +22,7 @@ class SecurityService extends BaseActiveService implements SecurityInterface {
 	
 	public function make($identityId, $password) {
 		$securityEntity = new SecurityEntity;
-		$securityEntity->login_id = $identityId;
+		$securityEntity->identity_id = $identityId;
 		$securityEntity->password = $password;
 		//$securityEntity->password_hash = Yii::$app->security->generatePasswordHash($password);
 		$this->repository->insert($securityEntity);

@@ -14,4 +14,13 @@ class JwtStrategy extends Base implements HandlerInterface {
 		return $tokenEntity->subject['id'];
 	}
 	
+	public function forge($userId, $ip, $profile = null) {
+		$subject = [
+			'id' => $userId,
+		];
+		$profile = $profile ? $profile : $this->profile;
+		$tokenEntity = \App::$domain->jwt->token->forgeBySubject($subject, $profile);
+		return 'jwt '  . $tokenEntity->token;
+	}
+	
 }

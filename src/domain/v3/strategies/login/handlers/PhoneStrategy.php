@@ -17,7 +17,7 @@ class PhoneStrategy extends Base implements HandlerInterface {
 		}*/
 		/** @var ContactEntity $contactEntity */
 		$contactEntity = \App::$domain->account->contact->oneByData($phone, 'phone');
-		return $contactEntity->login_id;
+		return $contactEntity->identity_id;
 	}
 	
 }

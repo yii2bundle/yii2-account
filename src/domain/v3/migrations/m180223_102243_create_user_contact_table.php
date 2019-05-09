@@ -7,9 +7,9 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
  * 
  * @package 
  */
-class m180223_102252_create_user_security_table extends Migration {
+class m180223_102243_create_user_contact_table extends Migration {
 
-	public $table = 'user_security';
+	public $table = 'user_contact';
 
 	/**
 	 * @inheritdoc
@@ -19,13 +19,16 @@ class m180223_102252_create_user_security_table extends Migration {
 		return [
 			'id' => $this->primaryKey()->notNull()->comment('Идентификатор'),
 			'identity_id' => $this->integer(11)->notNull()->comment('ID учетной записи'),
-			'password_hash' => $this->string(255)->notNull()->comment('Хэш пароля'),
+			'type' => $this->string(64)->notNull()->comment('Тип (phone,email)'),
+			'data' => $this->string(255)->notNull()->comment('Данные'),
+			'is_main' => $this->smallInteger()->notNull()->comment('Основной контакт'),
+			'status' => $this->smallInteger()->defaultValue(1)->comment('Статус'),
 		];
 	}
 
 	public function afterCreate()
 	{
-		$this->myCreateIndexUnique(['identity_id']);
+		$this->myCreateIndexUnique(['identity_id', 'type', 'data']);
 		$this->myAddForeignKey(
 			'identity_id',
 			'user_identity',

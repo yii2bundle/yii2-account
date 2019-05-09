@@ -8,4 +8,6 @@ interface HandlerInterface {
 	
 	public function getIdentityId(TokenDto $tokenDto);
 	
+	public function forge($userId, $ip, $profile = null);
+	
 }

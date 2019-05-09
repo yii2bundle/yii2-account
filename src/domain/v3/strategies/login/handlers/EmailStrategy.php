@@ -9,7 +9,7 @@ class EmailStrategy extends Base implements HandlerInterface {
 	public function oneByLogin(string $email) {
 		/** @var ContactEntity $contactEntity */
 		$contactEntity = \App::$domain->account->contact->oneByData($email, 'email');
-		return $contactEntity->login_id;
+		return $contactEntity->identity_id;
 	}
 	
 }

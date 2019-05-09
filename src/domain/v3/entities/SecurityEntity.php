@@ -10,14 +10,14 @@ use yii2rails\domain\BaseEntity;
  * @package yii2module\account\domain\v3\entities
  *
  * @property integer $id
- * @property string $login_id
+ * @property string $identity_id
  * @property string $password_hash
  * @property-write $password
  */
 class SecurityEntity extends BaseEntity {
 
 	protected $id;
-	protected $login_id;
+	protected $identity_id;
 	protected $password_hash;
 	
 	public function setPassword($password) {

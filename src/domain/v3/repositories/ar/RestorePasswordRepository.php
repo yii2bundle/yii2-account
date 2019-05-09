@@ -32,7 +32,7 @@ class RestorePasswordRepository extends BaseRepository implements RestorePasswor
 		/** @var LoginEntity $loginEntity */
 		
 		$contactEntity = \App::$domain->account->contact->oneByData($login, 'phone');
-		$loginEntity = \App::$domain->account->identity->oneById($contactEntity->login_id);
+		$loginEntity = \App::$domain->account->identity->oneById($contactEntity->identity_id);
 		
 		//$loginEntity = $this->domain->login->oneByPhone($login);
 		

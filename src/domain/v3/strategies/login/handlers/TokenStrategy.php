@@ -12,8 +12,9 @@ use yii2rails\domain\data\Query;
 class TokenStrategy extends Base implements HandlerInterface {
 	
 	public function oneByLogin(string $token) {
-		$tokenCotext = new TokenContext;
-		$identityId = $tokenCotext->getIdentityId($token);
+		$identityId = \App::$domain->account->token->identityIdByToken($token);
+		//$tokenCotext = new TokenContext;
+		//$identityId = $tokenCotext->getIdentityId($token);
 		try {
 			return $identityId;
 			//$loginEntity = \App::$domain->account->identity->oneById($identityId);

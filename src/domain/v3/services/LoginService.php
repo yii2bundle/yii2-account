@@ -72,7 +72,7 @@ class LoginService extends BaseActiveService implements LoginInterface {
 		]);
 		App::$domain->account->security->make($loginEntity->id, $data['password']);
 		App::$domain->account->contact->create([
-			'login_id' => $loginEntity->id,
+			'identity_id' => $loginEntity->id,
 			'type' => 'phone',
 			'data' => $model->phone,
 			'is_main' => true,

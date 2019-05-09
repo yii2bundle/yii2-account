@@ -30,13 +30,26 @@ use yii2module\account\domain\v3\strategies\token\handlers\HandlerInterface;
  */
 class TokenContext extends BaseStrategyContextHandlers {
 	
-	public function getStrategyDefinitions() {
+	/*public function getStrategyDefinitions() {
 		return [
 			'jwt' => [
 				'class' => JwtStrategy::class,
 				'profile' => 'auth',
 			],
 		];
+	}*/
+	
+	public function getFirstStrategyName() {
+		$definition = $this->getStrategyDefinitions();
+		reset($definition);
+		$firstKey = key($definition);
+		return $firstKey;
+	}
+	
+	public function forge($userId, $ip, $expire = null) {
+		$firstKey = $this->getFirstStrategyName();
+		$strategyInstance = $this->forgeStrategyInstanceByName($firstKey);
+		return $strategyInstance->forge($userId, $ip, $expire);
 	}
 	
 	public function getIdentityId(string $token) {
