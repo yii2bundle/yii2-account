@@ -20,6 +20,7 @@ class RegistrationTestHelper
         self::generateNewPhone();
         $phone = CurrentPhoneTestHelper::get();
         $isExistsPhone = self::checkLoginExists($phone);
+        //d($isExistsPhone);
         while($isExistsPhone) {
             $phone = PhoneTestHelper::nextPhone();
             $isExistsPhone = self::checkLoginExists($phone);

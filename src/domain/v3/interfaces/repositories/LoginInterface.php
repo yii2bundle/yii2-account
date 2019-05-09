@@ -16,28 +16,20 @@ interface LoginInterface extends CrudInterface {
      * @return mixed
      * @throws NotFoundHttpException
      */
-	public function oneByPhone(string $phone, Query $query = null);
+	//public function oneByPhone(string $phone, Query $query = null);
 	
 	/**
 	 * @param string $login
 	 *
 	 * @return boolean
 	 */
-	public function isExistsByLogin($login);
+	//public function isExistsByLogin($login);
 
-    /**
-     * @param string     $login
-     *
-     * @param Query|null $query
-     *
-     * @return LoginEntity
-     * @throws NotFoundHttpException
-     */
-	public function oneByLogin($login, Query $query = null);
+    
 
-    public function oneByEmail(string $email, Query $query = null) : LoginEntity;
+    //public function oneByEmail(string $email, Query $query = null) : LoginEntity;
 
-    public function oneByVirtual(string $login, Query $query = null) : LoginEntity;
+    //public function oneByVirtual(string $login, Query $query = null) : LoginEntity;
 
 	/**
 	 * @param string $token
@@ -45,6 +37,6 @@ interface LoginInterface extends CrudInterface {
 	 *
 	 * @return LoginEntity
 	 */
-	public function oneByToken($token, Query $query = null, $type = null);
+	//public function oneByToken($token, Query $query = null, $type = null);
 
 }

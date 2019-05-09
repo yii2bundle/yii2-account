@@ -37,6 +37,7 @@ use yii2module\account\domain\v3\services\SocketIOService;
  * @property-read \yii2module\account\domain\v3\interfaces\services\SocketInterface $socket
  * @property-read \yii2module\account\domain\v3\interfaces\services\SocketInterface $socketio
  * @property-read \yii2module\account\domain\v3\interfaces\services\IdentityInterface $identity
+ * @property-read \yii2module\account\domain\v3\interfaces\services\ContactInterface $contact
  */
 class Domain extends \yii2rails\domain\Domain {
 	
@@ -69,6 +70,7 @@ class Domain extends \yii2rails\domain\Domain {
                 'jwt' => 'jwt',
 				'activity' => Driver::ACTIVE_RECORD,
                 'identity' => Driver::ACTIVE_RECORD,
+				'contact' => Driver::ACTIVE_RECORD,
 			],
 			'services' => [
 				'auth' => [
@@ -104,6 +106,7 @@ class Domain extends \yii2rails\domain\Domain {
                 //TODO: либо прописывать вот так, если не хотим явно указывать класс, но тогда и во FlowService надо менять
                 //'socketIO',
                 'identity',
+				'contact',
 			],
 		];
 	}

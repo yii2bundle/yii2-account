@@ -1,27 +1,27 @@
-description: "Регистрация пользователей"
-/create-account:
+description: "Регистрация пользователя"
+/request-activation-code:
     post:
-        description: "Регистрация: ввод логина (телефон)"
-        is: !include /../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/create.raml
+        description: "Запрос кода активации"
+        is: !include ../../../../../../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/create.raml
         body:
             application/json:
-                example: !include example/create-account.json
+                example: !include example/request-activation-code.json
         responses:
             202:
                 description: |
                     СМС-код был отправлен ранее.
                     Повторите попытку через некоторое время.
-/activate-account:
+/verify-activation-code:
     post:
-        description: "Регистрация: подтверждение регистрации по коду из СМС"
-        is: !include /../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/create.raml
+        description: "Верификация кода активации"
+        is: [lang, timezone, code204, code400, code422, code500]
         body:
             application/json:
-                example: !include example/activate-account.json
-/set-password:
+                example: !include example/verify-activation-code.json
+/create-account:
     post:
-        description: "Регистрация: ввод пароля"
-        is: !include /../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/create.raml
+        description: "Создание аккаунта"
+        is: !include ../../../../../../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/create.raml
         body:
             application/json:
-                example: !include example/set-password.json
+                example: !include example/create-account.json

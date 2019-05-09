@@ -17,7 +17,7 @@ use yii2rails\domain\BaseEntity;
  * @property $created_at
  */
 class IdentityEntity extends LoginEntity {
-
+	
 	/*protected $id;
 	protected $login;
 	protected $roles;

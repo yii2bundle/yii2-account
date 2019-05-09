@@ -1,12 +1,12 @@
 {
-	"id": 123,
-	"login": "77771111111",
-	"status": 1,
-	"roles": [
-		"rUnknownUser"
-	],
+	"person_id": 155,
+	"person": null,
+	"id": 146,
+	"login": "vasilev",
+	"status": null,
+	"roles": null,
 	"assignments": null,
 	"token": null,
-	"email": "user@example.com",
-	"created_at": "2018-07-06T07:00:50Z"
+	"email": null,
+	"created_at": "2018-12-20T10:55:42Z"
 }

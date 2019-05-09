@@ -10,6 +10,7 @@ namespace yii2module\account\domain\v3\interfaces\repositories;
  * @property-read \yii2module\account\domain\v3\interfaces\repositories\ActivityInterface $activity
  * @property-read \yii2module\account\domain\v3\interfaces\repositories\AuthInterface $auth
  * @property-read \yii2module\account\domain\v3\interfaces\repositories\ConfirmInterface $confirm
+ * @property-read \yii2module\account\domain\v3\interfaces\repositories\ContactInterface $contact
  * @property-read \yii2module\account\domain\v3\interfaces\repositories\IdentityInterface $identity
  * @property-read \yii2module\account\domain\v3\interfaces\repositories\JwtInterface $jwt
  * @property-read \yii2module\account\domain\v3\interfaces\repositories\LoginInterface $login

@@ -4,7 +4,7 @@ namespace yii2module\account\api\v3\actions\registration;
 
 use Yii;
 use yii2lab\rest\domain\rest\UniAction;
-use yii2module\account\domain\v2\exceptions\ConfirmAlreadyExistsException;
+use yii2module\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
 
 class CreateAccountAction extends UniAction {
 	

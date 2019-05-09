@@ -2,6 +2,9 @@
 
 namespace yii2module\account\domain\v3\entities;
 
+use yii2rails\domain\data\Query;
+use yii2rails\extension\arrayTools\helpers\ArrayIterator;
+use yii2rails\extension\common\enums\StatusEnum;
 use yubundle\staff\domain\v1\entities\CompanyEntity;
 use yii\base\Behavior;
 use yii\base\Event;
@@ -40,18 +43,19 @@ class LoginEntity extends BaseEntity implements LoginEntityInterface {
 	
 	protected $id;
 	protected $login;
-	protected $status = 1;
+	protected $status = StatusEnum::ENABLE;
 	protected $roles;
 	protected $token;
 	protected $created_at;
-    protected $password;
-	protected $person_id;
-    protected $company_id;
+    //protected $password;
+	//protected $person_id;
+    //protected $company_id;
 
-    protected $security;
-	protected $person;
-    protected $company;
+    //protected $security;
+	//protected $person;
+    //protected $company;
     protected $assignments;
+	protected $contacts;
 
     public function fields()
     {
@@ -74,12 +78,12 @@ class LoginEntity extends BaseEntity implements LoginEntityInterface {
             'login' => 'string',
             'status' => 'integer',
             'token' => 'string',
-            'person_id' => 'integer',
-            'company_id' => 'integer',
+            //'person_id' => 'integer',
+            //'company_id' => 'integer',
             'created_at' => TimeValue::class,
             'security' => SecurityEntity::class,
-            'person' => PersonEntity::class,
-            'company' => CompanyEntity::class,
+            //'person' => PersonEntity::class,
+            //'company' => CompanyEntity::class,
             'assignments' => [
                 'type' => AssignmentEntity::class,
                 'isCollection' => true,
@@ -91,7 +95,7 @@ class LoginEntity extends BaseEntity implements LoginEntityInterface {
 		return [
 			[['login', 'status'], 'trim'],
 			[['login', 'status'], 'required'],
-			[['status', 'person_id', 'company_id'], 'integer'],
+			[['status', /*'person_id', 'company_id'*/], 'integer'],
 		];
 	}
 
@@ -102,8 +106,27 @@ class LoginEntity extends BaseEntity implements LoginEntityInterface {
     public function setLogin($login) {
         $this->login = mb_strtolower($login);
     }
-
-    public function getRoles() {
+    
+	public function getContacts() {
+		if(empty($this->contacts)) {
+			return null;
+		}
+		//return $this->contacts;
+		$iterator = new ArrayIterator;
+		$iterator->setCollection($this->contacts);
+		$query = new Query;
+		$query->andWhere([
+			'is_main' => 1,
+			'status' => 1,
+		]);
+		$collection = $iterator->all($query);
+		
+		return ArrayHelper::map($collection, 'type', 'data');
+		//d($collection);
+		//return ArrayHelper::getColumn($this->assignments, 'item_name');
+	}
+	
+	public function getRoles() {
         if(isset($this->roles)) {
             return $this->roles;
         }

@@ -14,4 +14,6 @@ use yii2rails\domain\interfaces\services\CrudInterface;
  */
 interface IdentityInterface extends CrudInterface {
 
+
+
 }

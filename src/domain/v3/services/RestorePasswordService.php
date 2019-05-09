@@ -33,9 +33,15 @@ class RestorePasswordService extends BaseService implements RestorePasswordInter
 		if(!$model->validate()) {
 			throw new UnprocessableEntityHttpException($model);
 		}
-		if(!App::$domain->user->person->isExistsByPhone($model->phone)) {
+		
+		$isExistsByPhone = App::$domain->account->contact->isExistsByData($model->phone, 'phone');
+	    if(!$isExistsByPhone) {
+		    throw new NotFoundHttpException(Yii::t('user/account', 'not_found'));
+	    }
+		
+		/*if(!App::$domain->user->person->isExistsByPhone($model->phone)) {
 			throw new NotFoundHttpException(Yii::t('user/account', 'not_found'));
-		}
+		}*/
 		try {
 			App::$domain->account->confirm->send($model->phone, AccountConfirmActionEnum::RESTORE_PASSWORD, $this->smsCodeExpire);
 		} catch(ConfirmAlreadyExistsException $e) {

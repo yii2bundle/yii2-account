@@ -98,10 +98,10 @@ class LoginRepository extends BaseActiveCoreRepository implements LoginInterface
         return $loginEntity;
     }
 
-    public function oneByVirtual(string $login, Query $query = null) : LoginEntity
+    /*public function oneByVirtual(string $login, Query $query = null) : LoginEntity
     {
         $query = Query::forge($query);
-        if(LoginTypeHelper::isPhone($login)) {
+        if(LoginTypeHelper::isPhone($login) && App::$domain->has('user')) {
             $loginEntity = $this->oneByPhone($login, $query);
         } elseif(LoginTypeHelper::isEmail($login)) {
             $loginEntity = $this->oneByEmail($login, $query);
@@ -109,6 +109,6 @@ class LoginRepository extends BaseActiveCoreRepository implements LoginInterface
             $loginEntity = $this->oneByLogin($login, $query);
         }
         return $loginEntity;
-    }
+    }*/
 
 }

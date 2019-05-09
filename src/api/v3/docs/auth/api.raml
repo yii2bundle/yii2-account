@@ -1,7 +1,7 @@
 description: "Аутентификация"
 post:
     description: "Получение токена"
-    is: !include /../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/post200.raml
+    is: !include ../../../../../../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/post200.raml
     body:
         application/json:
             example: !include example/post-request-body.json
@@ -20,7 +20,7 @@ post:
 get:
     securedBy: [Auth]
     description: Получение информации текущего пользователя
-    is: !include /../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/simple/one.raml
+    is: !include ../../../../../../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/simple/one.raml
     responses:
         200:
             body:

@@ -7,11 +7,12 @@ return [
 	"POST {$version}/auth" => "account/auth/login",
     "OPTIONS {$version}/auth" => "account/auth/options",
 
-	"{$version}/registration/<action:(create-account|activate-account|set-password)>" => "account/registration/<action>",
+	"{$version}/registration/<action>" => "account/registration/<action>",
 
-	"{$version}/restore-password/<action:(request|check-code|confirm)>" => "account/restore-password/<action>",
+	"{$version}/restore-password/<action>" => "account/restore-password/<action>",
 
-	"{$version}/security/<action:(password|email)>" => "account/security/<action>",
+	"{$version}/security/<action>" => "account/security/<action>",
 
 	["class" => "yii\\rest\UrlRule", "controller" => ["{$version}/user" => "account/user"]],
+    ["class" => "yii\\rest\UrlRule", "controller" => ["{$version}/identity" => "account/identity"]],
 ];

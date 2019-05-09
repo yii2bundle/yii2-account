@@ -11,11 +11,13 @@ use yii2rails\domain\base\BaseDto;
  *
  * @property $token
  * @property $type
+ * @property $identity_id
  */
 class TokenDto extends BaseDto {
 	
 	public $token;
 	public $type;
+	public $identity_id;
 	
 	public function getTokenString() {
 		if(empty($this->token)) {

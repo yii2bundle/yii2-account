@@ -33,7 +33,7 @@ interface LoginInterface extends CrudInterface {
 	 * @throws AlreadyExistsException
 	 */
 	//public function checkExistsLogin(string $login);
-	public function oneByPhone(string $phone, Query $query = null);
+	//public function oneByPhone(string $phone, Query $query = null);
 	public function createWeb(PersonInfoForm $model);
 
     public function oneByLogin($login, Query $query = null) : LoginEntity;

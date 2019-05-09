@@ -21,7 +21,8 @@ class IdentitySchema extends BaseSchema {
 
     public function relations() {
         return [
-            'person' => [
+        	
+            /*'person' => [
                 'type' => RelationEnum::ONE,
                 'field' => 'person_id',
                 'foreign' => [
@@ -44,7 +45,15 @@ class IdentitySchema extends BaseSchema {
                     'id' => 'account.security',
                     'field' => 'id',
                 ],
-            ],
+            ],*/
+	        'contacts' => [
+		        'type' => RelationEnum::MANY,
+		        'field' => 'id',
+		        'foreign' => [
+			        'id' => 'account.contact',
+			        'field' => 'login_id',
+		        ],
+	        ],
             'assignments' => [
                 'type' => RelationEnum::MANY,
                 'field' => 'id',

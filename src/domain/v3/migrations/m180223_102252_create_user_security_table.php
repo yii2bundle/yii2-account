@@ -17,9 +17,8 @@ class m180223_102252_create_user_security_table extends Migration {
 	public function getColumns()
 	{
 		return [
-			'id' => $this->integer(11)->notNull(),
-			'email' => $this->string(255)->notNull(),
-			'auth_key' => $this->string(64)->notNull(),
+			'id' => $this->primaryKey()->notNull()->comment('Идентификатор'),
+			'login_id' => $this->integer(11)->notNull(),
 			'password_hash' => $this->string(255)->notNull(),
 		];
 	}
@@ -27,14 +26,13 @@ class m180223_102252_create_user_security_table extends Migration {
 	public function afterCreate()
 	{
 		$this->myAddForeignKey(
-			'id',
-			'user',
+			'login_id',
+			'user_login',
 			'id',
 			'CASCADE',
 			'CASCADE'
 		);
-		$this->myCreateIndexUnique(['auth_key']);
-		$this->myCreateIndexUnique(['id']);
+		$this->myCreateIndexUnique(['login_id']);
 	}
 
 }

@@ -13,5 +13,9 @@ class LoginTypeHelper  {
     public static function isEmail($login) {
         return preg_match(RegexpPatternEnum::EMAIL_REQUIRED, $login);
     }
+	
+	public static function isToken($login) {
+		return preg_match('/^([0-9a-z]+)\s(\S+)$/i', $login);
+	}
 
 }

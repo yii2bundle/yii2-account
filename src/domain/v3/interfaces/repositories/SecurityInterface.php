@@ -3,11 +3,14 @@
 namespace yii2module\account\domain\v3\interfaces\repositories;
 
 use yii\web\NotFoundHttpException;
+use yii2rails\domain\data\Query;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\domain\interfaces\repositories\CrudInterface;
 use yii2module\account\domain\v3\entities\SecurityEntity;
 
 interface SecurityInterface extends CrudInterface {
+	
+	public function oneByLoginId($loginId, Query $query = null) : SecurityEntity;
 	
 	/*
 	 * @param string $token
@@ -23,7 +26,7 @@ interface SecurityInterface extends CrudInterface {
 	 *
 	 * @throws UnprocessableEntityHttpException
 	 */
-	public function changePassword($password, $newPassword);
+	//public function changePassword($password, $newPassword);
 	
 	/**
 	 * @param string $password
@@ -31,7 +34,7 @@ interface SecurityInterface extends CrudInterface {
 	 *
 	 * @throws UnprocessableEntityHttpException
 	 */
-	public function changeEmail($password, $email);
+	//public function changeEmail($password, $email);
 	
 	/*
 	 * @param integer $userId

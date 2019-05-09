@@ -10,15 +10,23 @@ use yii2rails\domain\BaseEntity;
  * @package yii2module\account\domain\v3\entities
  *
  * @property integer $id
- * @property string $email
- * @property string $token
+ * @property string $login_id
  * @property string $password_hash
+ * @property-write $password
  */
 class SecurityEntity extends BaseEntity {
 
 	protected $id;
-	protected $email;
-	protected $token;
+	protected $login_id;
 	protected $password_hash;
+	
+	public function setPassword($password) {
+		$this->password_hash = \Yii::$app->security->generatePasswordHash($password);
+	}
+	
+	public function isValidPassword($password) {
+		return \Yii::$app->security->validatePassword($password, $this->password_hash);
+	}
+
 	
 }

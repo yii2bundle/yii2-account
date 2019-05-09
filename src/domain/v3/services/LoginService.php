@@ -5,6 +5,7 @@ namespace yii2module\account\domain\v3\services;
 use App;
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii2module\account\domain\v3\entities\IdentityEntity;
 use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\domain\data\Query;
 use yii2module\account\domain\v3\entities\LoginEntity;
@@ -39,9 +40,9 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	/** @var LoginValidatorInterface|array|string $validator */
 	public $loginValidator = LoginValidator::class;
 	
-	public function oneByPhone(string $phone, Query $query = null) {
+	/*public function oneByPhone(string $phone, Query $query = null) {
 		return $this->repository->oneByPhone($phone, $query);
-	}
+	}*/
 	
 	public function createWeb(PersonInfoForm $model) {
 		$model->scenario = PersonInfoForm::SCENARIO_CREATE_ACCOUNT;
@@ -49,7 +50,8 @@ class LoginService extends BaseActiveService implements LoginInterface {
 			throw new UnprocessableEntityHttpException($model);
 		}
 
-		if(App::$domain->user->person->isExistsByPhone($model->phone)) {
+		$isExistsPhone = App::$domain->account->contact->isExistsByData($model->phone, 'phone');
+		if($isExistsPhone) {
 			$model->addError('phone', Yii::t('account/registration', 'user_already_exists_and_activated'));
 			throw new UnprocessableEntityHttpException($model);
 		}
@@ -62,33 +64,19 @@ class LoginService extends BaseActiveService implements LoginInterface {
         /** @var PersonEntity $personEntity */
 		$data = $model->toArray();
         $data['company_id'] = EnvService::get('account.login.defaultCompanyId');
-		$personEntity = $this->createPerson($data);
-		$this->createClient($personEntity);
-		$loginEntity = $this->createUser($data, $personEntity);
-		return $loginEntity;
-	}
-	
-	private function createPerson(array $data) : PersonEntity {
-		$data['birthday'] = $data['birthday_year'] . '-' . $data['birthday_month'] . '-' . $data['birthday_day'];
-		$personEntity = App::$domain->user->person->create($data);
-		return $personEntity;
-	}
-	
-	private function createClient(PersonEntity $personEntity) : ClientEntity {
-		$clientEntity = new ClientEntity;
-		$clientEntity->person_id = $personEntity->id;
-		$clientEntity->status = StatusEnum::ENABLE;
-        \App::$domain->user->repositories->client->insert($clientEntity);
-		return $clientEntity;
-	}
-
-	private function createUser(array $data, PersonEntity $personEntity) : LoginEntity {
-		/** @var LoginEntity $loginEntity */
-		$data['person_id'] = $personEntity->id;
-		$loginEntity = $this->domain->factory->entity->create($this->id, $data);
-		$loginEntity->company_id = ArrayHelper::getValue($data, 'company_id');
-		$loginEntity->status = StatusEnum::ENABLE;
-		$this->repository->insert($loginEntity);
+		//$personEntity = $this->createPerson($data);
+		//$this->createClient($personEntity);
+		
+		$loginEntity = App::$domain->account->identity->create([
+			'login' => $data['login'],
+		]);
+		App::$domain->account->security->make($loginEntity->id, $data['password']);
+		App::$domain->account->contact->create([
+			'login_id' => $loginEntity->id,
+			'type' => 'phone',
+			'data' => $model->phone,
+			'is_main' => true,
+		]);
 		return $loginEntity;
 	}
 	
@@ -106,7 +94,12 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	}
 	
 	public function isExistsByLogin($login) {
-		return $this->repository->isExistsByLogin($login);
+		try {
+			$this->repository->oneByLogin($login);
+			return true;
+		} catch(NotFoundHttpException $e) {
+			return false;
+		}
 	}
 	
 	/**

@@ -9,7 +9,8 @@ use yii2rails\extension\web\helpers\Behavior;
 use yii2rails\extension\web\helpers\ClientHelper;
 use yii2lab\rest\domain\rest\Controller;
 use yii2woop\common\domain\account\v2\forms\AuthPseudoForm;
-use yii2module\account\domain\v2\interfaces\services\AuthInterface;
+use yii2module\account\domain\v3\forms\LoginForm;
+use yii2module\account\domain\v3\interfaces\services\AuthInterface;
 
 /**
  * Class AuthController
@@ -66,15 +67,14 @@ class AuthController extends Controller
 	{
 		$body = Yii::$app->request->getBodyParams();
 		try {
-			//Helper::validateForm(LoginForm::class,$body);
-			$ip = ClientHelper::ip();
-			$entity = $this->service->authentication2($body, $ip);
+			$model = new LoginForm;
+            Helper::forgeForm($model);
+			$entity = $this->service->authenticationFromApi($model);
 			Yii::$app->response->headers->set('Authorization', $entity->token);
 			return $entity;
 		} catch(UnprocessableEntityHttpException $e) {
 			Yii::$app->response->setStatusCode(422);
-			$response = $e->getErrors();
-			return $response;
+            return $e->getErrors();
 		}
 	}
 	
@@ -89,8 +89,7 @@ class AuthController extends Controller
 			return $entity;
 		} catch(UnprocessableEntityHttpException $e) {
 			Yii::$app->response->setStatusCode(422);
-			$response = $e->getErrors();
-			return $response;
+            return $e->getErrors();
 		}
 	}
 }

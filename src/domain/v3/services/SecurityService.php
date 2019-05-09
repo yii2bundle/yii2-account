@@ -20,6 +20,14 @@ use yii2module\account\domain\v3\interfaces\services\SecurityInterface;
  */
 class SecurityService extends BaseActiveService implements SecurityInterface {
 	
+	public function make($identityId, $password) {
+		$securityEntity = new SecurityEntity;
+		$securityEntity->login_id = $identityId;
+		$securityEntity->password = $password;
+		//$securityEntity->password_hash = Yii::$app->security->generatePasswordHash($password);
+		$this->repository->insert($securityEntity);
+	}
+	
 	/**
 	 * for security reasons, turn off the list selection
 	 * @param Query|null $query
@@ -35,13 +43,22 @@ class SecurityService extends BaseActiveService implements SecurityInterface {
 		$this->repository->changeEmail($body['password'], $body['email']);
 	}
 	
+	public function isValidPassword($loginId, $password) {
+		$securityEntity = $this->repository->oneByLoginId($loginId);
+		return $securityEntity->isValidPassword($password);
+	}
+	
 	public function changePassword($body) {
 		$body = Helper::validateForm(ChangePasswordForm::class, $body);
-		$this->repository->changePassword($body['password'], $body['new_password']);
+		$identityId = \App::$domain->account->auth->identity->id;
+		/** @var SecurityEntity $securityEntity */
+		$securityEntity = $this->repository->oneByLoginId($identityId);
+		$securityEntity->password = $body['new_password'];
+		$this->repository->update($securityEntity);
 	}
 
-	public function create($data) {
-		$securityEntity = new SecurityEntity();
+	/*public function create($data) {
+		$securityEntity = new SecurityEntity;
 		$securityEntity->load([
 			'id' => $data['id'],
 			'email' => $data['email'],
@@ -49,6 +66,6 @@ class SecurityService extends BaseActiveService implements SecurityInterface {
 			'token' => $this->repository->generateUniqueToken(),
 		]);
 		$this->repository->insert($securityEntity);
-	}
+	}*/
 	
 }
