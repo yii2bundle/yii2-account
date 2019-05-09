@@ -22,14 +22,7 @@ class AuthRepository extends BaseRepository implements AuthInterface {
 		try {
 			$query = new Query;
 			$query->with('assignments');
-			//$query->with('person');
-			/*if(\App::$domain->has('staff')) {
-				$query->with('company');
-			}*/
-			
 			$loginEntity = \App::$domain->account->login->oneByAny($login, $query);
-			//AuthHelper::setToken($tokenDto->token);
-			//$loginEntity = $this->domain->repositories->login->oneByVirtual($login, $query);
 		} catch(NotFoundHttpException $e) {
 			return false;
 		}

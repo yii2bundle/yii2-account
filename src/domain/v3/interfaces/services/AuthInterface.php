@@ -50,6 +50,6 @@ interface AuthInterface {
 	 *
 	 * @deprecated
 	 */
-	public function checkOwnerId(BaseEntity $entity, $fieldName = 'user_id');
+	//public function checkOwnerId(BaseEntity $entity, $fieldName = 'user_id');
 	
 }

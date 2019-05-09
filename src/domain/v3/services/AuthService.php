@@ -156,11 +156,11 @@ class AuthService extends BaseService implements AuthInterface {
 		}
 	}
 	
-	public function checkOwnerId(BaseEntity $entity, $fieldName = 'user_id') {
+	/*public function checkOwnerId(BaseEntity $entity, $fieldName = 'user_id') {
 		if($entity->{$fieldName} != \App::$domain->account->auth->identity->id) {
 			throw new ForbiddenHttpException();
 		}
-	}
+	}*/
 
     private function checkStatus(IdentityInterface $entity)
     {
@@ -168,8 +168,8 @@ class AuthService extends BaseService implements AuthInterface {
             throw new ServerErrorHttpException(Yii::t('account/login', 'user_status_forbidden'));
         }
     }
-
-    public function authentication($login, $password, $ip = null) {
+	
+	private function authentication(string $login, string $password, string $ip = null) {
         if(empty($ip)) {
             $ip = ClientHelper::ip();
         }

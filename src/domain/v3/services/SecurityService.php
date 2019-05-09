@@ -20,12 +20,11 @@ use yii2module\account\domain\v3\interfaces\services\SecurityInterface;
  */
 class SecurityService extends BaseActiveService implements SecurityInterface {
 	
-	public function make($identityId, $password) {
+	public function make(int $identityId, string $password) : SecurityEntity {
 		$securityEntity = new SecurityEntity;
 		$securityEntity->identity_id = $identityId;
 		$securityEntity->password = $password;
-		//$securityEntity->password_hash = Yii::$app->security->generatePasswordHash($password);
-		$this->repository->insert($securityEntity);
+		return $this->repository->insert($securityEntity);
 	}
 	
 	/**
@@ -38,34 +37,28 @@ class SecurityService extends BaseActiveService implements SecurityInterface {
 		return [];
 	}
 	
-	public function changeEmail($body) {
+	public function changeEmail(array $body) {
 		$body = Helper::validateForm(ChangeEmailForm::class, $body);
 		$this->repository->changeEmail($body['password'], $body['email']);
 	}
 	
-	public function isValidPassword($loginId, $password) {
+	public function isValidPassword(int $loginId, string $password) : bool {
 		$securityEntity = $this->repository->oneByLoginId($loginId);
 		return $securityEntity->isValidPassword($password);
 	}
 	
-	public function changePassword($body) {
-		$body = Helper::validateForm(ChangePasswordForm::class, $body);
-		$identityId = \App::$domain->account->auth->identity->id;
+	public function savePassword(string $login, string $password) {
+		$loginEntity = \App::$domain->account->login->oneByAny($login);
 		/** @var SecurityEntity $securityEntity */
-		$securityEntity = $this->repository->oneByLoginId($identityId);
-		$securityEntity->password = $body['new_password'];
+		$securityEntity = $this->repository->oneByLoginId($loginEntity->id);
+		$securityEntity->password = $password;
 		$this->repository->update($securityEntity);
 	}
-
-	/*public function create($data) {
-		$securityEntity = new SecurityEntity;
-		$securityEntity->load([
-			'id' => $data['id'],
-			'email' => $data['email'],
-			'password_hash' => Yii::$app->security->generatePasswordHash($data['password']),
-			'token' => $this->repository->generateUniqueToken(),
-		]);
-		$this->repository->insert($securityEntity);
-	}*/
 	
+	public function changePassword(array $body) {
+		$body = Helper::validateForm(ChangePasswordForm::class, $body);
+		$login = \App::$domain->account->auth->identity->login;
+		$this->savePassword($login, $body['new_password']);
+	}
+
 }

@@ -29,18 +29,7 @@ class RestorePasswordRepository extends BaseRepository implements RestorePasswor
 	
 	public function setNewPassword($login, $code, $password) {
 		$login = LoginHelper::getPhone($login);
-		/** @var LoginEntity $loginEntity */
-		
-		$contactEntity = \App::$domain->account->contact->oneByData($login, 'phone');
-		$loginEntity = \App::$domain->account->identity->oneById($contactEntity->identity_id);
-		
-		//$loginEntity = $this->domain->login->oneByPhone($login);
-		
-		
-		/** @var SecurityEntity $securityEntity */
-		$securityEntity = \App::$domain->account->repositories->security->oneByLoginId($loginEntity->id);
-		$securityEntity->password_hash = Yii::$app->security->generatePasswordHash($password);
-		$this->domain->security->updateById($securityEntity->id, $securityEntity);
+		\App::$domain->account->security->savePassword($login, $password);
 		return $this->domain->confirm->delete($login, self::CONFIRM_ACTION);
 	}
 	

@@ -14,7 +14,7 @@ use yii2module\account\domain\v3\helpers\TokenHelper;
 
 class TokenService extends BaseService implements TokenInterface {
 
-    public $strategyDefinitions = [
+    public $tokenStrategyDefinitions = [
 	    'jwt' => [
 		    'class' => JwtStrategy::class,
 		    'profile' => 'auth',
@@ -23,13 +23,13 @@ class TokenService extends BaseService implements TokenInterface {
 	
 	public function forge($userId, $ip, $expire = null) {
 		$tokenCotext = new TokenContext;
-		$tokenCotext->setStrategyDefinitions($this->strategyDefinitions);
+		$tokenCotext->setStrategyDefinitions($this->tokenStrategyDefinitions);
 		return $tokenCotext->forge($userId, $ip, $expire);
 	}
     
     public function identityIdByToken(string $token) {
 	    $tokenCotext = new TokenContext;
-	    $tokenCotext->setStrategyDefinitions($this->strategyDefinitions);
+	    $tokenCotext->setStrategyDefinitions($this->tokenStrategyDefinitions);
 	    $identityId = $tokenCotext->getIdentityId($token);
 	    return $identityId;
     }

@@ -27,6 +27,5 @@ class SecurityEntity extends BaseEntity {
 	public function isValidPassword($password) {
 		return \Yii::$app->security->validatePassword($password, $this->password_hash);
 	}
-
 	
 }
