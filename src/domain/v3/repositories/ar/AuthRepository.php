@@ -10,7 +10,6 @@ use yii\base\InvalidArgumentException;
 use yii\web\NotFoundHttpException;
 use yii\web\UnauthorizedHttpException;
 use yii2module\account\domain\v3\helpers\LoginTypeHelper;
-use yii2module\account\domain\v3\strategies\login\LoginContext;
 use yii2rails\domain\data\Query;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2module\account\domain\v3\entities\LoginEntity;
@@ -27,10 +26,8 @@ class AuthRepository extends BaseRepository implements AuthInterface {
 			/*if(\App::$domain->has('staff')) {
 				$query->with('company');
 			}*/
-			/** @var LoginEntity $loginEntity */
-			$loginContext = new LoginContext;
-			$loginId = $loginContext->getLoginId($login);
-			$loginEntity = \App::$domain->account->repositories->identity->oneById($loginId, $query);
+			
+			$loginEntity = \App::$domain->account->login->oneByAny($login, $query);
 			//AuthHelper::setToken($tokenDto->token);
 			//$loginEntity = $this->domain->repositories->login->oneByVirtual($login, $query);
 		} catch(NotFoundHttpException $e) {
@@ -54,15 +51,13 @@ class AuthRepository extends BaseRepository implements AuthInterface {
 		if(!LoginTypeHelper::isToken($token)) {
 			throw new InvalidArgumentException('Invalid token');
 		}
-		$loginContext = new LoginContext;
+		$query = new Query;
+		$query->with('assignments');
 		try {
-			$loginId = $loginContext->getLoginId($token);
+			$loginEntity = \App::$domain->account->login->oneByAny($token, $query);
 		} catch(\Exception $e) {
 			throw new UnauthorizedHttpException($e->getMessage(), 0, $e);
 		}
-		$query = new Query;
-		$query->with('assignments');
-		$loginEntity = \App::$domain->account->repositories->identity->oneById($loginId, $query);
 		AuthHelper::setToken($token);
 		return $loginEntity;
 	}

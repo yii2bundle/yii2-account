@@ -9,9 +9,9 @@ use yii2module\account\domain\v3\helpers\TokenHelper;
 use yii2module\account\domain\v3\strategies\token\TokenContext;
 use yii2rails\domain\data\Query;
 
-class TokenStrategy extends Base implements HandlerInterface {
+class TokenStrategy implements HandlerInterface {
 	
-	public function oneByLogin(string $token) {
+	public function identityIdByAny(string $token) {
 		$identityId = \App::$domain->account->token->identityIdByToken($token);
 		//$tokenCotext = new TokenContext;
 		//$identityId = $tokenCotext->getIdentityId($token);

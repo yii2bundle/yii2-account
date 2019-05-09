@@ -5,9 +5,9 @@ namespace yii2module\account\domain\v3\strategies\login\handlers;
 use yii\web\NotFoundHttpException;
 use yii2module\account\domain\v3\entities\ContactEntity;
 
-class PhoneStrategy extends Base implements HandlerInterface {
+class PhoneStrategy implements HandlerInterface {
 	
-	public function oneByLogin(string $phone) {
+	public function identityIdByAny(string $phone) {
 		/*if(\App::$domain->has('user')) {
 			$personEntity = \App::$domain->user->person->oneByPhone($login);
 			$query = new Query;

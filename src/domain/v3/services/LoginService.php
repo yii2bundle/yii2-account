@@ -5,7 +5,9 @@ namespace yii2module\account\domain\v3\services;
 use App;
 use Yii;
 use yii\helpers\ArrayHelper;
+use yii\web\IdentityInterface;
 use yii2module\account\domain\v3\entities\IdentityEntity;
+use yii2module\account\domain\v3\strategies\login\LoginContext;
 use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\domain\data\Query;
 use yii2module\account\domain\v3\entities\LoginEntity;
@@ -20,6 +22,10 @@ use yii2rails\domain\services\base\BaseActiveService;
 use yii2rails\extension\common\helpers\InstanceHelper;
 use yii2module\account\domain\v3\filters\login\LoginValidator;
 use yii2module\account\domain\v3\interfaces\LoginValidatorInterface;
+use yii2module\account\domain\v3\strategies\login\handlers\EmailStrategy;
+use yii2module\account\domain\v3\strategies\login\handlers\LoginStrategy;
+use yii2module\account\domain\v3\strategies\login\handlers\PhoneStrategy;
+use yii2module\account\domain\v3\strategies\login\handlers\TokenStrategy;
 
 /**
  * Class LoginService
@@ -36,6 +42,12 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	public $defaultRole;
 	public $defaultStatus;
 	public $forbiddenStatusList;
+	public $loginStrategyDefinitions = [
+		'login' => LoginStrategy::class,
+		'phone' => PhoneStrategy::class,
+		'email' => EmailStrategy::class,
+		'token' => TokenStrategy::class,
+	];
 	
 	/** @var LoginValidatorInterface|array|string $validator */
 	public $loginValidator = LoginValidator::class;
@@ -80,6 +92,18 @@ class LoginService extends BaseActiveService implements LoginInterface {
 		return $loginEntity;
 	}
 	
+	public function oneByAny(string $any, Query $query = null) : IdentityEntity {
+		$loginContext = new LoginContext;
+		$loginContext->setStrategyDefinitions($this->loginStrategyDefinitions);
+		try {
+			$loginId = $loginContext->identityIdByAny($any);
+		} catch(\Exception $e) {
+			throw new NotFoundHttpException($e->getMessage(), 0, $e);
+		}
+		$loginEntity = \App::$domain->account->repositories->identity->oneById($loginId, $query);
+		return $loginEntity;
+	}
+	
 	public function oneById($id, Query $query = null) {
 		try {
 			$loginEntity = parent::oneById($id, $query);
@@ -113,11 +137,11 @@ class LoginService extends BaseActiveService implements LoginInterface {
 		return $this->repository->oneByLogin($login, $query);
 	}
 
-    public function oneByPersonId(int $personId, Query $query = null) : LoginEntity {
+   /* public function oneByPersonId(int $personId, Query $query = null) : LoginEntity {
         $query = Query::forge($query);
         $query->andWhere(['person_id' => $personId]);
         return $this->repository->one($query);
-    }
+    }*/
 
 	public function isValidLogin($login) {
 		return $this->getLoginValidator()->isValid($login);

@@ -2,6 +2,8 @@
 
 namespace yii2module\account\domain\v3\interfaces\services;
 
+use yii2module\account\domain\v3\entities\IdentityEntity;
+use yii2module\account\domain\v3\interfaces\entities\LoginEntityInterface;
 use yii2rails\domain\data\Query;
 use yii2rails\domain\interfaces\services\CrudInterface;
 use yii2rails\extension\common\exceptions\AlreadyExistsException;
@@ -34,10 +36,11 @@ interface LoginInterface extends CrudInterface {
 	 */
 	//public function checkExistsLogin(string $login);
 	//public function oneByPhone(string $phone, Query $query = null);
+	public function oneByAny(string $any, Query $query = null) : IdentityEntity;
 	public function createWeb(PersonInfoForm $model);
 
     public function oneByLogin($login, Query $query = null) : LoginEntity;
-    public function oneByPersonId(int $personId, Query $query = null) : LoginEntity;
+    //public function oneByPersonId(int $personId, Query $query = null) : LoginEntity;
 	public function isValidLogin($login);
 	public function normalizeLogin($login);
 	//public function isExistsByLogin($login);

@@ -6,6 +6,6 @@ use yii2rails\domain\data\Query;
 
 interface HandlerInterface {
 	
-	public function oneByLogin(string $phone);
+	public function identityIdByAny(string $phone);
 	
 }

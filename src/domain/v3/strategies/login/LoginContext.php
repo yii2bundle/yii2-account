@@ -27,19 +27,19 @@ use yii2module\account\domain\v3\strategies\login\handlers\HandlerInterface;
  */
 class LoginContext extends BaseStrategyContextHandlers {
 	
-	public function getStrategyDefinitions() {
+	/*public function getStrategyDefinitions() {
 		return [
 			'login' => LoginStrategy::class,
 			'phone' => PhoneStrategy::class,
 			'email' => EmailStrategy::class,
 			'token' => TokenStrategy::class,
 		];
-	}
+	}*/
 	
-	public function getLoginId(string $login, Query $query = null) {
+	public function identityIdByAny(string $login, Query $query = null) {
 		$loginType = $this->getLoginType($login);
 		$this->strategyName = $loginType;
-		return $this->strategyInstance->oneByLogin($login, $query);
+		return $this->strategyInstance->identityIdByAny($login, $query);
 	}
 	
 	private function getLoginType(string $login) {
