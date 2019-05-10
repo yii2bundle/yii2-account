@@ -6,10 +6,10 @@ use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii2lab\applicationTemplate\common\enums\ApplicationPermissionEnum;
 use yii2rails\extension\web\helpers\Behavior;
-use yii2module\account\domain\v2\forms\LoginForm;
+use yii2module\account\domain\v3\forms\LoginForm;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2lab\navigation\domain\widgets\Alert;
-use yii2module\account\domain\v2\helpers\AuthHelper;
+use yii2module\account\domain\v3\helpers\AuthHelper;
 use yii\web\Response;
 
 /**
@@ -56,7 +56,7 @@ class AuthController extends Controller
 		$isValid = $form->load($body) && $form->validate();
 		if ($isValid) {
 			try {
-				\App::$domain->account->auth->authenticationFromWeb($form->login, $form->password, $form->rememberMe);
+				\App::$domain->account->auth->authenticationFromWeb($form);
 				if(!$this->isBackendAccessAllowed()) {
 					\App::$domain->account->auth->logout();
 					\App::$domain->navigation->alert->create(['account/auth', 'login_access_error'], Alert::TYPE_DANGER);
