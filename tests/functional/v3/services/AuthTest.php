@@ -67,7 +67,7 @@ class AuthTest extends Unit
 	
 	public function testDenyAccess()
 	{
-		TestAuthHelper::authById(LoginEnum::ID_USER);
+		TestAuthHelper::authById(LoginEnum::ID_TESTER_2);
 		try {
 			\App::$domain->account->auth->denyAccess();
 			$this->tester->assertBad();

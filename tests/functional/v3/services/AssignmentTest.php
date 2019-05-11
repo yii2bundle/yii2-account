@@ -30,10 +30,15 @@ class AssignmentTest extends Unit
 	{
 		/** @var AssignmentEntity[] $collection */
 		$query = Query::forge();
-		$query->where('user_id', LoginEnum::ID_USER_2);
+		$query->where('user_id', LoginEnum::ID_TESTER_1);
 		$collection = \App::$domain->rbac->assignment->all($query);
-		$this->tester->assertCollection([], $collection, true);
-		$this->tester->assertCount(0, $collection);
+		$this->tester->assertCollection([
+			[
+				'user_id' => LoginEnum::ID_TESTER_1,
+				'item_name' => 'rTester',
+			],
+		], $collection, true);
+		$this->tester->assertCount(1, $collection);
 	}
 	
 	public function testAllAssignments()
@@ -58,7 +63,7 @@ class AssignmentTest extends Unit
 	
 	public function testIsHasRoleNegative()
 	{
-		$isHas = \App::$domain->rbac->assignment->isHasRole(LoginEnum::ID_USER_2, 'rAdministrator');
+		$isHas = \App::$domain->rbac->assignment->isHasRole(LoginEnum::ID_TESTER_1, 'rAdministrator');
 		$this->tester->assertFalse($isHas);
 	}
 	

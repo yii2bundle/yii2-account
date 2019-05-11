@@ -8,12 +8,12 @@ use yii2rails\extension\enum\base\BaseEnum;
 class LoginEnum extends BaseEnum {
 	
 	const ID_ADMIN = 1;
-	const ID_USER = 3;
-	const ID_USER_2 = 2;
+	const ID_TESTER_1 = 2;
+	const ID_TESTER_2 = 3;
 	const ID_NOT_EXISTS = 1234567;
 	
 	const LOGIN_ADMIN = 'admin';
-	const LOGIN_NOT_EXISTS = '77771111118';
+	const LOGIN_NOT_EXISTS = 'qwerty';
 	
 	//const TOKEN_ADMIN = '4f6bbd8ea39e34f2f2d432a961be2a6a';
 	const TOKEN_NOT_INCORRECT = '5f6bbd8ea39e34f212d432a968be2abe';
@@ -32,7 +32,7 @@ class LoginEnum extends BaseEnum {
 				'rAdministrator',
 			],
 		],
-		self::ID_USER => [
+		self::ID_TESTER_2 => [
 			'id' => 3,
 			'login' => 'tester2',
 			'status' => 1,
