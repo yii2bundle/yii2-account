@@ -1,12 +1,12 @@
 <?php
 
-namespace tests\unit\v1\helpers;
+namespace tests\unit\v3\helpers;
 
 use yii2lab\test\Test\Unit;
-use tests\functional\v1\enums\LoginEnum;
+use tests\functional\v3\enums\LoginEnum;
 use Yii;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\helpers\TestAuthHelper;
+use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2module\account\domain\v3\helpers\TestAuthHelper;
 
 class TestAuthHelperTest extends Unit
 {

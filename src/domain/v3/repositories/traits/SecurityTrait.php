@@ -26,6 +26,13 @@ trait SecurityTrait {
 		];
 	}
 	
+	public function oneByLoginId($loginId, Query $query = null) : SecurityEntity {
+		$query = new Query;
+		$query->andWhere(['identity_id' => $loginId]);
+		$securityEntity = $this->one($query);
+		return $securityEntity;
+	}
+	
 	public function oneByToken($token, $type = null) {
 		$query = Query::forge();
 		$query->where('token',  $token);

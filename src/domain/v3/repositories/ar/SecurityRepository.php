@@ -16,12 +16,5 @@ class SecurityRepository extends BaseActiveArRepository implements SecurityInter
     public function tableName() {
         return 'user_security';
     }
-    
-    public function oneByLoginId($loginId, Query $query = null) : SecurityEntity {
-	    $query = new Query;
-	    $query->andWhere(['identity_id' => $loginId]);
-	    $securityEntity = $this->one($query);
-	    return $securityEntity;
-    }
 	
 }

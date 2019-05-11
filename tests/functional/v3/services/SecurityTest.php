@@ -1,11 +1,11 @@
 <?php
 
-namespace tests\functional\v1\services;
+namespace tests\functional\v3\services;
 
 use yii2lab\test\Test\Unit;
 use Yii;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use tests\functional\v1\enums\LoginEnum;
+use yii2module\account\domain\v3\entities\LoginEntity;
+use tests\functional\v3\enums\LoginEnum;
 
 class SecurityTest extends Unit
 {
@@ -13,11 +13,9 @@ class SecurityTest extends Unit
 	public function testOneById()
 	{
 		/** @var LoginEntity $entity */
-		$entity = \App::$domain->account->security->oneById(LoginEnum::ID_ADMIN);
+		$entity = \App::$domain->account->security->oneByLoginId(LoginEnum::ID_ADMIN);
 		$this->tester->assertEntity([
-			'id' => LoginEnum::ID_ADMIN,
-			'email' => '',
-			//'token' => LoginEnum::TOKEN_ADMIN,
+			'identity_id' => LoginEnum::ID_ADMIN,
 			'password_hash' => LoginEnum::PASSWORD_HASH,
 		], $entity);
 	}

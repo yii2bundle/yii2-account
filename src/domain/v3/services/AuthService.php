@@ -112,13 +112,27 @@ class AuthService extends BaseService implements AuthInterface {
     }
 
 	public function authenticationByToken($token, $type = null) {
-        $loginEntity = $this->repository->authenticationByToken($token, $type);
-		if(empty($loginEntity)) {
+		if(empty($token)) {
+			throw new InvalidArgumentException('Empty token');
+		}
+		if(!LoginTypeHelper::isToken($token)) {
+			throw new UnauthorizedHttpException('Invalid token format, want: "*** *************"');
+		}
+		$query = new Query;
+		$query->with('assignments');
+		try {
+			$loginEntity = \App::$domain->account->login->oneByAny($token, $query);
+		} catch(\Exception $e) {
+			throw new UnauthorizedHttpException($e->getMessage(), 0, $e);
+		}
+		if($loginEntity) {
+			AuthHelper::setToken($token);
+			$this->checkStatus($loginEntity);
+			$loginEntity->hideAttributes(['assignments', 'password', 'security']);
+			return $loginEntity;
+		} else {
 			$this->breakSession();
 		}
-		$this->checkStatus($loginEntity);
-        $loginEntity->hideAttributes(['assignments', 'password', 'security']);
-		return $loginEntity;
 	}
 	
 	public function logout() {
@@ -161,6 +175,49 @@ class AuthService extends BaseService implements AuthInterface {
 			throw new ForbiddenHttpException();
 		}
 	}*/
+	
+	public function authenticationByForm(LoginForm $model, string $ip = null) {
+		if(empty($ip)) {
+			$ip = ClientHelper::ip();
+		}
+		Helper::validateForm($model);
+		try {
+			$loginEntity = $this->oneIdentityByLoginWithAssignments($model->login);
+		} catch(NotFoundHttpException $e) {
+			$this->badPasswordException();
+		}
+		$isValidPassword = \App::$domain->account->security->isValidPassword($loginEntity->id, $model->password);
+		if(!$isValidPassword) {
+			$this->badPasswordException();
+		}
+		$loginEntity->token = \App::$domain->account->token->forge($loginEntity->id, $ip);
+		
+		if(!$loginEntity instanceof IdentityInterface || empty($loginEntity->id)) {
+			$this->badPasswordException();
+		}
+		$this->checkStatus($loginEntity);
+		AuthHelper::setToken($loginEntity->token);
+		
+		$loginArray = $loginEntity->toArray();
+		$loginArray['token'] = StringHelper::mask($loginArray['token']);
+		$this->afterMethodTrigger(__METHOD__, [
+			'login' => $model->login,
+			'password' => StringHelper::mask($model->password, 0),
+		], $loginArray);
+		$loginEntity->hideAttributes(['assignments', 'password', 'security']);
+		$event = new AccountAuthenticationEvent;
+		$event->identity = $loginEntity;
+		$event->login = $model->login;
+		$this->trigger(AccountEventEnum::AUTHENTICATION, $event);
+		return $loginEntity;
+	}
+	
+	public function authentication(string $login, string $password, string $ip = null) {
+		$model = new LoginForm;
+		$model->login = $login;
+		$model->password = $password;
+		return $this->authenticationByForm($model, $ip);
+	}
 
     private function checkStatus(IdentityInterface $entity)
     {
@@ -169,37 +226,16 @@ class AuthService extends BaseService implements AuthInterface {
         }
     }
 	
-	private function authentication(string $login, string $password, string $ip = null) {
-        if(empty($ip)) {
-            $ip = ClientHelper::ip();
-        }
-        $body = compact(['login', 'password']);
-        $body = Helper::validateForm(LoginForm::class, $body);
-        try {
-            $loginEntity = $this->repository->authentication($body['login'], $body['password'], $ip);
-        } catch(NotFoundHttpException $e) {
-            $loginEntity = false;
-        }
-        if(!$loginEntity instanceof IdentityInterface || empty($loginEntity->id)) {
-            $error = new ErrorCollection();
-            $error->add('password', 'account/auth', 'incorrect_login_or_password');
-            throw new UnprocessableEntityHttpException($error);
-        }
-        $this->checkStatus($loginEntity);
-        AuthHelper::setToken($loginEntity->token);
-
-        $loginArray = $loginEntity->toArray();
-        $loginArray['token'] = StringHelper::mask($loginArray['token']);
-        $this->afterMethodTrigger(__METHOD__, [
-            'login' => $login,
-            'password' => StringHelper::mask($password, 0),
-        ], $loginArray);
-        $loginEntity->hideAttributes(['assignments', 'password', 'security']);
-        $event = new AccountAuthenticationEvent;
-        $event->identity = $loginEntity;
-        $event->login = $login;
-        $this->trigger(AccountEventEnum::AUTHENTICATION, $event);
-        return $loginEntity;
-    }
-
+	private function oneIdentityByLoginWithAssignments($login) {
+		$query = new Query;
+		$query->with('assignments');
+		$loginEntity = \App::$domain->account->login->oneByAny($login, $query);
+		return $loginEntity;
+	}
+	
+	private function badPasswordException() {
+		$error = new ErrorCollection();
+		$error->add('password', 'account/auth', 'incorrect_login_or_password');
+		throw new UnprocessableEntityHttpException($error);
+	}
 }

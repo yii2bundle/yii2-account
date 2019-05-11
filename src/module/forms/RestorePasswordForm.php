@@ -3,7 +3,7 @@
 namespace yii2module\account\module\forms;
 
 use Yii;
-use yii2module\account\domain\v2\forms\RestorePasswordForm as ApiRestorePasswordForm;
+use yii2module\account\domain\v3\forms\RestorePasswordForm as ApiRestorePasswordForm;
 use yii\helpers\ArrayHelper;
 
 class RestorePasswordForm extends ApiRestorePasswordForm {

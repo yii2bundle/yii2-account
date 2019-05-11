@@ -1,12 +1,12 @@
 <?php
 
-namespace tests\functional\v1\services;
+namespace tests\functional\v3\services;
 
 use yii2lab\test\Test\Unit;
 use Yii;
 use yii2rails\domain\data\Query;
-use tests\functional\v1\enums\LoginEnum;
-use yii2module\account\domain\v2\entities\AssignmentEntity;
+use tests\functional\v3\enums\LoginEnum;
+use yii2module\account\domain\v3\entities\AssignmentEntity;
 
 class AssignmentTest extends Unit
 {

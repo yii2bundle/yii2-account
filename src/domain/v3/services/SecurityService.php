@@ -20,13 +20,6 @@ use yii2module\account\domain\v3\interfaces\services\SecurityInterface;
  */
 class SecurityService extends BaseActiveService implements SecurityInterface {
 	
-	public function make(int $identityId, string $password) : SecurityEntity {
-		$securityEntity = new SecurityEntity;
-		$securityEntity->identity_id = $identityId;
-		$securityEntity->password = $password;
-		return $this->repository->insert($securityEntity);
-	}
-	
 	/**
 	 * for security reasons, turn off the list selection
 	 * @param Query|null $query
@@ -37,6 +30,10 @@ class SecurityService extends BaseActiveService implements SecurityInterface {
 		return [];
 	}
 	
+	public function oneByLoginId(int $loginId, Query $query = null) : SecurityEntity {
+		return $this->repository->oneByLoginId($loginId, $query);
+	}
+	
 	public function changeEmail(array $body) {
 		$body = Helper::validateForm(ChangeEmailForm::class, $body);
 		$this->repository->changeEmail($body['password'], $body['email']);
@@ -45,6 +42,13 @@ class SecurityService extends BaseActiveService implements SecurityInterface {
 	public function isValidPassword(int $loginId, string $password) : bool {
 		$securityEntity = $this->repository->oneByLoginId($loginId);
 		return $securityEntity->isValidPassword($password);
+	}
+	
+	public function make(int $identityId, string $password) : SecurityEntity {
+		$securityEntity = new SecurityEntity;
+		$securityEntity->identity_id = $identityId;
+		$securityEntity->password = $password;
+		return $this->repository->insert($securityEntity);
 	}
 	
 	public function savePassword(string $login, string $password) {

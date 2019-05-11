@@ -1,14 +1,14 @@
 <?php
 
-namespace tests\functional\v1\services;
+namespace tests\functional\v3\services;
 
 use yii2lab\test\helpers\DataHelper;
 use yii2lab\test\Test\Unit;
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\BaseEntity;
 use yii2rails\domain\data\Query;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use tests\functional\v1\enums\LoginEnum;
+use yii2module\account\domain\v3\entities\LoginEntity;
+use tests\functional\v3\enums\LoginEnum;
 
 class LoginTest extends Unit
 {
@@ -47,7 +47,7 @@ class LoginTest extends Unit
 				'rAdministrator',
 			],*/
 			//'token' => LoginEnum::TOKEN_ADMIN,
-			'email' => '',
+			//'email' => '',
 			'created_at' => '2018-03-28 21:00:13',
 		];
 		

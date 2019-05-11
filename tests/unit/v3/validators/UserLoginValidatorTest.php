@@ -1,16 +1,16 @@
 <?php
 
-namespace tests\unit\v1\validators;
+namespace tests\unit\v3\validators;
 
 use yii\base\Model;
 use yii2lab\geo\domain\validators\PhoneValidator;
 use yii2lab\test\Test\Unit;
-use tests\functional\v1\enums\LoginEnum;
+use tests\functional\v3\enums\LoginEnum;
 use Yii;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\helpers\TestAuthHelper;
-use yii2module\account\domain\v2\validators\PasswordValidator;
-use yii2module\account\domain\v2\validators\UserLoginValidator;
+use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2module\account\domain\v3\helpers\TestAuthHelper;
+use yii2module\account\domain\v3\validators\PasswordValidator;
+use yii2module\account\domain\v3\validators\UserLoginValidator;
 use yubundle\common\enums\RegexpEnum;
 
 class UserLoginValidatorTest extends Unit

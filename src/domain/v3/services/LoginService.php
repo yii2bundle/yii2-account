@@ -9,6 +9,7 @@ use yii\web\IdentityInterface;
 use yii2module\account\domain\v3\entities\IdentityEntity;
 use yii2module\account\domain\v3\strategies\login\LoginContext;
 use yii2rails\app\domain\helpers\EnvService;
+use yii2rails\domain\behaviors\query\QueryFilter;
 use yii2rails\domain\data\Query;
 use yii2module\account\domain\v3\entities\LoginEntity;
 use yii2module\account\domain\v3\forms\registration\PersonInfoForm;
@@ -38,7 +39,7 @@ use yii2module\account\domain\v3\strategies\login\handlers\TokenStrategy;
 class LoginService extends BaseActiveService implements LoginInterface {
 	
 	public $relations = [];
-	public $prefixList = [];
+	//public $prefixList = [];
 	public $defaultRole;
 	public $defaultStatus;
 	public $forbiddenStatusList;
@@ -55,6 +56,17 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	/*public function oneByPhone(string $phone, Query $query = null) {
 		return $this->repository->oneByPhone($phone, $query);
 	}*/
+	
+	public function behaviors()
+	{
+		return [
+			[
+				'class' => QueryFilter::class,
+				'method' => 'with',
+				'params' => 'assignments',
+			],
+		];
+	}
 	
 	public function createWeb(PersonInfoForm $model) {
 		$model->scenario = PersonInfoForm::SCENARIO_CREATE_ACCOUNT;
@@ -134,6 +146,8 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	 * @throws NotFoundHttpException
 	 */
 	public function oneByLogin($login, Query $query = null) : LoginEntity {
+		$query = Query::forge($query);
+		$query->with('assignments');
 		return $this->repository->oneByLogin($login, $query);
 	}
 

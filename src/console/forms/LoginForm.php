@@ -3,7 +3,7 @@
 namespace yii2module\account\console\forms;
 
 use Yii;
-use yii2module\account\domain\v2\helpers\LoginHelper;
+use yii2module\account\domain\v3\helpers\LoginHelper;
 use yii\base\Model;
 class LoginForm extends Model
 {

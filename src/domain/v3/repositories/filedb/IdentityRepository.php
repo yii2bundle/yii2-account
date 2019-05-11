@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\repositories\ar;
+namespace yii2module\account\domain\v3\repositories\filedb;
 
 use yii2module\account\domain\v3\entities\LoginEntity;
 use yii2module\account\domain\v3\repositories\traits\LoginTrait;
@@ -8,6 +8,7 @@ use yii2rails\domain\data\Query;
 use yii2rails\extension\activeRecord\repositories\base\BaseActiveArRepository;
 use yii2module\account\domain\v3\interfaces\repositories\IdentityInterface;
 use yii2rails\domain\repositories\BaseRepository;
+use yii2rails\extension\filedb\repositories\base\BaseActiveFiledbRepository;
 
 /**
  * Class IdentityRepository
@@ -16,7 +17,7 @@ use yii2rails\domain\repositories\BaseRepository;
  * 
  * @property-read \yii2module\account\domain\v3\Domain $domain
  */
-class IdentityRepository extends BaseActiveArRepository implements IdentityInterface {
+class IdentityRepository extends BaseActiveFiledbRepository implements IdentityInterface {
 
 	use LoginTrait;
 	

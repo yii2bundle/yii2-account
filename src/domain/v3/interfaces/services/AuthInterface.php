@@ -40,6 +40,7 @@ interface AuthInterface {
 	public function logout();
 	public function denyAccess();
 	public function breakSession();
+	public function authentication(string $login, string $password, string $ip = null);
 	public function loginRequired();
 	
 	/**

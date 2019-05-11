@@ -1,12 +1,12 @@
 <?php
 
-namespace tests\functional\v1\services;
+namespace tests\functional\v3\services;
 
 use yii2lab\test\Test\Unit;
 use Yii;
 use yii\web\NotFoundHttpException;
-use yii2module\account\domain\v2\exceptions\InvalidIpAddressException;
-use yii2module\account\domain\v2\exceptions\NotFoundLoginException;
+use yii2module\account\domain\v3\exceptions\InvalidIpAddressException;
+use yii2module\account\domain\v3\exceptions\NotFoundLoginException;
 
 class TokenTest extends Unit
 {
@@ -17,7 +17,7 @@ class TokenTest extends Unit
 	const INVALID_TOKEN = 'invalid_token';
 	const INVALID_IP = '111.111.111.111';
 	
-	protected function _before() {
+	/*protected function _before() {
 		parent::_before();
 		\App::$domain->account->token->deleteAll();
 	}
@@ -93,5 +93,5 @@ class TokenTest extends Unit
 		
 		}
 		return false;
-	}
+	}*/
 }

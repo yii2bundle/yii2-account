@@ -16,7 +16,7 @@ class DefaultFilter extends BaseTokenFilter {
 	}
 	
 	public function login($body, $ip) {
-		$loginEntity = \App::$domain->account->repositories->auth->authentication($body['login'], $body['password'], $ip);
+		$loginEntity = \App::$domain->account->auth->authentication($body['login'], $body['password'], $ip);
 		if($loginEntity instanceof IdentityInterface) {
             $loginEntity->token = $this->forgeToken($loginEntity->token);
             return $loginEntity;

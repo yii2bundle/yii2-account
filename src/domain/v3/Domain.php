@@ -57,7 +57,7 @@ class Domain extends \yii2rails\domain\Domain {
 
 		return [
 			'repositories' => [
-				'auth' => $remoteRepositoryDriver,
+				//'auth' => $remoteRepositoryDriver,
 				'login' => $this->primaryDriver,
 				'restorePassword' => $this->primaryDriver,
 				'security' => $this->primaryDriver,
@@ -65,8 +65,8 @@ class Domain extends \yii2rails\domain\Domain {
 				'confirm' => Driver::ACTIVE_RECORD,
 				'token' => Driver::ACTIVE_RECORD,
 				'activity' => Driver::ACTIVE_RECORD,
-                'identity' => Driver::ACTIVE_RECORD,
-				'contact' => Driver::ACTIVE_RECORD,
+                'identity' => $this->primaryDriver,
+				'contact' => $this->primaryDriver,
 			],
 			'services' => [
 				'auth' => [

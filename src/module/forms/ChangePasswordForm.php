@@ -3,7 +3,7 @@
 namespace yii2module\account\module\forms;
 
 use Yii;
-use yii2module\account\domain\v2\forms\ChangePasswordForm as ApiChangePasswordForm;
+use yii2module\account\domain\v3\forms\ChangePasswordForm as ApiChangePasswordForm;
 use yii\helpers\ArrayHelper;
 
 class ChangePasswordForm  extends ApiChangePasswordForm {

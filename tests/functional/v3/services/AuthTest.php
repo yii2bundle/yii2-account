@@ -1,14 +1,14 @@
 <?php
 
-namespace tests\functional\v1\services;
+namespace tests\functional\v3\services;
 
 use yii2lab\test\Test\Unit;
-use tests\functional\v1\enums\LoginEnum;
+use tests\functional\v3\enums\LoginEnum;
 use yii\web\ForbiddenHttpException;
 use yii\web\UnauthorizedHttpException;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\helpers\TestAuthHelper;
+use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2module\account\domain\v3\helpers\TestAuthHelper;
 
 class AuthTest extends Unit
 {
@@ -47,6 +47,7 @@ class AuthTest extends Unit
 		/** @var LoginEntity $loginEntity */
 		$loginEntity = \App::$domain->account->auth->authentication(LoginEnum::LOGIN_ADMIN, LoginEnum::PASSWORD);
 		/** @var LoginEntity $entity */
+		//d($loginEntity);
 		$entity = \App::$domain->account->auth->authenticationByToken($loginEntity->token);
 		$this->tester->assertEntity(LoginEnum::getUser(LoginEnum::ID_ADMIN), $entity);
 		$array = $entity->toArray();
