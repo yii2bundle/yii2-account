@@ -24,7 +24,6 @@ use yii2rails\extension\web\helpers\ClientHelper;
 use yii2rails\extension\yii\helpers\ArrayHelper;
 use yii2module\account\domain\v3\behaviors\UserActivityFilter;
 use yii2module\account\domain\v3\enums\AccountEventEnum;
-use yii2module\account\domain\v3\events\AccountAuthenticationEvent;
 use yii2module\account\domain\v3\filters\token\BaseTokenFilter;
 use yii2module\account\domain\v3\filters\token\DefaultFilter;
 use yii2module\account\domain\v3\forms\LoginForm;

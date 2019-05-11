@@ -10,7 +10,7 @@ use yii2module\account\domain\v3\entities\SecurityEntity;
 
 interface SecurityInterface extends CrudInterface {
 	
-	public function oneByLoginId($loginId, Query $query = null) : SecurityEntity;
+	public function oneByIdentityId(int $identityId, Query $query = null) : SecurityEntity;
 	
 	/*
 	 * @param string $token

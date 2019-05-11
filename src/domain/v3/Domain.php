@@ -27,11 +27,9 @@ use yii2module\account\domain\v3\services\SocketIOService;
  * @property-read \yii2module\account\domain\v3\interfaces\services\RestorePasswordInterface $restorePassword
  * @property-read \yii2module\account\domain\v3\interfaces\services\SecurityInterface $security
  * @property-read \yii2module\account\domain\v3\interfaces\services\TestInterface $test
- * @property-read \yii2module\account\domain\v3\interfaces\services\RbacInterface $rbac
  * @property-read \yii2module\account\domain\v3\interfaces\services\ConfirmInterface $confirm
  * @property-read \yii2module\account\domain\v3\interfaces\repositories\RepositoriesInterface $repositories
  * @property-read \yii2module\account\domain\v3\interfaces\services\TokenInterface $token
- * @property-read \yii2module\account\domain\v3\interfaces\services\JwtInterface $jwt
  * @property-read \yii2module\account\domain\v3\interfaces\services\ActivityInterface $activity
  * @property-read \yii2module\account\domain\v3\interfaces\services\OauthInterface $oauth
  * @property-read \yii2module\account\domain\v3\interfaces\services\SocketInterface $socket
@@ -58,8 +56,6 @@ class Domain extends \yii2rails\domain\Domain {
 
 		return [
 			'repositories' => [
-				//'auth' => $remoteRepositoryDriver,
-				//'login' => $this->primaryDriver,
 				'restorePassword' => $this->primaryDriver,
 				'security' => $this->primaryDriver,
 				'test' => Driver::FILEDB,

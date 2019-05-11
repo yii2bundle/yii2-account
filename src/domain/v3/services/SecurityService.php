@@ -21,8 +21,8 @@ use yii2rails\domain\services\base\BaseService;
  */
 class SecurityService extends BaseService implements SecurityInterface {
 	
-	public function oneByLoginId(int $loginId, Query $query = null) : SecurityEntity {
-		return $this->repository->oneByLoginId($loginId, $query);
+	public function oneByIdentityId(int $identityId, Query $query = null) : SecurityEntity {
+		return $this->repository->oneByIdentityId($identityId, $query);
 	}
 	
 	public function changeEmail(array $body) {
@@ -30,12 +30,13 @@ class SecurityService extends BaseService implements SecurityInterface {
 		$this->repository->changeEmail($body['password'], $body['email']);
 	}
 	
-	public function isValidPassword(int $loginId, string $password) : bool {
-		$securityEntity = $this->repository->oneByLoginId($loginId);
+	public function isValidPassword(int $identityId, string $password) : bool {
+		$securityEntity = $this->repository->oneByIdentityId($identityId);
 		return $securityEntity->isValidPassword($password);
 	}
 	
 	public function make(int $identityId, string $password) : SecurityEntity {
+		\App::$domain->account->identity->oneById($identityId);
 		$securityEntity = new SecurityEntity;
 		$securityEntity->identity_id = $identityId;
 		$securityEntity->password = $password;
@@ -45,7 +46,7 @@ class SecurityService extends BaseService implements SecurityInterface {
 	public function savePassword(string $login, string $password) {
 		$loginEntity = \App::$domain->account->login->oneByAny($login);
 		/** @var SecurityEntity $securityEntity */
-		$securityEntity = $this->repository->oneByLoginId($loginEntity->id);
+		$securityEntity = $this->repository->oneByIdentityId($loginEntity->id);
 		$securityEntity->password = $password;
 		$this->repository->update($securityEntity);
 	}

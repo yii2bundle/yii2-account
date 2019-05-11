@@ -112,11 +112,11 @@ class LoginService extends BaseActiveService implements LoginInterface {
 		$loginContext = new LoginContext;
 		$loginContext->setStrategyDefinitions($this->loginStrategyDefinitions);
 		try {
-			$loginId = $loginContext->identityIdByAny($any);
+			$identityId = $loginContext->identityIdByAny($any);
 		} catch(\Exception $e) {
 			throw new NotFoundHttpException($e->getMessage(), 0, $e);
 		}
-		$loginEntity = \App::$domain->account->repositories->identity->oneById($loginId, $query);
+		$loginEntity = \App::$domain->account->repositories->identity->oneById($identityId, $query);
 		return $loginEntity;
 	}
 	

@@ -79,17 +79,10 @@ class RegistrationService extends BaseService implements RegistrationInterface {
     }
 	
 	private function checkExistsByPhoneAndLogin(PersonInfoForm $model) {
-    	if(App::$domain->has('user')) {
-		    if(App::$domain->user->person->isExistsByPhone($model->phone)) {
-			    $model->addError('phone', Yii::t('account/registration', 'user_already_exists_and_activated'));
-			    throw new UnprocessableEntityHttpException($model);
-		    }
-	    } else {
-    		/*$isExistsByPhone = App::$domain->account->contact->isExistsByData($model->phone, 'phone');
-		    if($isExistsByPhone) {
-			    $model->addError('phone', Yii::t('account/registration', 'user_already_exists_and_activated'));
-			    throw new UnprocessableEntityHttpException($model);
-		    }*/
+        $isExistsByPhone = App::$domain->account->contact->isExistsByData($model->phone, 'phone');
+	    if($isExistsByPhone) {
+		    $model->addError('phone', Yii::t('account/registration', 'user_already_exists_and_activated'));
+		    throw new UnprocessableEntityHttpException($model);
 	    }
 		if(App::$domain->account->login->isExistsByLogin($model->login)) {
 			$model->addError('login', Yii::t('account/registration', 'user_already_exists_and_activated'));

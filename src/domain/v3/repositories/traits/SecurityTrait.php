@@ -26,9 +26,9 @@ trait SecurityTrait {
 		];
 	}
 	
-	public function oneByLoginId($loginId, Query $query = null) : SecurityEntity {
+	public function oneByIdentityId(int $identityId, Query $query = null) : SecurityEntity {
 		$query = new Query;
-		$query->andWhere(['identity_id' => $loginId]);
+		$query->andWhere(['identity_id' => $identityId]);
 		$securityEntity = $this->one($query);
 		return $securityEntity;
 	}
