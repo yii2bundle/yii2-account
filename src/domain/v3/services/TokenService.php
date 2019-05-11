@@ -22,16 +22,19 @@ class TokenService extends BaseService implements TokenInterface {
     ];
 	
 	public function forge($userId, $ip, $expire = null) {
-		$tokenCotext = new TokenContext;
-		$tokenCotext->setStrategyDefinitions($this->tokenStrategyDefinitions);
+		$tokenCotext = $this->getTokenContextInstance();
 		return $tokenCotext->forge($userId, $ip, $expire);
 	}
     
     public function identityIdByToken(string $token) {
-	    $tokenCotext = new TokenContext;
-	    $tokenCotext->setStrategyDefinitions($this->tokenStrategyDefinitions);
+	    $tokenCotext = $this->getTokenContextInstance();
 	    $identityId = $tokenCotext->getIdentityId($token);
 	    return $identityId;
     }
-
+    
+    private function getTokenContextInstance() : TokenContext {
+	    $tokenCotext = new TokenContext;
+	    $tokenCotext->setStrategyDefinitions($this->tokenStrategyDefinitions);
+	    return $tokenCotext;
+    }
 }

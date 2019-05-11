@@ -20,10 +20,4 @@ class SecurityTest extends Unit
 		], $entity);
 	}
 	
-	public function testSecurityCheck()
-	{
-		$collection = \App::$domain->account->security->all();
-		$this->tester->assertEquals([], $collection);
-	}
-	
 }

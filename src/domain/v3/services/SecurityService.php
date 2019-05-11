@@ -10,6 +10,7 @@ use yii2module\account\domain\v3\entities\SecurityEntity;
 use yii2module\account\domain\v3\forms\ChangeEmailForm;
 use yii2module\account\domain\v3\forms\ChangePasswordForm;
 use yii2module\account\domain\v3\interfaces\services\SecurityInterface;
+use yii2rails\domain\services\base\BaseService;
 
 /**
  * Class SecurityService
@@ -18,17 +19,7 @@ use yii2module\account\domain\v3\interfaces\services\SecurityInterface;
  *
  * @property-read \yii2module\account\domain\v3\interfaces\repositories\SecurityInterface $repository
  */
-class SecurityService extends BaseActiveService implements SecurityInterface {
-	
-	/**
-	 * for security reasons, turn off the list selection
-	 * @param Query|null $query
-	 *
-	 * @return array|mixed|null
-	 */
-	public function all(Query $query = null) {
-		return [];
-	}
+class SecurityService extends BaseService implements SecurityInterface {
 	
 	public function oneByLoginId(int $loginId, Query $query = null) : SecurityEntity {
 		return $this->repository->oneByLoginId($loginId, $query);
