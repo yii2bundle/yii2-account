@@ -61,6 +61,7 @@ class LoginEntity extends BaseEntity implements LoginEntityInterface {
     {
         $fields = parent::fields();
         unset($fields['password']);
+	    unset($fields['assignments']);
         return $fields;
     }
 

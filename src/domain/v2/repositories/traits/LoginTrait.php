@@ -46,7 +46,7 @@ trait LoginTrait {
 	public function oneByToken($token, $type = null) {
 		/** @var TokenEntity $tokenEntity */
 		$ip = ClientHelper::ip();
-		$tokenEntity = $this->domain->token->validate($token, $ip);
+		$tokenEntity = \App::$domain->account->token->validate($token, $ip);
 		return $this->oneById($tokenEntity->user_id);
 	}
 	
@@ -57,7 +57,7 @@ trait LoginTrait {
 		$model = Yii::createObject(get_class($this->model));
 		$model->id = $this->lastId() + 1;
 		$model->login = $loginEntity->login;
-		$model->status = $loginEntity->status !== null ? $loginEntity->status : $this->domain->login->defaultStatus;
+		$model->status = $loginEntity->status !== null ? $loginEntity->status : \App::$domain->account->login->defaultStatus;
 		$model->created_at = $loginEntity->created_at;
 		$this->saveModel($model);
 		$loginEntity->id = $model->id;

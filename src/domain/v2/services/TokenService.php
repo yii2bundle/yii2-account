@@ -29,7 +29,7 @@ class TokenService extends BaseActiveService implements TokenInterface {
 	
 	public function forge($userId, $ip, $expire = null) {
 		try {
-			$this->domain->login->oneById($userId);
+			\App::$domain->account->login->oneById($userId);
 		} catch(NotFoundHttpException $e) {
 			throw new NotFoundLoginException($e->getMessage(), 0, $e);
 		}

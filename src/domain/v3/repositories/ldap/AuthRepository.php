@@ -55,7 +55,7 @@ class AuthRepository extends BaseRepository implements AuthInterface {
             $query = new Query;
             $query->with(['person', 'company']);
             try {
-                $loginEntity = $this->domain->repositories->login->oneByLogin($login, $query);
+                $loginEntity = \App::$domain->account->repositories->identity->oneByLogin($login, $query);
                 $this->disablePerson($loginEntity->person_id);
             } catch (UnprocessableEntityHttpException $e) {
 
@@ -70,13 +70,13 @@ class AuthRepository extends BaseRepository implements AuthInterface {
         }
 
         $ldapData = json_decode($ldapData, true);
-        $checkLogin = $this->domain->repositories->login->isExistsByLogin($login);
+        $checkLogin = \App::$domain->account->repositories->identity->isExistsByLogin($login);
 
         /** @var $loginEntity LoginEntity */
         if ($httpcode == 200 && $checkLogin) {
             $query = new Query;
             $query->with(['assignments', 'person', 'company']);
-            $loginEntity = $this->domain->repositories->login->oneByVirtual($login, $query);
+            $loginEntity = \App::$domain->account->repositories->identity->oneByVirtual($login, $query);
         } else if ($httpcode == 200 && !$checkLogin) {
             //TODO : Цепочка обязанностей
             $personInfoForm = new PersonInfoForm();
@@ -143,18 +143,18 @@ class AuthRepository extends BaseRepository implements AuthInterface {
 
             $query = new Query;
             $query->with(['assignments', 'person', 'company']);
-            $loginEntity = $this->domain->repositories->login->oneByVirtual($login, $query);
+            $loginEntity = \App::$domain->account->repositories->identity->oneByVirtual($login, $query);
         }
 
         try {
-            $securityEntity = $this->domain->repositories->security->validatePassword($loginEntity->id, $password);
+            $securityEntity = \App::$domain->account->repositories->security->validatePassword($loginEntity->id, $password);
         } catch(UnprocessableEntityHttpException $e) {
             $error = new ErrorCollection();
             $error->add('password', 'Неправильный логин или пароль');
             throw new UnprocessableEntityHttpException($error);
         }
 
-        $securityEntity->token = $this->domain->token->forge($loginEntity->id, $ip);
+        $securityEntity->token = \App::$domain->account->token->forge($loginEntity->id, $ip);
         $loginEntity->security = $securityEntity;
 
         return $loginEntity;
@@ -162,7 +162,7 @@ class AuthRepository extends BaseRepository implements AuthInterface {
 
     public function authenticationByToken($token, $type = null, $ip = null) {
         try {
-            $loginEntity = TokenHelper::authByToken($token, $this->domain->auth->tokenAuthMethods);
+            $loginEntity = TokenHelper::authByToken($token, \App::$domain->account->auth->tokenAuthMethods);
         } catch(NotFoundHttpException $e) {
             throw new UnauthorizedHttpException();
         }

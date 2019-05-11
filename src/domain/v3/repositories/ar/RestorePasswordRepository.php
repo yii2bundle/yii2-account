@@ -18,19 +18,19 @@ class RestorePasswordRepository extends BaseRepository implements RestorePasswor
 	
 	public function requestNewPassword($login, $mail = null) {
 		$login = LoginHelper::getPhone($login);
-		$entity = $this->domain->confirm->createNew($login, self::CONFIRM_ACTION, $this->smsCodeExpire);
+		$entity = \App::$domain->account->confirm->createNew($login, self::CONFIRM_ACTION, $this->smsCodeExpire);
 		$message = Yii::t('account/restore-password', 'restore_password_sms {activation_code}', ['activation_code' => $entity->activation_code]);
 		\App::$domain->notify->sms->send($login, $message);
 	}
 	
 	public function checkActivationCode($login, $code) {
-		return $this->domain->confirm->isVerifyCode($login, self::CONFIRM_ACTION, $code);
+		return \App::$domain->account->confirm->isVerifyCode($login, self::CONFIRM_ACTION, $code);
 	}
 	
 	public function setNewPassword($login, $code, $password) {
 		$login = LoginHelper::getPhone($login);
 		\App::$domain->account->security->savePassword($login, $password);
-		return $this->domain->confirm->delete($login, self::CONFIRM_ACTION);
+		return \App::$domain->account->confirm->delete($login, self::CONFIRM_ACTION);
 	}
 	
 }

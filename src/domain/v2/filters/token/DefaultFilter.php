@@ -8,7 +8,7 @@ use yii2module\account\domain\v2\entities\LoginEntity;
 class DefaultFilter extends BaseTokenFilter {
 	
 	public function authByToken($token) {
-		$loginEntity = \App::$domain->account->repositories->login->oneByToken($token);
+		$loginEntity = \App::$domain->account->repositories->identity->oneByToken($token);
 		return $loginEntity;
 	}
 	

@@ -38,7 +38,7 @@ class LoginService extends BaseActiveService implements LoginInterface {
 		try {
 			$loginEntity = parent::oneById($id, $query);
 		} catch(NotFoundHttpException $e) {
-			if($this->domain->oauth->isEnabled()) {
+			if(\App::$domain->account->oauth->isEnabled()) {
 				$loginEntity = \App::$domain->account->oauth->oneById($id);
 			} else {
 				throw $e;
@@ -84,7 +84,7 @@ class LoginService extends BaseActiveService implements LoginInterface {
 			
 			//$data['roles'] = $data['role'];
 			/** @var LoginEntity $loginEntity */
-			$loginEntity = $this->domain->factory->entity->create($this->id, $data);
+			$loginEntity = \App::$domain->account->factory->entity->create($this->id, $data);
 			if(empty($loginEntity->roles)) {
 				$loginEntity->roles = [
 					$this->defaultRole
@@ -94,7 +94,7 @@ class LoginService extends BaseActiveService implements LoginInterface {
 			
 			/*if(!empty($loginEntity->id)) {
 				
-				$this->domain->security->create([
+				\App::$domain->account->security->create([
 					'id' => $loginEntity->id,
 					'email' => $data['email'],
 					'password' => $data['password'],

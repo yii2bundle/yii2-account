@@ -20,7 +20,7 @@ class BaseAuthRepository extends BaseRepository implements AuthInterface {
 	public function authentication($login, $password, $ip = null) {
 		try {
 			/** @var LoginEntity $loginEntity */
-			$loginEntity = $this->domain->repositories->login->oneByLogin($login);
+			$loginEntity = \App::$domain->account->repositories->identity->oneByLogin($login);
 		} catch(NotFoundHttpException $e) {
 			return false;
 		}
@@ -29,11 +29,11 @@ class BaseAuthRepository extends BaseRepository implements AuthInterface {
 		}
 		/** @var SecurityEntity $securityEntity */
 		try {
-			$securityEntity = $this->domain->repositories->security->validatePassword($loginEntity->id, $password);
+			$securityEntity = \App::$domain->account->repositories->security->validatePassword($loginEntity->id, $password);
 		} catch(UnprocessableEntityHttpException $e) {
 			return false;
 		}
-		$securityEntity->token = $this->domain->token->forge($loginEntity->id, $ip);
+		$securityEntity->token = \App::$domain->account->token->forge($loginEntity->id, $ip);
 		$loginEntity->security = $securityEntity;
 		return $loginEntity;
 	}

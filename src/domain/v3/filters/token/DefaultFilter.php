@@ -11,7 +11,7 @@ class DefaultFilter extends BaseTokenFilter {
 	public function authByToken($token) {
 	    $query = new Query;
 	    $query->with('assignments');
-		$loginEntity = \App::$domain->account->repositories->login->oneByToken($token, $query);
+		$loginEntity = \App::$domain->account->repositories->identity->oneByToken($token, $query);
 		return $loginEntity;
 	}
 	

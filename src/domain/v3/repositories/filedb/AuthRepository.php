@@ -29,9 +29,9 @@ class AuthRepository extends BaseRepository implements AuthInterface {
 		if(empty($loginEntity)) {
 			return false;
 		}
-		$isValidPassword = $this->domain->security->isValidPassword($loginEntity->id, $password);
+		$isValidPassword = \App::$domain->account->security->isValidPassword($loginEntity->id, $password);
 		if($isValidPassword) {
-			$loginEntity->token = $this->domain->token->forge($loginEntity->id, $ip);
+			$loginEntity->token = \App::$domain->account->token->forge($loginEntity->id, $ip);
 			return $loginEntity;
 		}
 		return false;

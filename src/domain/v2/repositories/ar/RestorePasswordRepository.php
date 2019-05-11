@@ -18,24 +18,24 @@ class RestorePasswordRepository extends BaseRepository implements RestorePasswor
 	
 	public function requestNewPassword($login, $mail = null) {
 		$login = LoginHelper::getPhone($login);
-		$entity = $this->domain->confirm->createNew($login, self::CONFIRM_ACTION, $this->smsCodeExpire);
+		$entity = \App::$domain->account->confirm->createNew($login, self::CONFIRM_ACTION, $this->smsCodeExpire);
 		$message = Yii::t('account/restore-password', 'restore_password_sms {activation_code}', ['activation_code' => $entity->activation_code]);
 		\App::$domain->notify->sms->send($login, $message);
 	}
 	
 	public function checkActivationCode($login, $code) {
-		return $this->domain->confirm->isVerifyCode($login, self::CONFIRM_ACTION, $code);
+		return \App::$domain->account->confirm->isVerifyCode($login, self::CONFIRM_ACTION, $code);
 	}
 	
 	public function setNewPassword($login, $code, $password) {
 		$login = LoginHelper::getPhone($login);
 		/** @var LoginEntity $loginEntity */
-		$loginEntity = $this->domain->login->oneByLogin($login);
+		$loginEntity = \App::$domain->account->login->oneByLogin($login);
 		/** @var SecurityEntity $securityEntity */
-		$securityEntity = $this->domain->security->oneById($loginEntity->id);
+		$securityEntity = \App::$domain->account->security->oneById($loginEntity->id);
 		$securityEntity->password_hash = Yii::$app->security->generatePasswordHash($password);
-		$this->domain->security->updateById($securityEntity->id, $securityEntity);
-		return $this->domain->confirm->delete($login, self::CONFIRM_ACTION);
+		\App::$domain->account->security->updateById($securityEntity->id, $securityEntity);
+		return \App::$domain->account->confirm->delete($login, self::CONFIRM_ACTION);
 	}
 	
 }

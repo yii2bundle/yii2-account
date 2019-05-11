@@ -68,6 +68,10 @@ class LoginService extends BaseActiveService implements LoginInterface {
 		];
 	}
 	
+	public function getRepository($name = null) {
+		return parent::getRepository('identity');
+	}
+	
 	public function createWeb(PersonInfoForm $model) {
 		$model->scenario = PersonInfoForm::SCENARIO_CREATE_ACCOUNT;
 		if(!$model->validate()) {
@@ -120,7 +124,7 @@ class LoginService extends BaseActiveService implements LoginInterface {
 		try {
 			$loginEntity = parent::oneById($id, $query);
 		} catch(NotFoundHttpException $e) {
-			if($this->domain->oauth->isEnabled()) {
+			if(\App::$domain->account->oauth->isEnabled()) {
 				$loginEntity = \App::$domain->account->oauth->oneById($id);
 			} else {
 				throw $e;

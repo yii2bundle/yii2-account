@@ -32,7 +32,7 @@ class LoginTest extends Unit
 	{
 		$query = Query::forge();
 		//$query->with('assignments');
-		$query->with('security');
+		$query->with('contacts');
 		/** @var LoginEntity $entity */
 		$entity = \App::$domain->account->login->oneById(LoginEnum::ID_ADMIN, $query);
 		
@@ -43,12 +43,12 @@ class LoginTest extends Unit
 			'roles' => [
 				'rAdministrator',
 			],
-			/*'assignments' => [
-				'rAdministrator',
-			],*/
-			//'token' => LoginEnum::TOKEN_ADMIN,
-			//'email' => '',
+			'token' => null,
 			'created_at' => '2018-03-28 21:00:13',
+			'contacts' => [
+				'phone' => '77771111111',
+				'email' => 'admin@example.com',
+			],
 		];
 		
 		$this->tester->assertEntity($oo, $entity);

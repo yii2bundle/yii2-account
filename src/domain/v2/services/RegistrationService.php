@@ -90,7 +90,7 @@ class RegistrationService extends BaseService implements RegistrationInterface {
 	private function checkLoginExistsInTps($login) {
 		$login = LoginHelper::pregMatchLogin($login);
 		/** @var LoginInterface $loginRepository */
-		$loginRepository = $this->domain->repositories->login;
+		$loginRepository = \App::$domain->account->repositories->identity;
 		$isExists = $loginRepository->isExistsByLogin($login);
 		if($isExists) {
 			$error = new ErrorCollection();
