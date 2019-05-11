@@ -36,6 +36,17 @@ class LoginContext extends BaseStrategyContextHandlers {
 		];
 	}*/
 	
+	public function normalizeLogin($login) {
+		$type = $this->getLoginType($login);
+		$this->strategyName = $loginType;
+		return $this->strategyInstance->normalizeLogin($login);
+	}
+	
+	public function isValid(string $login) {
+		$type = $this->getLoginType($login);
+		return $type !== null;
+	}
+	
 	public function identityIdByAny(string $login, Query $query = null) {
 		$loginType = $this->getLoginType($login);
 		$this->strategyName = $loginType;
@@ -49,8 +60,9 @@ class LoginContext extends BaseStrategyContextHandlers {
 			return 'email';
 		} elseif(LoginTypeHelper::isToken($login)) {
 			return 'token';
-		} else {
+		} elseif(LoginTypeHelper::isLogin($login)) {
 			return 'login';
 		}
+		return null;
 	}
 }

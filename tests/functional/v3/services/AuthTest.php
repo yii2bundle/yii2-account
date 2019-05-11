@@ -47,7 +47,6 @@ class AuthTest extends Unit
 		/** @var LoginEntity $loginEntity */
 		$loginEntity = \App::$domain->account->auth->authentication(LoginEnum::LOGIN_ADMIN, LoginEnum::PASSWORD);
 		/** @var LoginEntity $entity */
-		//d($loginEntity);
 		$entity = \App::$domain->account->auth->authenticationByToken($loginEntity->token);
 		$this->tester->assertEntity(LoginEnum::getUser(LoginEnum::ID_ADMIN), $entity);
 		$array = $entity->toArray();

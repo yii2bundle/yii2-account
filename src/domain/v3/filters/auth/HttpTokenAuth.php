@@ -21,7 +21,7 @@ class HttpTokenAuth extends AuthMethod
 	public function authenticate($user, $request, $response)
 	{
 		/** @var Request $request */
-		$token = AuthHelper::getTokenFromQuery();
+		$token = AuthHelper::getTokenFromRequest($request);
 		if ($token) {
 			$identity = \App::$domain->account->auth->authenticationByToken($token, get_class($this));
 			if ($identity === null) {
@@ -29,7 +29,6 @@ class HttpTokenAuth extends AuthMethod
 			}
 			return $identity;
 		}
-
 		return null;
 	}
 

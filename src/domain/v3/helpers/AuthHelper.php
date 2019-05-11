@@ -5,6 +5,7 @@ namespace yii2module\account\domain\v3\helpers;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
+use yii\web\Request;
 use yii2rails\extension\registry\helpers\Registry;
 use yii2rails\extension\web\enums\HttpHeaderEnum;
 use yii2module\account\domain\v3\dto\TokenDto;
@@ -59,26 +60,30 @@ class AuthHelper {
 		return null;
 	}
 	
+	public static function getTokenFromRequest(Request $request) {
+		$token = null;
+		if(isset(Yii::$app->request)) {
+			$token = $request->headers->get(HttpHeaderEnum::AUTHORIZATION);
+			if(!empty($token)) {
+				return $token;
+			}
+			$token = $request->getQueryParam(strtolower(HttpHeaderEnum::AUTHORIZATION));
+			if(!empty($token)) {
+				return $token;
+			}
+			$token = $request->getQueryParam(HttpHeaderEnum::AUTHORIZATION);
+			if(!empty($token)) {
+				return $token;
+			}
+		}
+		return null;
+	}
+	
 	public static function getTokenFromQuery() {
 		if(APP == CONSOLE) {
 			return null;
 		}
-        $token = null;
-		if(isset(Yii::$app->request)) {
-            $token = Yii::$app->request->headers->get(HttpHeaderEnum::AUTHORIZATION);
-            if(!empty($token)) {
-                return $token;
-            }
-            $token = Yii::$app->request->getQueryParam(strtolower(HttpHeaderEnum::AUTHORIZATION));
-            if(!empty($token)) {
-                return $token;
-            }
-            $token = Yii::$app->request->getQueryParam(HttpHeaderEnum::AUTHORIZATION);
-            if(!empty($token)) {
-                return $token;
-            }
-        }
-		return null;
+		return self::getTokenFromRequest(Yii::$app->request);
 	}
 	
 	public static function getTokenFromIdentity() {

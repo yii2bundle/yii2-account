@@ -17,5 +17,9 @@ class LoginTypeHelper  {
 	public static function isToken($login) {
 		return preg_match('/^([0-9a-z]+)\s(\S+)$/i', $login);
 	}
+	
+	public static function isLogin($login) {
+		return preg_match('/^[a-z]+[a-z0-9_-]{3,16}$/i', $login);
+	}
 
 }

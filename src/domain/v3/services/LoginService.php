@@ -162,11 +162,15 @@ class LoginService extends BaseActiveService implements LoginInterface {
     }*/
 
 	public function isValidLogin($login) {
-		return $this->getLoginValidator()->isValid($login);
+		$loginContext = new LoginContext;
+		$loginContext->setStrategyDefinitions($this->loginStrategyDefinitions);
+		return $loginContext->isValid($login);
 	}
 	
 	public function normalizeLogin($login) {
-		return $this->getLoginValidator()->normalize($login);
+		$loginContext = new LoginContext;
+		$loginContext->setStrategyDefinitions($this->loginStrategyDefinitions);
+		return $loginContext->normalizeLogin($login);
 	}
 	
 	public function isForbiddenByStatus($status) {
@@ -179,9 +183,9 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	/**
 	 * @return LoginValidatorInterface
 	 */
-	private function getLoginValidator() {
+	/*private function getLoginValidator() {
 		$this->loginValidator = InstanceHelper::ensure($this->loginValidator, [], LoginValidatorInterface::class);
 		return $this->loginValidator;
-	}
+	}*/
 	
 }
