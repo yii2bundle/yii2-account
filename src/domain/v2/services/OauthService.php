@@ -60,7 +60,7 @@ class OauthService extends BaseService implements OauthInterface {
 	
 	public function authByClient(BaseOAuth $client) {
 		$loginEntity = $this->forgeAccount($client);
-		\App::$domain->account->auth->login($loginEntity, true);
+		\App::$domain->account->user->login($loginEntity, true);
 	}
 	
 	private function forgeAccount(BaseOAuth $client) : IdentityInterface {

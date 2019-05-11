@@ -58,7 +58,7 @@ class AuthController extends Controller
 			try {
 				\App::$domain->account->auth->authenticationFromWeb($form);
 				if(!$this->isBackendAccessAllowed()) {
-					\App::$domain->account->auth->logout();
+					\App::$domain->account->user->logout();
 					\App::$domain->navigation->alert->create(['account/auth', 'login_access_error'], Alert::TYPE_DANGER);
 					return $this->goHome();
 				}
@@ -79,7 +79,7 @@ class AuthController extends Controller
 	 */
 	public function actionLogout($redirect = null)
 	{
-		\App::$domain->account->auth->logout();
+		\App::$domain->account->user->logout();
 		\App::$domain->navigation->alert->create(['account/auth', 'logout_success'], Alert::TYPE_SUCCESS);
 		if($redirect) {
             return $this->redirect([SL . $redirect]);

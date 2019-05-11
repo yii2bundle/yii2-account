@@ -84,7 +84,7 @@ class AuthTest extends Unit
 	
 	public function testLoginRequired()
 	{
-		\App::$domain->account->auth->loginRequired();
+		\App::$domain->account->user->loginRequired();
 		// for console
 	}
 	
