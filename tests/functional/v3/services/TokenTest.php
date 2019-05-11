@@ -12,8 +12,8 @@ class TokenTest extends Unit
 {
 	
 	const IP = '192.168.44.92';
-	const USER_ID = 381069;
-	const USER_ID_2 = 381949;
+	const USER_ID = 2;
+	const USER_ID_2 = 1;
 	const INVALID_TOKEN = 'invalid_token';
 	const INVALID_IP = '111.111.111.111';
 	
