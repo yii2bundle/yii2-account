@@ -44,11 +44,9 @@ class AuthService extends BaseService implements AuthInterface {
 
 	use MethodEventTrait;
 	
-    public $rememberExpire = TimeEnum::SECOND_PER_DAY * 30;
     public $tokenAuthMethods = [
 	    'bearer' => DefaultFilter::class,
     ];
-	private $_identity = null;
 
 	public function behaviors() {
 		return [
@@ -59,28 +57,6 @@ class AuthService extends BaseService implements AuthInterface {
 		];
 	}
 
-	public function oneSelf(Query $query = null) {
-        $query = Query::forge($query);
-        return \App::$domain->account->login->oneById($this->getIdentity()->id, $query);
-    }
-	
-	public function isGuest() : bool {
-		return Yii::$app->user->isGuest;
-	}
- 
-	public function getIdentity() {
-	    if(isset(Yii::$app->user)) {
-            if(Yii::$app->user->isGuest) {
-                $this->breakSession();
-            }
-            return Yii::$app->user->identity;
-        }
-        if($this->_identity === null) {
-            $this->breakSession();
-        }
-        return $this->_identity;
-	}
-	
 	public function authenticationFromApi(LoginForm $model) : LoginEntity {
 		if(!$model->validate()) {
 			throw new UnprocessableEntityHttpException($model);
@@ -99,19 +75,7 @@ class AuthService extends BaseService implements AuthInterface {
 		return $loginEntity;
 	}
 
-	public function login(IdentityInterface $loginEntity, $rememberMe = false) {
-        if(empty($loginEntity)) {
-            return null;
-        }
-        $duration = $rememberMe ? $this->rememberExpire : 0;
-        if(isset(Yii::$app->user)) {
-            Yii::$app->user->login($loginEntity, $duration);
-        }
-        $this->_identity = $loginEntity;
-        AuthHelper::setToken($loginEntity->token);
-    }
-
-	public function authenticationByToken($token, $type = null) {
+	public function authenticationByToken(string $token, string $type = null) : LoginEntity {
 		if(empty($token)) {
 			throw new InvalidArgumentException('Empty token');
 		}
@@ -135,48 +99,53 @@ class AuthService extends BaseService implements AuthInterface {
 		}
 	}
 	
-	public function logout() {
-		Yii::$app->user->logout();
-		AuthHelper::setToken('');
-	}
-	
-	public function denyAccess() {
-		if(Yii::$app->user->getIsGuest()) {
-			$this->breakSession();
-		} else {
-			throw new ForbiddenHttpException();
-		}
-	}
-	
-	public function loginRequired() {
-		try {
-			Yii::$app->user->loginRequired();
-		} catch(InvalidConfigException $e) {
-			return;
-		}
-	}
-	
-	public function breakSession() {
-		if(APP == CONSOLE) {
-			return;
-		}
-		if(APP == API) {
-			throw new UnauthorizedHttpException;
-		} else {
-			$this->logout();
-			Yii::$app->session->destroy();
-			Yii::$app->response->cookies->removeAll();
-			$this->loginRequired();
-		}
-	}
-	
 	/*public function checkOwnerId(BaseEntity $entity, $fieldName = 'user_id') {
 		if($entity->{$fieldName} != \App::$domain->account->auth->identity->id) {
 			throw new ForbiddenHttpException();
 		}
 	}*/
 	
-	public function authenticationByForm(LoginForm $model, string $ip = null) {
+	public function authentication(string $login, string $password, string $ip = null) : LoginEntity {
+		$model = new LoginForm;
+		$model->login = $login;
+		$model->password = $password;
+		return $this->authenticationByForm($model, $ip);
+	}
+	
+	
+	public function oneSelf(Query $query = null) {
+		return \App::$domain->account->user->oneSelf($query);
+	}
+	
+	public function isGuest() : bool {
+		return \App::$domain->account->user->isGuest();
+	}
+	
+	public function getIdentity() {
+		return \App::$domain->account->user->getIdentity();
+	}
+	
+	public function login(IdentityInterface $loginEntity, bool $rememberMe = false) {
+		return \App::$domain->account->user->login($loginEntity, $rememberMe);
+	}
+	
+	public function logout() {
+		return \App::$domain->account->user->logout();
+	}
+	
+	public function denyAccess() {
+		return \App::$domain->account->user->denyAccess();
+	}
+	
+	public function loginRequired() {
+		return \App::$domain->account->user->loginRequired();
+	}
+	
+	public function breakSession() {
+		return \App::$domain->account->user->breakSession();
+	}
+	
+	private function authenticationByForm(LoginForm $model, string $ip = null) : LoginEntity {
 		if(empty($ip)) {
 			$ip = ClientHelper::ip();
 		}
@@ -212,14 +181,7 @@ class AuthService extends BaseService implements AuthInterface {
 		return $loginEntity;
 	}
 	
-	public function authentication(string $login, string $password, string $ip = null) {
-		$model = new LoginForm;
-		$model->login = $login;
-		$model->password = $password;
-		return $this->authenticationByForm($model, $ip);
-	}
-
-    private function checkStatus(IdentityInterface $entity)
+	private function checkStatus(IdentityInterface $entity)
     {
         if (\App::$domain->account->login->isForbiddenByStatus($entity->status)) {
             throw new ServerErrorHttpException(Yii::t('account/login', 'user_status_forbidden'));

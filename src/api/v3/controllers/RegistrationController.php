@@ -104,7 +104,7 @@ class RegistrationController extends Controller {
 			Helper::forgeForm($model, $post);
 			try {
 
-			    if(\App::$domain->account->auth->isGuest()) {
+			    if(\App::$domain->account->user->isGuest()) {
                     $isAllow = false;
                 } else {
                     $isAllow = \App::$domain->rbac->manager->isAllow([ApplicationPermissionEnum::BACKEND_ALL]);

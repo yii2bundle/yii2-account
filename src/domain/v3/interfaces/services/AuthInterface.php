@@ -18,30 +18,48 @@ use yii2module\account\domain\v3\forms\LoginForm;
  */
 interface AuthInterface {
 
-    public function oneSelf(Query $query = null);
-	
-	public function isGuest() : bool;
-
     public function authenticationFromApi(LoginForm $model) : LoginEntity;
-
     public function authenticationFromWeb(LoginForm $model) : LoginEntity;
-
-    /**
-     * @return LoginEntity
-     */
-	public function authenticationByToken($token, $type = null);
-
-    public function login(IdentityInterface $loginEntity, $rememberMe = false);
-
-    /**
+	public function authenticationByToken(string $token, string $type = null) : LoginEntity;
+	public function authentication(string $login, string $password, string $ip = null) : LoginEntity;
+	
+	/**
+	 * @deprecated use from App::$domain->account->user
+	 */
+	public function oneSelf(Query $query = null);
+	/**
+	 * @deprecated use from App::$domain->account->user
+	 */
+	public function isGuest() : bool;
+	/**
+	 * @deprecated use from App::$domain->account->user
+	 */
+    public function login(IdentityInterface $loginEntity, bool $rememberMe = false);
+	
+	/**
+	 * @deprecated use from App::$domain->account->user
      * @return LoginEntity
      */
 	public function getIdentity();
+	/**
+	 * @deprecated use from App::$domain->account->user
+	 */
 	public function logout();
+	/**
+	 * @deprecated use from App::$domain->account->user
+	 */
 	public function denyAccess();
+	/**
+	 * @deprecated use from App::$domain->account->user
+	 */
 	public function breakSession();
-	public function authentication(string $login, string $password, string $ip = null);
+	/**
+	 * @deprecated use from App::$domain->account->user
+	 */
 	public function loginRequired();
+	/**
+	 * @deprecated use from App::$domain->account->user
+	 */
 	
 	/**
 	 * @param BaseEntity $entity

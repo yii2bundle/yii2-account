@@ -17,6 +17,8 @@ use yii2rails\domain\services\base\BaseActiveService;
  */
 class IdentityService extends BaseActiveService implements IdentityInterface {
 	
+	private $identity = null;
+	
     protected function prepareQuery(Query $query = null)
     {
         $query = Query::forge($query);

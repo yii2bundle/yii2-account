@@ -38,6 +38,7 @@ use yii2module\account\domain\v3\services\SocketIOService;
  * @property-read \yii2module\account\domain\v3\interfaces\services\SocketInterface $socketio
  * @property-read \yii2module\account\domain\v3\interfaces\services\IdentityInterface $identity
  * @property-read \yii2module\account\domain\v3\interfaces\services\ContactInterface $contact
+ * @property-read \yii2module\account\domain\v3\interfaces\services\UserInterface $user
  */
 class Domain extends \yii2rails\domain\Domain {
 	
@@ -69,8 +70,10 @@ class Domain extends \yii2rails\domain\Domain {
 				'contact' => $this->primaryDriver,
 			],
 			'services' => [
-				'auth' => [
+				'user' => [
 					'rememberExpire' => TimeEnum::SECOND_PER_YEAR,
+				],
+				'auth' => [
 					'tokenAuthMethods' => [
 						'bearer' => DefaultFilter::class,
 						'jwt' => [
