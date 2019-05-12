@@ -40,7 +40,7 @@ class OauthService extends BaseService implements OauthInterface {
 		}
 		try {
 			/** @var \yii2module\account\domain\v3\interfaces\repositories\LoginInterface $arLoginRepository */
-			$this->_arLoginRepository = RepositoryFactoryHelper::createObject('login', Driver::ACTIVE_RECORD, \App::$domain->account);
+			$this->_arLoginRepository = RepositoryFactoryHelper::createObject('identity', Driver::ACTIVE_RECORD, \App::$domain->account);
 		} catch(\yii\db\Exception $e) {
 		
 		}

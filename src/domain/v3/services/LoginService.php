@@ -152,7 +152,7 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	public function oneByLogin($login, Query $query = null) : LoginEntity {
 		$query = Query::forge($query);
 		$query->with('assignments');
-		return $this->repository->oneByLogin($login, $query);
+		return App::$domain->account->repositories->identity->oneByLogin($login, $query);
 	}
 
    /* public function oneByPersonId(int $personId, Query $query = null) : LoginEntity {
