@@ -5,6 +5,7 @@ namespace yii2module\account\domain\v3\helpers\test;
 use Yii;
 use yii\web\UnauthorizedHttpException;
 use yii2lab\test\helpers\RestTestHelper;
+use yii2lab\test\helpers\TestHelper;
 use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\extension\enum\enums\TimeEnum;
 use App;
@@ -27,6 +28,14 @@ class AuthTestHelper
     private static $tokenCollection = [];
     private static $identity = null;
     private static $identityStack = [];
+
+    public static function authByAccountManager() {
+        $access = TestHelper::getEnvLocalConfig('accountManager', [
+            'login' => 'admin',
+            'password' => 'Wwwqqq111',
+        ]);
+        AuthTestHelper::authByLogin($access['login'], $access['password']);
+    }
 
     public static function authByToken($token) {
         $identity = new LoginEntity;

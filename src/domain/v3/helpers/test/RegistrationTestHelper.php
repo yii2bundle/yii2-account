@@ -35,19 +35,10 @@ class RegistrationTestHelper
         $phone = self::getlastPhone();
         CurrentPhoneTestHelper::set($phone);
 
-        self::authByAdmin();
+        AuthTestHelper::authByAccountManager();
         //self::requestActivationCode();
         self::createAccount();
         AuthTestHelper::loadPrevAuth();
-    }
-
-    private static function authByAdmin()
-    {
-        $access = TestHelper::getEnvLocalConfig('accountManager', [
-            'login' => 'admin',
-            'password' => 'Wwwqqq111',
-        ]);
-        AuthTestHelper::authByLogin($access['login'], $access['password']);
     }
 
     private static function generateNewPhone()
@@ -57,7 +48,7 @@ class RegistrationTestHelper
     }
 
     private static function checkLoginExists($phone) : bool {
-        self::authByAdmin();
+        AuthTestHelper::authByAccountManager();
         $requestEntity = new RequestEntity;
         $requestEntity->uri = 'v1/identity';
         $requestEntity->method = HttpMethodEnum::GET;
