@@ -7,6 +7,8 @@ use yii2lab\notify\domain\helpers\test\NotifyTestHelper;
 use yii2lab\rest\domain\entities\RequestEntity;
 use yii2lab\rest\domain\entities\ResponseEntity;
 use yii2lab\test\helpers\RestTestHelper;
+use yii2lab\test\helpers\TestHelper;
+use yii2rails\app\domain\enums\YiiEnvEnum;
 use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\extension\enum\enums\TimeEnum;
 use yii2rails\extension\web\enums\HttpMethodEnum;
@@ -33,12 +35,21 @@ class RegistrationTestHelper
         $phone = self::getlastPhone();
         CurrentPhoneTestHelper::set($phone);
 
-        AuthTestHelper::authByLogin('admin');
+        self::authByAdmin();
         //self::requestActivationCode();
         self::createAccount();
         AuthTestHelper::loadPrevAuth();
     }
-    
+
+    private static function authByAdmin()
+    {
+        $access = TestHelper::getEnvLocalConfig('accountManager', [
+            'login' => 'admin',
+            'password' => 'Wwwqqq111',
+        ]);
+        AuthTestHelper::authByLogin($access['login'], $access['password']);
+    }
+
     private static function generateNewPhone()
     {
         $phone = PhoneTestHelper::nextPhone();
@@ -46,7 +57,7 @@ class RegistrationTestHelper
     }
 
     private static function checkLoginExists($phone) : bool {
-        AuthTestHelper::authByLogin('admin');
+        self::authByAdmin();
         $requestEntity = new RequestEntity;
         $requestEntity->uri = 'v1/identity';
         $requestEntity->method = HttpMethodEnum::GET;
