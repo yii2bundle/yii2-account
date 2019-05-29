@@ -5,6 +5,7 @@ namespace yii2module\account\api\v1\controllers;
 use Yii;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\domain\helpers\Helper;
+use yii2rails\extension\web\enums\HttpHeaderEnum;
 use yii2rails\extension\web\helpers\Behavior;
 use yii2rails\extension\web\helpers\ClientHelper;
 use yii2lab\rest\domain\rest\Controller;
@@ -69,7 +70,7 @@ class AuthController extends Controller {
 		try {
 			$ip = ClientHelper::ip();
 			$entity = $this->service->authentication($body['login'], $body['password'], $ip);
-			Yii::$app->response->headers->set('Authorization', $entity->token);
+			Yii::$app->response->headers->set(HttpHeaderEnum::AUTHORIZATION, $entity->token);
 			return $entity;
 		} catch(UnprocessableEntityHttpException $e) {
 			Yii::$app->response->setStatusCode(422);
