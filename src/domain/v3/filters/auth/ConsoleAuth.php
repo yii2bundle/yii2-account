@@ -30,7 +30,7 @@ class ConsoleAuth extends AuthMethod
 			if(!$identity instanceof IdentityInterface) {
 				$this->handleFailure(null);
 			}
-			\App::$domain->account->user->login($identity, TimeEnum::SECOND_PER_MINUTE);
+			\App::$domain->account->auth->login($identity, TimeEnum::SECOND_PER_MINUTE);
 		}
 		return $identity;
 	}
