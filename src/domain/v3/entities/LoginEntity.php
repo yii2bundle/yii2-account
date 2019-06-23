@@ -48,7 +48,7 @@ class LoginEntity extends BaseEntity implements LoginEntityInterface {
 	protected $token;
 	protected $created_at;
     //protected $password;
-	//protected $person_id;
+	protected $person_id;
     //protected $company_id;
 
     //protected $security;
@@ -79,7 +79,7 @@ class LoginEntity extends BaseEntity implements LoginEntityInterface {
             'login' => 'string',
             'status' => 'integer',
             'token' => 'string',
-            //'person_id' => 'integer',
+            'person_id' => 'integer',
             //'company_id' => 'integer',
             'created_at' => TimeValue::class,
             'security' => SecurityEntity::class,
