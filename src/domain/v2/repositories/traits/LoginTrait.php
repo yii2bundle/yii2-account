@@ -14,7 +14,7 @@ use yii2rails\extension\web\helpers\ClientHelper;
 use yii2module\account\domain\v2\entities\LoginEntity;
 use yii2module\account\domain\v2\entities\SecurityEntity;
 use yii2module\account\domain\v2\entities\TokenEntity;
-use yii2module\cleaner\domain\helpers\ClearHelper;
+use yii2tool\cleaner\domain\helpers\ClearHelper;
 
 /**
  * Trait LoginTrait
