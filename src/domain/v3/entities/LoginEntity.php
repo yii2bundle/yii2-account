@@ -9,7 +9,7 @@ use yubundle\staff\domain\v1\entities\CompanyEntity;
 use yii\base\Behavior;
 use yii\base\Event;
 use yii\base\ModelEvent;
-use yii2lab\rbac\domain\entities\AssignmentEntity;
+use yii2bundle\rbac\domain\entities\AssignmentEntity;
 use yii2rails\domain\behaviors\entity\TimeValueFilter;
 use yubundle\user\domain\v1\entities\PersonEntity;
 use yii\helpers\ArrayHelper;

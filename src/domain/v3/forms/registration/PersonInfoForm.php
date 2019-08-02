@@ -3,7 +3,7 @@
 namespace yii2module\account\domain\v3\forms\registration;
 
 use yii\base\Model;
-use yii2lab\geo\domain\validators\PhoneValidator;
+use yii2bundle\geo\domain\validators\PhoneValidator;
 use yii2module\account\domain\v3\validators\PasswordValidator;
 use yii2module\account\domain\v3\validators\UserBirthdayValidator;
 use yii2module\account\domain\v3\validators\UserLoginValidator;

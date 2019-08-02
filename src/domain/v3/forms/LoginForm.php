@@ -5,7 +5,7 @@ namespace yii2module\account\domain\v3\forms;
 use Yii;
 use yii2module\account\domain\v3\validators\PasswordValidator;
 use yii2rails\domain\base\Model;
-use yii2module\lang\domain\helpers\LangHelper;
+use yii2bundle\lang\domain\helpers\LangHelper;
 
 class LoginForm extends Model
 {
