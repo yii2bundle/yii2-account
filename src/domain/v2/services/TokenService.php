@@ -1,25 +1,25 @@
 <?php
 
-namespace yii2module\account\domain\v2\services;
+namespace yii2bundle\account\domain\v2\services;
 
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii2rails\extension\web\helpers\ClientHelper;
 use yii2rails\extension\enum\enums\TimeEnum;
 use yii2rails\extension\yii\helpers\FileHelper;
-use yii2module\account\domain\v2\entities\TokenEntity;
-use yii2module\account\domain\v2\exceptions\InvalidIpAddressException;
-use yii2module\account\domain\v2\exceptions\NotFoundLoginException;
-use yii2module\account\domain\v2\interfaces\services\TokenInterface;
+use yii2bundle\account\domain\v2\entities\TokenEntity;
+use yii2bundle\account\domain\v2\exceptions\InvalidIpAddressException;
+use yii2bundle\account\domain\v2\exceptions\NotFoundLoginException;
+use yii2bundle\account\domain\v2\interfaces\services\TokenInterface;
 use yii2rails\domain\services\base\BaseActiveService;
 
 /**
  * Class TokenService
  * 
- * @package yii2module\account\domain\v2\services
+ * @package yii2bundle\account\domain\v2\services
  * 
- * @property-read \yii2module\account\domain\v2\Domain $domain
- * @property-read \yii2module\account\domain\v2\interfaces\repositories\TokenInterface $repository
+ * @property-read \yii2bundle\account\domain\v2\Domain $domain
+ * @property-read \yii2bundle\account\domain\v2\interfaces\repositories\TokenInterface $repository
  */
 class TokenService extends BaseActiveService implements TokenInterface {
 	

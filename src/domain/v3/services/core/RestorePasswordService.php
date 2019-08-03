@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2module\account\domain\v3\services\core;
+namespace yii2bundle\account\domain\v3\services\core;
 
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\extension\core\domain\repositories\base\BaseCoreRepository;
 use yii2rails\domain\helpers\Helper;
 use yii2rails\extension\core\domain\services\base\BaseCoreService;
-use yii2module\account\domain\v3\forms\restorePassword\UpdatePasswordForm;
-use yii2module\account\domain\v3\forms\RestorePasswordForm;
-use yii2module\account\domain\v3\interfaces\services\RestorePasswordInterface;
+use yii2bundle\account\domain\v3\forms\restorePassword\UpdatePasswordForm;
+use yii2bundle\account\domain\v3\forms\RestorePasswordForm;
+use yii2bundle\account\domain\v3\interfaces\services\RestorePasswordInterface;
 
 /**
  * Class RestorePasswordService
  *
- * @package yii2module\account\domain\v3\services\core
+ * @package yii2bundle\account\domain\v3\services\core
  *
  * @property-read BaseCoreRepository $repository
  */

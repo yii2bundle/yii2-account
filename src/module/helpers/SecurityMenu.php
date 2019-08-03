@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\module\helpers;
+namespace yii2bundle\account\module\helpers;
 
 use yii2rails\extension\menu\base\BaseMenu;
 use yii2rails\extension\menu\interfaces\MenuInterface;

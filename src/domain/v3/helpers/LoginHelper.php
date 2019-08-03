@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\helpers;
+namespace yii2bundle\account\domain\v3\helpers;
 
 use Yii;
 use yii\web\NotFoundHttpException;

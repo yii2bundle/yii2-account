@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\helpers;
+namespace yii2bundle\account\domain\v3\helpers;
 
 use Workerman\Connection\ConnectionInterface;
 use yii\helpers\ArrayHelper;
@@ -11,11 +11,11 @@ use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\extension\console\enums\TypeMessageEnum;
 use yii2rails\extension\console\helpers\Output;
 use yii2rails\extension\registry\helpers\Registry;
-use yii2module\account\domain\v3\entities\LoginEntity;
-use yii2module\account\domain\v3\entities\SocketConnectEntity;
-use yii2module\account\domain\v3\entities\SocketEventEntity;
-use yii2module\account\domain\v3\forms\LoginForm;
-use yii2module\account\domain\v3\interfaces\services\SocketInterface;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\entities\SocketConnectEntity;
+use yii2bundle\account\domain\v3\entities\SocketEventEntity;
+use yii2bundle\account\domain\v3\forms\LoginForm;
+use yii2bundle\account\domain\v3\interfaces\services\SocketInterface;
 use yii2rails\domain\services\base\BaseService;
 use Workerman\Worker;
 use App;

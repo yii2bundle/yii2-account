@@ -1,12 +1,12 @@
 <?php
 
-namespace yii2module\account\domain\v2\services;
+namespace yii2bundle\account\domain\v2\services;
 
 use yii\base\InvalidConfigException;
 use yii\base\Object;
 use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\extension\jwt\entities\JwtEntity;
-use yii2module\account\domain\v2\interfaces\services\JwtInterface;
+use yii2bundle\account\domain\v2\interfaces\services\JwtInterface;
 use yii2rails\domain\services\base\BaseService;
 use yii2rails\domain\Alias;
 use yii2rails\extension\yii\helpers\ArrayHelper;
@@ -14,10 +14,10 @@ use yii2rails\extension\yii\helpers\ArrayHelper;
 /**
  * Class JwtService
  * 
- * @package yii2module\account\domain\v2\services
+ * @package yii2bundle\account\domain\v2\services
  * 
- * @property-read \yii2module\account\domain\v2\Domain $domain
- * @property-read \yii2module\account\domain\v2\interfaces\repositories\JwtInterface $repository
+ * @property-read \yii2bundle\account\domain\v2\Domain $domain
+ * @property-read \yii2bundle\account\domain\v2\interfaces\repositories\JwtInterface $repository
  */
 class JwtService extends BaseService implements JwtInterface {
 

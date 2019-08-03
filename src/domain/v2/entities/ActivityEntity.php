@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v2\entities;
+namespace yii2bundle\account\domain\v2\entities;
 
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -10,7 +10,7 @@ use yii2rails\domain\values\TimeValue;
 /**
  * Class ActivityEntity
  * 
- * @package yii2module\account\domain\v2\entities
+ * @package yii2bundle\account\domain\v2\entities
  * 
  * @property $id
  * @property $user_id

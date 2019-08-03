@@ -1,16 +1,16 @@
 <?php
 
-namespace yii2module\account\domain\v2\repositories\core;
+namespace yii2bundle\account\domain\v2\repositories\core;
 
-use yii2module\account\domain\v2\interfaces\repositories\TokenInterface;
+use yii2bundle\account\domain\v2\interfaces\repositories\TokenInterface;
 use yii2rails\domain\repositories\BaseRepository;
 
 /**
  * Class TokenRepository
  * 
- * @package yii2module\account\domain\v2\repositories\core
+ * @package yii2bundle\account\domain\v2\repositories\core
  * 
- * @property-read \yii2module\account\domain\v2\Domain $domain
+ * @property-read \yii2bundle\account\domain\v2\Domain $domain
  */
 class TokenRepository extends BaseRepository implements TokenInterface {
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2module\account\domain\v2\repositories\core;
+namespace yii2bundle\account\domain\v2\repositories\core;
 
 use yii2rails\extension\core\domain\repositories\base\BaseActiveCoreRepository;
-use yii2module\account\domain\v2\interfaces\repositories\SecurityInterface;
+use yii2bundle\account\domain\v2\interfaces\repositories\SecurityInterface;
 
 class SecurityRepository extends BaseActiveCoreRepository implements SecurityInterface {
 	

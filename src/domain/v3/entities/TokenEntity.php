@@ -1,13 +1,13 @@
 <?php
 
-namespace yii2module\account\domain\v3\entities;
+namespace yii2bundle\account\domain\v3\entities;
 
 use yii2rails\domain\BaseEntity;
 
 /**
  * Class TokenEntity
  * 
- * @package yii2module\account\domain\v3\entities
+ * @package yii2bundle\account\domain\v3\entities
  * 
  * @property $user_id
  * @property $token

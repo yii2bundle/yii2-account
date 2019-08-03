@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\api\v3;
+namespace yii2bundle\account\api\v3;
 
 use yii\base\Module as YiiModule;
 

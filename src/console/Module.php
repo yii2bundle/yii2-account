@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2module\account\console;
+namespace yii2bundle\account\console;
 
 /**
  * Class Module
  * 
- * @package yii2module\account\console
+ * @package yii2bundle\account\console
  */
 class Module extends \yii\base\Module {
 

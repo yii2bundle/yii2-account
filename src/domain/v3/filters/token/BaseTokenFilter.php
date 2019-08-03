@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2module\account\domain\v3\filters\token;
+namespace yii2bundle\account\domain\v3\filters\token;
 
 use yii\base\BaseObject;
 use yii\base\InvalidArgumentException;
-use yii2module\account\domain\v3\entities\LoginEntity;
-use yii2module\account\domain\v3\helpers\TokenHelper;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\helpers\TokenHelper;
 
 abstract class BaseTokenFilter extends BaseObject {
 

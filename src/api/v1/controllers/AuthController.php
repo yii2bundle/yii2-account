@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\api\v1\controllers;
+namespace yii2bundle\account\api\v1\controllers;
 
 use Yii;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
@@ -9,14 +9,14 @@ use yii2rails\extension\web\enums\HttpHeaderEnum;
 use yii2rails\extension\web\helpers\Behavior;
 use yii2rails\extension\web\helpers\ClientHelper;
 use yii2lab\rest\domain\rest\Controller;
-use yii2module\account\console\forms\PseudoLoginForm;
+use yii2bundle\account\console\forms\PseudoLoginForm;
 
 
 
 /**
  * Class AuthController
  *
- * @package yii2module\account\api\v1\controllers
+ * @package yii2bundle\account\api\v1\controllers
  *
  * @property AuthService $service
  */

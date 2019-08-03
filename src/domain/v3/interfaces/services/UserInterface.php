@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2module\account\domain\v3\interfaces\services;
+namespace yii2bundle\account\domain\v3\interfaces\services;
 
 use yii\web\IdentityInterface;
 use yii2rails\domain\data\Query;
-use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
 
 /**
  * Interface UserInterface
  * 
- * @package yii2module\account\domain\v3\interfaces\services
+ * @package yii2bundle\account\domain\v3\interfaces\services
  * 
- * @property-read \yii2module\account\domain\v3\Domain $domain
- * @property-read \yii2module\account\domain\v3\interfaces\repositories\UserInterface $repository
- * @property \yii2module\account\domain\v3\entities\LoginEntity $identity
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\interfaces\repositories\UserInterface $repository
+ * @property \yii2bundle\account\domain\v3\entities\LoginEntity $identity
  */
 interface UserInterface {
 	

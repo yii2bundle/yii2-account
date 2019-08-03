@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v2\interfaces;
+namespace yii2bundle\account\domain\v2\interfaces;
 
 interface LoginValidatorInterface {
 	

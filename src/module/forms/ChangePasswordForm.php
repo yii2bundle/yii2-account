@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2module\account\module\forms;
+namespace yii2bundle\account\module\forms;
 
 use Yii;
-use yii2module\account\domain\v3\forms\ChangePasswordForm as ApiChangePasswordForm;
+use yii2bundle\account\domain\v3\forms\ChangePasswordForm as ApiChangePasswordForm;
 use yii\helpers\ArrayHelper;
 
 class ChangePasswordForm  extends ApiChangePasswordForm {

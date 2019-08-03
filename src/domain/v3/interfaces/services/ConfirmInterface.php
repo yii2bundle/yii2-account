@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2module\account\domain\v3\interfaces\services;
+namespace yii2bundle\account\domain\v3\interfaces\services;
 
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\interfaces\services\CrudInterface;
-use yii2module\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
-use yii2module\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
+use yii2bundle\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
+use yii2bundle\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
 
 interface ConfirmInterface extends CrudInterface {
 	

@@ -1,23 +1,23 @@
 <?php
 
-namespace yii2module\account\domain\v3\services;
+namespace yii2bundle\account\domain\v3\services;
 
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\services\base\BaseActiveService;
 use yii2lab\notify\domain\exceptions\SmsTimeLimitException;
-use yii2module\account\domain\v3\entities\ConfirmEntity;
-use yii2module\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
-use yii2module\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
-use yii2module\account\domain\v3\helpers\ConfirmHelper;
-use yii2module\account\domain\v3\helpers\LoginHelper;
-use yii2module\account\domain\v3\interfaces\services\ConfirmInterface;
+use yii2bundle\account\domain\v3\entities\ConfirmEntity;
+use yii2bundle\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
+use yii2bundle\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
+use yii2bundle\account\domain\v3\helpers\ConfirmHelper;
+use yii2bundle\account\domain\v3\helpers\LoginHelper;
+use yii2bundle\account\domain\v3\interfaces\services\ConfirmInterface;
 
 /**
  * Class ConfirmService
  *
- * @package yii2module\account\domain\v3\services
- * @property \yii2module\account\domain\v3\interfaces\repositories\ConfirmInterface $repository
+ * @package yii2bundle\account\domain\v3\services
+ * @property \yii2bundle\account\domain\v3\interfaces\repositories\ConfirmInterface $repository
  */
 class ConfirmService extends BaseActiveService implements ConfirmInterface
 {

@@ -1,16 +1,16 @@
 <?php
 
-namespace yii2module\account\domain\v3\services;
+namespace yii2bundle\account\domain\v3\services;
 
-use yii2module\account\domain\v3\strategies\token\handlers\JwtStrategy;
-use yii2module\account\domain\v3\strategies\token\TokenContext;
+use yii2bundle\account\domain\v3\strategies\token\handlers\JwtStrategy;
+use yii2bundle\account\domain\v3\strategies\token\TokenContext;
 use yii2rails\extension\web\helpers\ClientHelper;
-use yii2module\account\domain\v3\interfaces\services\TokenInterface;
+use yii2bundle\account\domain\v3\interfaces\services\TokenInterface;
 use Exception;
 use yii\web\UnauthorizedHttpException;
 use yii2rails\domain\services\base\BaseService;
-use yii2module\account\domain\v3\entities\TokenEntity;
-use yii2module\account\domain\v3\helpers\TokenHelper;
+use yii2bundle\account\domain\v3\entities\TokenEntity;
+use yii2bundle\account\domain\v3\helpers\TokenHelper;
 
 class TokenService extends BaseService implements TokenInterface {
 

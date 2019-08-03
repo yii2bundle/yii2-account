@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\behaviors;
+namespace yii2bundle\account\domain\v3\behaviors;
 
 use yii\base\Behavior;
 use yii2rails\domain\enums\EventEnum;

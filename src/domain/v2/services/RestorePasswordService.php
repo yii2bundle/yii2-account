@@ -1,23 +1,23 @@
 <?php
 
-namespace yii2module\account\domain\v2\services;
+namespace yii2bundle\account\domain\v2\services;
 
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\helpers\Helper;
 use yii2rails\extension\enum\enums\TimeEnum;
-use yii2module\account\domain\v2\forms\RestorePasswordForm;
+use yii2bundle\account\domain\v2\forms\RestorePasswordForm;
 use yii2rails\domain\helpers\ErrorCollection;
 use yii2rails\domain\services\base\BaseService;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
-use yii2module\account\domain\v2\interfaces\services\RestorePasswordInterface;
+use yii2bundle\account\domain\v2\interfaces\services\RestorePasswordInterface;
 
 /**
  * Class RestorePasswordService
  *
- * @package yii2module\account\domain\v2\services
+ * @package yii2bundle\account\domain\v2\services
  *
- * @property-read \yii2module\account\domain\v2\interfaces\repositories\RestorePasswordInterface $repository
- * @property-read \yii2module\account\domain\v2\Domain $domain
+ * @property-read \yii2bundle\account\domain\v2\interfaces\repositories\RestorePasswordInterface $repository
+ * @property-read \yii2bundle\account\domain\v2\Domain $domain
  */
 class RestorePasswordService extends BaseService implements RestorePasswordInterface {
 

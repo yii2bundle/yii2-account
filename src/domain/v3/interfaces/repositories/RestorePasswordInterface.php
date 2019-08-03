@@ -1,15 +1,15 @@
 <?php
 
-namespace yii2module\account\domain\v3\interfaces\repositories;
+namespace yii2bundle\account\domain\v3\interfaces\repositories;
 
 use yii\web\NotFoundHttpException;
 
 /**
  * Class RestorePasswordRepository
  *
- * @package yii2module\account\domain\v3\repositories\ar
+ * @package yii2bundle\account\domain\v3\repositories\ar
  *
- * @property-read \yii2module\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
  */
 interface RestorePasswordInterface {
 	

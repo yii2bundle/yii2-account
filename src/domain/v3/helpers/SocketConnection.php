@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2module\account\domain\v3\helpers;
+namespace yii2bundle\account\domain\v3\helpers;
 
 use Workerman\Connection\ConnectionInterface;
-use yii2module\account\domain\v3\entities\SocketConnectEntity;
+use yii2bundle\account\domain\v3\entities\SocketConnectEntity;
 
 class SocketConnection {
 

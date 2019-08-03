@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2module\account\module\forms;
+namespace yii2bundle\account\module\forms;
 
 use Yii;
-use yii2module\account\domain\v3\forms\RestorePasswordForm as ApiRestorePasswordForm;
+use yii2bundle\account\domain\v3\forms\RestorePasswordForm as ApiRestorePasswordForm;
 use yii\helpers\ArrayHelper;
 
 class RestorePasswordForm extends ApiRestorePasswordForm {

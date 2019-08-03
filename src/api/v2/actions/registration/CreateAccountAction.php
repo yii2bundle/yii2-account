@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2module\account\api\v2\actions\registration;
+namespace yii2bundle\account\api\v2\actions\registration;
 
 use Yii;
 use yii2lab\rest\domain\rest\UniAction;
-use yii2module\account\domain\v2\exceptions\ConfirmAlreadyExistsException;
+use yii2bundle\account\domain\v2\exceptions\ConfirmAlreadyExistsException;
 
 class CreateAccountAction extends UniAction {
 	

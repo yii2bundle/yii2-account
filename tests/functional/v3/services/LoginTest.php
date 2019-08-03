@@ -7,7 +7,7 @@ use yii2lab\test\Test\Unit;
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\BaseEntity;
 use yii2rails\domain\data\Query;
-use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
 use tests\functional\v3\enums\LoginEnum;
 
 class LoginTest extends Unit

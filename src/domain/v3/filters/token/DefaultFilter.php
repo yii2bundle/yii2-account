@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2module\account\domain\v3\filters\token;
+namespace yii2bundle\account\domain\v3\filters\token;
 
 use yii\web\IdentityInterface;
 use yii2rails\domain\data\Query;
-use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
 
 class DefaultFilter extends BaseTokenFilter {
 	

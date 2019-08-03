@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v2\models;
+namespace yii2bundle\account\domain\v2\models;
 
 use yii\db\ActiveRecord;
 use yii2lab\db\domain\behaviors\json\JsonBehavior;
@@ -8,7 +8,7 @@ use yii2lab\db\domain\behaviors\json\JsonBehavior;
 /**
  * Class UserConfirm
  *
- * @package yii2module\account\domain\v2\models
+ * @package yii2bundle\account\domain\v2\models
  *
  * @property $login
  * @property $action

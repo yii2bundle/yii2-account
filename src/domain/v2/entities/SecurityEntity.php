@@ -1,13 +1,13 @@
 <?php
 
-namespace yii2module\account\domain\v2\entities;
+namespace yii2bundle\account\domain\v2\entities;
 
 use yii2rails\domain\BaseEntity;
 
 /**
  * Class SecurityEntity
  *
- * @package yii2module\account\domain\v2\entities
+ * @package yii2bundle\account\domain\v2\entities
  *
  * @property integer $id
  * @property string $email

@@ -1,12 +1,12 @@
 <?php
 
-namespace yii2module\account\domain\v3\services;
+namespace yii2bundle\account\domain\v3\services;
 
 use App;
-use yii2module\account\domain\v3\enums\AccountConfirmActionEnum;
+use yii2bundle\account\domain\v3\enums\AccountConfirmActionEnum;
 use yii2rails\extension\common\exceptions\AlreadyExistsException;
-use yii2module\account\domain\v3\forms\registration\PersonInfoForm;
-use yii2module\account\domain\v3\interfaces\services\RegistrationInterface;
+use yii2bundle\account\domain\v3\forms\registration\PersonInfoForm;
+use yii2bundle\account\domain\v3\interfaces\services\RegistrationInterface;
 use yubundle\user\domain\v1\entities\PersonEntity;
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -17,8 +17,8 @@ use yii2rails\domain\helpers\Helper;
 use yii2rails\domain\services\base\BaseService;
 use yii2rails\extension\common\exceptions\CreatedHttpExceptionException;
 use yii2rails\extension\enum\enums\TimeEnum;
-use yii2module\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
-use yii2module\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
+use yii2bundle\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
+use yii2bundle\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
 
 class RegistrationService extends BaseService implements RegistrationInterface {
 	

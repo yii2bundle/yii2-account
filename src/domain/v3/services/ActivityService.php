@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2module\account\domain\v3\services;
+namespace yii2bundle\account\domain\v3\services;
 
 use yii2rails\extension\web\helpers\ClientHelper;
 use yii2rails\extension\yii\helpers\ArrayHelper;
-use yii2module\account\domain\v3\interfaces\services\ActivityInterface;
+use yii2bundle\account\domain\v3\interfaces\services\ActivityInterface;
 use yii2rails\domain\services\base\BaseActiveService;
 
 /**
  * Class ActivityService
  * 
- * @package yii2module\account\domain\v3\services
+ * @package yii2bundle\account\domain\v3\services
  * 
- * @property-read \yii2module\account\domain\v3\Domain $domain
- * @property-read \yii2module\account\domain\v3\interfaces\repositories\ActivityInterface $repository
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\interfaces\repositories\ActivityInterface $repository
  */
 class ActivityService extends BaseActiveService implements ActivityInterface {
 

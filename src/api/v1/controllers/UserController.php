@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\api\v1\controllers;
+namespace yii2bundle\account\api\v1\controllers;
 
 use yii2lab\rest\domain\rest\ActiveController as Controller;
 

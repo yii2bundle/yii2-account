@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\repositories\schema;
+namespace yii2bundle\account\domain\v3\repositories\schema;
 
 use yii2rails\domain\enums\RelationEnum;
 use yii2rails\domain\repositories\relations\BaseSchema;
@@ -8,7 +8,7 @@ use yii2rails\domain\repositories\relations\BaseSchema;
 /**
  * Class IdentitySchema
  * 
- * @package yii2module\account\domain\v3\repositories\schema
+ * @package yii2bundle\account\domain\v3\repositories\schema
  * 
  */
 class IdentitySchema extends BaseSchema {

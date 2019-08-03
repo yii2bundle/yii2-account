@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2module\account\domain\v3\interfaces\services;
+namespace yii2bundle\account\domain\v3\interfaces\services;
 
-use yii2module\account\domain\v3\entities\IdentityEntity;
-use yii2module\account\domain\v3\interfaces\entities\LoginEntityInterface;
+use yii2bundle\account\domain\v3\entities\IdentityEntity;
+use yii2bundle\account\domain\v3\interfaces\entities\LoginEntityInterface;
 use yii2rails\domain\data\Query;
 use yii2rails\domain\interfaces\services\CrudInterface;
 use yii2rails\extension\common\exceptions\AlreadyExistsException;
-use yii2module\account\domain\v3\entities\LoginEntity;
-use yii2module\account\domain\v3\forms\registration\PersonInfoForm;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\forms\registration\PersonInfoForm;
 
 /**
  * Interface LoginInterface
  *
- * @package yii2module\account\domain\v3\interfaces\services
+ * @package yii2bundle\account\domain\v3\interfaces\services
  *
  * @property integer $defaultStatus
  * @property string $defaultRole

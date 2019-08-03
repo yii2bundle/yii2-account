@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2module\account\domain\v2\repositories\filedb;
+namespace yii2bundle\account\domain\v2\repositories\filedb;
 
 use yii2rails\domain\data\Query;
 use yii2rails\extension\filedb\repositories\base\BaseActiveFiledbRepository;
-use yii2module\account\domain\v2\interfaces\repositories\TestInterface;
+use yii2bundle\account\domain\v2\interfaces\repositories\TestInterface;
 
 class TestRepository extends BaseActiveFiledbRepository implements TestInterface {
 	

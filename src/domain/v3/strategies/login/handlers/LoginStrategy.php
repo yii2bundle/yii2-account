@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\strategies\login\handlers;
+namespace yii2bundle\account\domain\v3\strategies\login\handlers;
 
 use yii2rails\domain\data\Query;
 

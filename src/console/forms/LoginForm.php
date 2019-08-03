@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2module\account\console\forms;
+namespace yii2bundle\account\console\forms;
 
 use Yii;
-use yii2module\account\domain\v3\helpers\LoginHelper;
+use yii2bundle\account\domain\v3\helpers\LoginHelper;
 use yii\base\Model;
 class LoginForm extends Model
 {

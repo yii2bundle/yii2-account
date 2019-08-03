@@ -1,18 +1,18 @@
 <?php
 
-namespace yii2module\account\domain\v2\interfaces\services;
+namespace yii2bundle\account\domain\v2\interfaces\services;
 
 use yii\web\IdentityInterface;
 use yii2rails\domain\BaseEntity;
-use yii2module\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
 
 /**
  * Interface AuthInterface
  *
- * @package yii2module\account\domain\v2\interfaces\services
+ * @package yii2bundle\account\domain\v2\interfaces\services
  *
- * @property \yii2module\account\domain\v2\interfaces\repositories\AuthInterface $repository
- * @property \yii2module\account\domain\v2\entities\LoginEntity $identity
+ * @property \yii2bundle\account\domain\v2\interfaces\repositories\AuthInterface $repository
+ * @property \yii2bundle\account\domain\v2\entities\LoginEntity $identity
  */
 interface AuthInterface {
 	

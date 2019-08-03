@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v2\services;
+namespace yii2bundle\account\domain\v2\services;
 
 use Yii;
 use yii\base\InvalidArgumentException;
@@ -19,22 +19,22 @@ use yii2rails\extension\common\helpers\StringHelper;
 use yii2rails\extension\enum\enums\TimeEnum;
 use yii2rails\extension\web\helpers\ClientHelper;
 use yii2rails\extension\yii\helpers\ArrayHelper;
-use yii2module\account\domain\v2\behaviors\UserActivityFilter;
-use yii2module\account\domain\v2\filters\token\BaseTokenFilter;
-use yii2module\account\domain\v2\filters\token\DefaultFilter;
-use yii2module\account\domain\v2\forms\LoginForm;
-use yii2module\account\domain\v2\helpers\AuthHelper;
-use yii2module\account\domain\v2\helpers\TokenHelper;
-use yii2module\account\domain\v2\interfaces\services\AuthInterface;
+use yii2bundle\account\domain\v2\behaviors\UserActivityFilter;
+use yii2bundle\account\domain\v2\filters\token\BaseTokenFilter;
+use yii2bundle\account\domain\v2\filters\token\DefaultFilter;
+use yii2bundle\account\domain\v2\forms\LoginForm;
+use yii2bundle\account\domain\v2\helpers\AuthHelper;
+use yii2bundle\account\domain\v2\helpers\TokenHelper;
+use yii2bundle\account\domain\v2\interfaces\services\AuthInterface;
 use yii\web\ServerErrorHttpException;
-use yii2module\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
 
 /**
  * Class AuthService
  *
- * @package yii2module\account\domain\v2\services
+ * @package yii2bundle\account\domain\v2\services
  *
- * @property \yii2module\account\domain\v2\interfaces\repositories\AuthInterface $repository
+ * @property \yii2bundle\account\domain\v2\interfaces\repositories\AuthInterface $repository
  */
 class AuthService extends BaseService implements AuthInterface {
 

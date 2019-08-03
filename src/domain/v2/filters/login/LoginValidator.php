@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2module\account\domain\v2\filters\login;
+namespace yii2bundle\account\domain\v2\filters\login;
 
-use yii2module\account\domain\v2\helpers\LoginHelper;
-use yii2module\account\domain\v2\interfaces\LoginValidatorInterface;
+use yii2bundle\account\domain\v2\helpers\LoginHelper;
+use yii2bundle\account\domain\v2\interfaces\LoginValidatorInterface;
 
 class LoginValidator implements LoginValidatorInterface {
 	

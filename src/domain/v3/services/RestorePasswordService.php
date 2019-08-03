@@ -1,28 +1,28 @@
 <?php
 
-namespace yii2module\account\domain\v3\services;
+namespace yii2bundle\account\domain\v3\services;
 
 use App;
 use Yii;
 use yii\web\NotFoundHttpException;
-use yii2module\account\domain\v3\enums\AccountConfirmActionEnum;
-use yii2module\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
+use yii2bundle\account\domain\v3\enums\AccountConfirmActionEnum;
+use yii2bundle\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\extension\common\exceptions\AlreadyExistsException;
 use yii2rails\extension\common\exceptions\CreatedHttpExceptionException;
-use yii2module\account\domain\v3\forms\LoginForm;
-use yii2module\account\domain\v3\forms\restorePassword\UpdatePasswordForm;
-use yii2module\account\domain\v3\interfaces\services\RestorePasswordInterface;
+use yii2bundle\account\domain\v3\forms\LoginForm;
+use yii2bundle\account\domain\v3\forms\restorePassword\UpdatePasswordForm;
+use yii2bundle\account\domain\v3\interfaces\services\RestorePasswordInterface;
 use yii2rails\domain\services\base\BaseService;
 use yii2rails\extension\enum\enums\TimeEnum;
 
 /**
  * Class RestorePasswordService
  *
- * @package yii2module\account\domain\v3\services
+ * @package yii2bundle\account\domain\v3\services
  *
- * @property-read \yii2module\account\domain\v3\interfaces\repositories\RestorePasswordInterface $repository
- * @property-read \yii2module\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\interfaces\repositories\RestorePasswordInterface $repository
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
  */
 class RestorePasswordService extends BaseService implements RestorePasswordInterface {
 	

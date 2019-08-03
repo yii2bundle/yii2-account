@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\api\v3\controllers;
+namespace yii2bundle\account\api\v3\controllers;
 
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -11,8 +11,8 @@ use yii2rails\domain\helpers\Helper;
 use yii2rails\extension\common\exceptions\AlreadyExistsException;
 use yii2rails\extension\common\exceptions\CreatedHttpExceptionException;
 use yii2rails\extension\web\helpers\Behavior;
-use yii2module\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
-use yii2module\account\domain\v3\forms\restorePassword\UpdatePasswordForm;
+use yii2bundle\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
+use yii2bundle\account\domain\v3\forms\restorePassword\UpdatePasswordForm;
 
 class RestorePasswordController extends Controller
 {

@@ -7,10 +7,10 @@ use yii2bundle\geo\domain\validators\PhoneValidator;
 use yii2lab\test\Test\Unit;
 use tests\functional\v3\enums\LoginEnum;
 use Yii;
-use yii2module\account\domain\v3\entities\LoginEntity;
-use yii2module\account\domain\v3\helpers\TestAuthHelper;
-use yii2module\account\domain\v3\validators\PasswordValidator;
-use yii2module\account\domain\v3\validators\UserLoginValidator;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\helpers\TestAuthHelper;
+use yii2bundle\account\domain\v3\validators\PasswordValidator;
+use yii2bundle\account\domain\v3\validators\UserLoginValidator;
 use yubundle\common\enums\RegexpEnum;
 
 class UserLoginValidatorTest extends Unit

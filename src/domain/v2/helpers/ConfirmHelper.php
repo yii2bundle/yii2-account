@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v2\helpers;
+namespace yii2bundle\account\domain\v2\helpers;
 
 use Exception;
 

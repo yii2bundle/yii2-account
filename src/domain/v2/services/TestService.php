@@ -1,15 +1,15 @@
 <?php
 
-namespace yii2module\account\domain\v2\services;
+namespace yii2bundle\account\domain\v2\services;
 
 use yii2rails\domain\services\base\BaseActiveService;
-use yii2module\account\domain\v2\interfaces\services\TestInterface;
+use yii2bundle\account\domain\v2\interfaces\services\TestInterface;
 
 /**
  * Class TestService
  *
- * @package yii2module\account\domain\v2\services
- * @property \yii2module\account\domain\v2\interfaces\repositories\TestInterface $repository
+ * @package yii2bundle\account\domain\v2\services
+ * @property \yii2bundle\account\domain\v2\interfaces\repositories\TestInterface $repository
  */
 class TestService extends BaseActiveService implements TestInterface {
 

@@ -1,15 +1,15 @@
 <?php
-namespace yii2module\account\module\controllers;
+namespace yii2bundle\account\module\controllers;
 
 use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii2lab\applicationTemplate\common\enums\ApplicationPermissionEnum;
 use yii2rails\extension\web\helpers\Behavior;
-use yii2module\account\domain\v3\forms\LoginForm;
+use yii2bundle\account\domain\v3\forms\LoginForm;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2bundle\navigation\domain\widgets\Alert;
-use yii2module\account\domain\v3\helpers\AuthHelper;
+use yii2bundle\account\domain\v3\helpers\AuthHelper;
 use yii\web\Response;
 
 /**

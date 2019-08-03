@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\helpers\test;
+namespace yii2bundle\account\domain\v3\helpers\test;
 
 use Yii;
 use yii2lab\notify\domain\helpers\test\NotifyTestHelper;

@@ -1,40 +1,40 @@
 <?php
 
-namespace yii2module\account\domain\v2;
+namespace yii2bundle\account\domain\v2;
 
 use yii2rails\extension\jwt\filters\token\JwtFilter;
-use yii2module\account\domain\v2\enums\AccountRoleEnum;
+use yii2bundle\account\domain\v2\enums\AccountRoleEnum;
 use yii2rails\domain\enums\Driver;
 use yii2rails\extension\enum\enums\TimeEnum;
-use yii2module\account\domain\v2\filters\login\LoginValidator;
-use yii2module\account\domain\v2\filters\token\DefaultFilter;
+use yii2bundle\account\domain\v2\filters\login\LoginValidator;
+use yii2bundle\account\domain\v2\filters\token\DefaultFilter;
 
 // todo: описание докблоков в руководство
 
 /**
  * Class Domain
  * 
- * @package yii2module\account\domain\v2
- * @property-read \yii2module\account\domain\v2\interfaces\services\AuthInterface $auth
- * @property-read \yii2module\account\domain\v2\interfaces\services\LoginInterface $login
- * @property-read \yii2module\account\domain\v2\interfaces\services\RegistrationInterface $registration
- * @property-read \yii2module\account\domain\v2\interfaces\services\TempInterface $temp
- * @property-read \yii2module\account\domain\v2\interfaces\services\RestorePasswordInterface $restorePassword
- * @property-read \yii2module\account\domain\v2\interfaces\services\SecurityInterface $security
- * @property-read \yii2module\account\domain\v2\interfaces\services\TestInterface $test
- * @property-read \yii2module\account\domain\v2\interfaces\services\RbacInterface $rbac
- * @property-read \yii2module\account\domain\v2\interfaces\services\ConfirmInterface $confirm
- * @property-read \yii2module\account\domain\v2\interfaces\repositories\RepositoriesInterface $repositories
- * @property-read \yii2module\account\domain\v2\interfaces\services\TokenInterface $token
- * @property-read \yii2module\account\domain\v2\interfaces\services\JwtInterface $jwt
- * @property-read \yii2module\account\domain\v2\interfaces\services\ActivityInterface $activity
- * @property-read \yii2module\account\domain\v2\interfaces\services\OauthInterface $oauth
+ * @package yii2bundle\account\domain\v2
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\AuthInterface $auth
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\LoginInterface $login
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\RegistrationInterface $registration
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\TempInterface $temp
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\RestorePasswordInterface $restorePassword
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\SecurityInterface $security
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\TestInterface $test
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\RbacInterface $rbac
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\ConfirmInterface $confirm
+ * @property-read \yii2bundle\account\domain\v2\interfaces\repositories\RepositoriesInterface $repositories
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\TokenInterface $token
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\JwtInterface $jwt
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\ActivityInterface $activity
+ * @property-read \yii2bundle\account\domain\v2\interfaces\services\OauthInterface $oauth
  */
 class Domain extends \yii2rails\domain\Domain {
 	
 	public function config() {
 		$remoteServiceDriver = $this->primaryDriver == Driver::CORE ? Driver::CORE : null;
-		$serviceNamespace = $this->primaryDriver == Driver::CORE ? 'yii2module\account\domain\v2\services\core' : 'yii2module\account\domain\v2\services';
+		$serviceNamespace = $this->primaryDriver == Driver::CORE ? 'yii2bundle\account\domain\v2\services\core' : 'yii2bundle\account\domain\v2\services';
 		return [
 			'repositories' => [
 				'auth' => $this->primaryDriver,

@@ -1,9 +1,9 @@
 <?php
 
-namespace yii2module\account\domain\v2\filters\token;
+namespace yii2bundle\account\domain\v2\filters\token;
 
 use yii\web\IdentityInterface;
-use yii2module\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
 
 class DefaultFilter extends BaseTokenFilter {
 	

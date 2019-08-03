@@ -1,13 +1,13 @@
 <?php
-namespace yii2module\account\module\controllers;
+namespace yii2bundle\account\module\controllers;
 
 use yii2rails\domain\base\Model;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\extension\web\helpers\Behavior;
-use yii2module\account\domain\v3\enums\AccountConfirmActionEnum;
-use yii2module\account\domain\v3\forms\RegistrationForm;
-use yii2module\account\domain\v3\services\RegistrationService;
-use yii2module\account\module\forms\SetSecurityForm;
+use yii2bundle\account\domain\v3\enums\AccountConfirmActionEnum;
+use yii2bundle\account\domain\v3\forms\RegistrationForm;
+use yii2bundle\account\domain\v3\services\RegistrationService;
+use yii2bundle\account\module\forms\SetSecurityForm;
 use Yii;
 use yii\web\Controller;
 use yii2bundle\navigation\domain\widgets\Alert;

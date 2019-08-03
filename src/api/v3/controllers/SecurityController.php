@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\api\v3\controllers;
+namespace yii2bundle\account\api\v3\controllers;
 
 use yii2lab\rest\domain\rest\Controller;
 use yii2rails\extension\web\helpers\Behavior;

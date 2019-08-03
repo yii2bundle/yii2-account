@@ -1,16 +1,16 @@
 <?php
 
-namespace yii2module\account\domain\v3\interfaces\entities;
+namespace yii2bundle\account\domain\v3\interfaces\entities;
 
 use yii\web\IdentityInterface;
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\interfaces\repositories\CrudInterface;
-use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
 
 /**
  * Interface LoginEntityInterface
  *
- * @package yii2module\account\domain\v3\interfaces\entities
+ * @package yii2bundle\account\domain\v3\interfaces\entities
  *
  * @property integer          $id
  * @property string           $login

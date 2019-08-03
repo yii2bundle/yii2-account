@@ -1,13 +1,13 @@
 <?php
 
-namespace yii2module\account\domain\v2\dto;
+namespace yii2bundle\account\domain\v2\dto;
 
 use yii2rails\domain\base\BaseDto;
 
 /**
  * Class TokenDto
  *
- * @package yii2module\account\domain\v2\dto
+ * @package yii2bundle\account\domain\v2\dto
  *
  * @property $token
  * @property $type

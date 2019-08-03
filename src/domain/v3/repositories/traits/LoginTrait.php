@@ -1,20 +1,20 @@
 <?php
 
-namespace yii2module\account\domain\v3\repositories\traits;
+namespace yii2bundle\account\domain\v3\repositories\traits;
 
-use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
 use yii2rails\domain\data\Query;
 use yii2rails\extension\activeRecord\repositories\base\BaseActiveArRepository;
-use yii2module\account\domain\v3\interfaces\repositories\IdentityInterface;
+use yii2bundle\account\domain\v3\interfaces\repositories\IdentityInterface;
 use yii2rails\domain\repositories\BaseRepository;
 
 /**
  * Trait LoginTrait
  *
- * @package yii2module\account\domain\v3\repositories\traits
+ * @package yii2bundle\account\domain\v3\repositories\traits
  * @property Alias $alias
  * @property ActiveRecordInterface $model
- * @property \yii2module\account\domain\v3\Domain $domain
+ * @property \yii2bundle\account\domain\v3\Domain $domain
  */
 trait LoginTrait {
 	

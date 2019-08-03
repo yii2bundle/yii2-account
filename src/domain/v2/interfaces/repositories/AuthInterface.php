@@ -1,8 +1,8 @@
 <?php
 
-namespace yii2module\account\domain\v2\interfaces\repositories;
+namespace yii2bundle\account\domain\v2\interfaces\repositories;
 
-use yii2module\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
 
 interface AuthInterface {
 	

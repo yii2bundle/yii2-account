@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\interfaces\repositories;
+namespace yii2bundle\account\domain\v3\interfaces\repositories;
 
 use yii2rails\domain\interfaces\repositories\CrudInterface;
 

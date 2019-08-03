@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2module\account\domain\v2\entities;
+namespace yii2bundle\account\domain\v2\entities;
 
 use paulzi\jsonBehavior\JsonValidator;
 use yii2rails\domain\BaseEntity;
 use yii2rails\domain\values\TimeValue;
-use yii2module\account\domain\v2\exceptions\ConfirmIncorrectCodeException;
-use yii2module\account\domain\v2\helpers\ConfirmHelper;
-use yii2module\account\domain\v2\helpers\LoginHelper;
-use yii2module\account\domain\v2\validators\LoginValidator;
+use yii2bundle\account\domain\v2\exceptions\ConfirmIncorrectCodeException;
+use yii2bundle\account\domain\v2\helpers\ConfirmHelper;
+use yii2bundle\account\domain\v2\helpers\LoginHelper;
+use yii2bundle\account\domain\v2\validators\LoginValidator;
 
 /**
  * Class ConfirmEntity
  *
- * @package yii2module\account\domain\v2\entities
+ * @package yii2bundle\account\domain\v2\entities
  *
  * @property $login
  * @property $action

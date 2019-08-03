@@ -1,8 +1,8 @@
 <?php
 
-namespace yii2module\account\domain\v3\strategies\login\handlers;
+namespace yii2bundle\account\domain\v3\strategies\login\handlers;
 
-use yii2module\account\domain\v3\entities\ContactEntity;
+use yii2bundle\account\domain\v3\entities\ContactEntity;
 
 class BaseContactStrategy implements HandlerInterface {
 	

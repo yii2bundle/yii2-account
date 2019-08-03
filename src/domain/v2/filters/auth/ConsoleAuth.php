@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v2\filters\auth;
+namespace yii2bundle\account\domain\v2\filters\auth;
 
 use Yii;
 use yii\filters\auth\AuthMethod;
@@ -11,8 +11,8 @@ use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\extension\console\helpers\Error;
 use yii2rails\extension\console\helpers\input\Enter;
 use yii2rails\extension\enum\enums\TimeEnum;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\forms\LoginForm;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\forms\LoginForm;
 
 class ConsoleAuth extends AuthMethod
 {

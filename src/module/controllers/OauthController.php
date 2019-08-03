@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\module\controllers;
+namespace yii2bundle\account\module\controllers;
 
 use yii\authclient\BaseOAuth;
 use yii\filters\AccessControl;

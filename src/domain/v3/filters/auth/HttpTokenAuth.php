@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2module\account\domain\v3\filters\auth;
+namespace yii2bundle\account\domain\v3\filters\auth;
 
 use yii\filters\auth\AuthMethod;
 use yii\web\Request;
 use yii\web\Response;
-use yii2module\account\domain\v3\helpers\AuthHelper;
+use yii2bundle\account\domain\v3\helpers\AuthHelper;
 
 class HttpTokenAuth extends AuthMethod
 {

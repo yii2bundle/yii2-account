@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\entities;
+namespace yii2bundle\account\domain\v3\entities;
 
 use yii2rails\domain\data\Query;
 use yii2rails\extension\arrayTools\helpers\ArrayIterator;
@@ -15,13 +15,13 @@ use yubundle\user\domain\v1\entities\PersonEntity;
 use yii\helpers\ArrayHelper;
 use yii2rails\domain\BaseEntity;
 use yii2rails\domain\values\TimeValue;
-use yii2module\account\domain\v3\entities\SecurityEntity;
-use yii2module\account\domain\v3\interfaces\entities\LoginEntityInterface;
+use yii2bundle\account\domain\v3\entities\SecurityEntity;
+use yii2bundle\account\domain\v3\interfaces\entities\LoginEntityInterface;
 
 /**
  * Class LoginEntity
  *
- * @package yii2module\account\domain\v3\entities
+ * @package yii2bundle\account\domain\v3\entities
  *
  * @property integer          $id
  * @property string           $login

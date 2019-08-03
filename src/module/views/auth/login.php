@@ -5,7 +5,7 @@
 
 use yii\helpers\Html;
 use yii2rails\app\domain\helpers\EnvService;
-use yii2module\account\domain\v3\forms\LoginForm;
+use yii2bundle\account\domain\v3\forms\LoginForm;
 
 $this->title = Yii::t('account/auth', 'login_title');
 //\App::$domain->navigation->breadcrumbs->create($this->title);

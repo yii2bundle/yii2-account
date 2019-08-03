@@ -1,17 +1,17 @@
 <?php
 
-namespace yii2module\account\domain\v3\repositories\filedb;
+namespace yii2bundle\account\domain\v3\repositories\filedb;
 
-use yii2module\account\domain\v3\interfaces\repositories\ContactInterface;
+use yii2bundle\account\domain\v3\interfaces\repositories\ContactInterface;
 use yii2rails\domain\repositories\BaseRepository;
 use yii2rails\extension\filedb\repositories\base\BaseActiveFiledbRepository;
 
 /**
  * Class ContactRepository
  * 
- * @package yii2module\account\domain\v3\repositories\ar
+ * @package yii2bundle\account\domain\v3\repositories\ar
  * 
- * @property-read \yii2module\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
  */
 class ContactRepository extends BaseActiveFiledbRepository implements ContactInterface {
 	

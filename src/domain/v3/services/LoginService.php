@@ -1,40 +1,40 @@
 <?php
 
-namespace yii2module\account\domain\v3\services;
+namespace yii2bundle\account\domain\v3\services;
 
 use App;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
-use yii2module\account\domain\v3\entities\IdentityEntity;
-use yii2module\account\domain\v3\strategies\login\LoginContext;
+use yii2bundle\account\domain\v3\entities\IdentityEntity;
+use yii2bundle\account\domain\v3\strategies\login\LoginContext;
 use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\domain\behaviors\query\QueryFilter;
 use yii2rails\domain\data\Query;
-use yii2module\account\domain\v3\entities\LoginEntity;
-use yii2module\account\domain\v3\forms\registration\PersonInfoForm;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\forms\registration\PersonInfoForm;
 use yii2rails\extension\common\enums\StatusEnum;
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
-use yii2module\account\domain\v3\interfaces\services\LoginInterface;
+use yii2bundle\account\domain\v3\interfaces\services\LoginInterface;
 use yubundle\user\domain\v1\entities\ClientEntity;
 use yubundle\user\domain\v1\entities\PersonEntity;
 use yii2rails\domain\services\base\BaseActiveService;
 use yii2rails\extension\common\helpers\InstanceHelper;
-use yii2module\account\domain\v3\filters\login\LoginValidator;
-use yii2module\account\domain\v3\interfaces\LoginValidatorInterface;
-use yii2module\account\domain\v3\strategies\login\handlers\EmailStrategy;
-use yii2module\account\domain\v3\strategies\login\handlers\LoginStrategy;
-use yii2module\account\domain\v3\strategies\login\handlers\PhoneStrategy;
-use yii2module\account\domain\v3\strategies\login\handlers\TokenStrategy;
+use yii2bundle\account\domain\v3\filters\login\LoginValidator;
+use yii2bundle\account\domain\v3\interfaces\LoginValidatorInterface;
+use yii2bundle\account\domain\v3\strategies\login\handlers\EmailStrategy;
+use yii2bundle\account\domain\v3\strategies\login\handlers\LoginStrategy;
+use yii2bundle\account\domain\v3\strategies\login\handlers\PhoneStrategy;
+use yii2bundle\account\domain\v3\strategies\login\handlers\TokenStrategy;
 
 /**
  * Class LoginService
  *
- * @package yii2module\account\domain\v3\services
+ * @package yii2bundle\account\domain\v3\services
  *
- * @property \yii2module\account\domain\v3\interfaces\repositories\LoginInterface $repository
- * @property \yii2module\account\domain\v3\Domain $domain
+ * @property \yii2bundle\account\domain\v3\interfaces\repositories\LoginInterface $repository
+ * @property \yii2bundle\account\domain\v3\Domain $domain
  */
 class LoginService extends BaseActiveService implements LoginInterface {
 	
@@ -145,7 +145,7 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	/**
 	 * @param $login
 	 *
-	 * @return \yii2module\account\domain\v3\entities\LoginEntity
+	 * @return \yii2bundle\account\domain\v3\entities\LoginEntity
 	 *
 	 * @throws NotFoundHttpException
 	 */

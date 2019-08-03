@@ -1,14 +1,14 @@
 <?php
 
-namespace yii2module\account\domain\v2\repositories\test;
+namespace yii2bundle\account\domain\v2\repositories\test;
 
-use yii2module\account\domain\v2\interfaces\repositories\RestorePasswordInterface;
+use yii2bundle\account\domain\v2\interfaces\repositories\RestorePasswordInterface;
 use yii2rails\domain\repositories\BaseRepository;
 
 /**
  * Class RestorePasswordRepository
  *
- * @package yii2module\account\domain\v2\repositories\test
+ * @package yii2bundle\account\domain\v2\repositories\test
  *
  * @deprecated
  */

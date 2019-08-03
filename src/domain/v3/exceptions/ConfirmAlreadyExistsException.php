@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\exceptions;
+namespace yii2bundle\account\domain\v3\exceptions;
 
 use yii\base\Exception;
 

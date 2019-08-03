@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v2\repositories\core;
+namespace yii2bundle\account\domain\v2\repositories\core;
 
 use Yii;
 use yii\web\IdentityInterface;
@@ -12,8 +12,8 @@ use yii2rails\domain\traits\repository\CacheTrait;
 use yii2rails\extension\web\enums\HttpHeaderEnum;
 use yii2rails\extension\enum\enums\TimeEnum;
 use yii2lab\rest\domain\helpers\RestHelper;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\interfaces\repositories\LoginInterface;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\interfaces\repositories\LoginInterface;
 
 class LoginRepository extends BaseActiveCoreRepository implements LoginInterface {
 	

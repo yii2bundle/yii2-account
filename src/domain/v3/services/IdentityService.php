@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2module\account\domain\v3\services;
+namespace yii2bundle\account\domain\v3\services;
 
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\data\Query;
-use yii2module\account\domain\v3\interfaces\services\IdentityInterface;
+use yii2bundle\account\domain\v3\interfaces\services\IdentityInterface;
 use yii2rails\domain\services\base\BaseActiveService;
 
 /**
  * Class IdentityService
  * 
- * @package yii2module\account\domain\v3\services
+ * @package yii2bundle\account\domain\v3\services
  * 
- * @property-read \yii2module\account\domain\v3\Domain $domain
- * @property-read \yii2module\account\domain\v3\interfaces\repositories\IdentityInterface $repository
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\interfaces\repositories\IdentityInterface $repository
  */
 class IdentityService extends BaseActiveService implements IdentityInterface {
 	

@@ -3,7 +3,7 @@
 namespace tests\unit\v3\helpers;
 
 use yii2lab\test\Test\Unit;
-use yii2module\account\domain\v3\helpers\LoginHelper;
+use yii2bundle\account\domain\v3\helpers\LoginHelper;
 
 class LoginHelperTest extends Unit
 {

@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2module\account\domain\v3\services\core;
+namespace yii2bundle\account\domain\v3\services\core;
 
 use yii2rails\extension\core\domain\repositories\base\BaseCoreRepository;
 use yii2rails\extension\core\domain\services\base\BaseCoreService;
 use yii2rails\domain\helpers\Helper;
-use yii2module\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
-use yii2module\account\domain\v3\forms\registration\PersonInfoForm;
-use yii2module\account\domain\v3\forms\RegistrationForm;
-use yii2module\account\domain\v3\interfaces\services\RegistrationInterface;
+use yii2bundle\account\domain\v3\exceptions\ConfirmAlreadyExistsException;
+use yii2bundle\account\domain\v3\forms\registration\PersonInfoForm;
+use yii2bundle\account\domain\v3\forms\RegistrationForm;
+use yii2bundle\account\domain\v3\interfaces\services\RegistrationInterface;
 
 /**
  * Class RegistrationService
  *
- * @package yii2module\account\domain\v3\services\core
+ * @package yii2bundle\account\domain\v3\services\core
  *
  * @property-read BaseCoreRepository $repository
  */

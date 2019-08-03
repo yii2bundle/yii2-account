@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2module\account\domain\v2\repositories\ar;
+namespace yii2bundle\account\domain\v2\repositories\ar;
 
 use yii2rails\extension\activeRecord\repositories\base\BaseActiveArRepository;
-use yii2module\account\domain\v2\interfaces\repositories\LoginInterface;
-use yii2module\account\domain\v2\repositories\traits\LoginTrait;
+use yii2bundle\account\domain\v2\interfaces\repositories\LoginInterface;
+use yii2bundle\account\domain\v2\repositories\traits\LoginTrait;
 
 class LoginRepository extends BaseActiveArRepository implements LoginInterface {
 

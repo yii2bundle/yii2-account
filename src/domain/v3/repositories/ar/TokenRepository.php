@@ -1,17 +1,17 @@
 <?php
 
-namespace yii2module\account\domain\v3\repositories\ar;
+namespace yii2bundle\account\domain\v3\repositories\ar;
 
 use yii2rails\domain\data\Query;
 use yii2rails\extension\activeRecord\repositories\base\BaseActiveArRepository;
-use yii2module\account\domain\v3\interfaces\repositories\TokenInterface;
+use yii2bundle\account\domain\v3\interfaces\repositories\TokenInterface;
 
 /**
  * Class TokenRepository
  * 
- * @package yii2module\account\domain\v3\repositories\ar
+ * @package yii2bundle\account\domain\v3\repositories\ar
  * 
- * @property-read \yii2module\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
  */
 class TokenRepository extends BaseActiveArRepository implements TokenInterface {
 

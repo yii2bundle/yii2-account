@@ -14,7 +14,7 @@ return [
 	'modules' => [
 		// ...
 		'account' => [
-			'class' => 'yii2module\account\api\Module',
+			'class' => 'yii2bundle\account\api\Module',
 		],
 		// ...
 	],
@@ -28,7 +28,7 @@ return [
 	'modules' => [
 		// ...
 		'user' => [
-			'class' => 'yii2module\account\module\Module',
+			'class' => 'yii2bundle\account\module\Module',
 		],
 		// ...
 	],
@@ -42,10 +42,10 @@ return [
 	'modules' => [
 		// ...
 		'user' => [
-			'class' => 'yii2module\account\module\Module',
+			'class' => 'yii2bundle\account\module\Module',
 			'controllerMap' => [
 				'auth' => [
-					'class' => 'yii2module\account\module\controllers\AuthController',
+					'class' => 'yii2bundle\account\module\controllers\AuthController',
 					'layout' => '@yii2lab/misc/backend/views/layouts/singleForm.php',
 				],
 			],
@@ -63,7 +63,7 @@ return [
 		// ...
 		'account' => [
 			'class' => 'yii2rails\domain\Domain',
-			'path' => 'yii2module\account\domain',
+			'path' => 'yii2bundle\account\domain',
 			'repositories' => [
 				'auth' => Driver::remote(),
 				'login' => Driver::remote(),

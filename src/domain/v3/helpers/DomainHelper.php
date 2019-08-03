@@ -1,16 +1,16 @@
 <?php
 
-namespace yii2module\account\domain\v3\helpers;
+namespace yii2bundle\account\domain\v3\helpers;
 
 use yii\helpers\ArrayHelper;
-use yii2module\account\domain\v3\filters\token\DefaultFilter;
+use yii2bundle\account\domain\v3\filters\token\DefaultFilter;
 use yii2rails\domain\enums\Driver;
 
 class DomainHelper  {
 
     public static function config($config = []) {
         $baseConfig = [
-            'class' => 'yii2module\account\domain\v3\Domain',
+            'class' => 'yii2bundle\account\domain\v3\Domain',
             'services' => [
                 'auth' => [
                     'tokenAuthMethods' => [

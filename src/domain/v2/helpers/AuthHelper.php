@@ -1,14 +1,14 @@
 <?php
 
-namespace yii2module\account\domain\v2\helpers;
+namespace yii2bundle\account\domain\v2\helpers;
 
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\IdentityInterface;
 use yii2rails\extension\registry\helpers\Registry;
 use yii2rails\extension\web\enums\HttpHeaderEnum;
-use yii2module\account\domain\v2\dto\TokenDto;
-use yii2module\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\dto\TokenDto;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
 
 class AuthHelper {
 

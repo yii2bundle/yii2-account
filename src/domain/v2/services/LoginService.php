@@ -1,16 +1,16 @@
 <?php
 
-namespace yii2module\account\domain\v2\services;
+namespace yii2bundle\account\domain\v2\services;
 
 use yii2rails\domain\data\Query;
 use yii2rails\domain\helpers\Helper;
 use yii2rails\domain\services\base\BaseActiveService;
 use yii2rails\extension\common\helpers\InstanceHelper;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\filters\login\LoginValidator;
-use yii2module\account\domain\v2\interfaces\LoginValidatorInterface;
-use yii2module\account\domain\v2\interfaces\services\LoginInterface;
-use yii2module\account\domain\v2\forms\LoginForm;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\filters\login\LoginValidator;
+use yii2bundle\account\domain\v2\interfaces\LoginValidatorInterface;
+use yii2bundle\account\domain\v2\interfaces\services\LoginInterface;
+use yii2bundle\account\domain\v2\forms\LoginForm;
 use yii2rails\domain\helpers\ErrorCollection;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii\web\NotFoundHttpException;
@@ -18,10 +18,10 @@ use yii\web\NotFoundHttpException;
 /**
  * Class LoginService
  *
- * @package yii2module\account\domain\v2\services
+ * @package yii2bundle\account\domain\v2\services
  *
- * @property \yii2module\account\domain\v2\interfaces\repositories\LoginInterface $repository
- * @property \yii2module\account\domain\v2\Domain $domain
+ * @property \yii2bundle\account\domain\v2\interfaces\repositories\LoginInterface $repository
+ * @property \yii2bundle\account\domain\v2\Domain $domain
  */
 class LoginService extends BaseActiveService implements LoginInterface {
 
@@ -54,7 +54,7 @@ class LoginService extends BaseActiveService implements LoginInterface {
 	/**
 	 * @param $login
 	 *
-	 * @return \yii2module\account\domain\v2\entities\LoginEntity
+	 * @return \yii2bundle\account\domain\v2\entities\LoginEntity
 	 *
 	 * @throws NotFoundHttpException
 	 */

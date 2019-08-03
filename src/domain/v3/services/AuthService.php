@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\services;
+namespace yii2bundle\account\domain\v3\services;
 
 use Yii;
 use yii\base\InvalidArgumentException;
@@ -9,7 +9,7 @@ use yii\web\ForbiddenHttpException;
 use yii\web\IdentityInterface;
 use yii\web\NotFoundHttpException;
 use yii\web\UnauthorizedHttpException;
-use yii2module\account\domain\v3\helpers\LoginTypeHelper;
+use yii2bundle\account\domain\v3\helpers\LoginTypeHelper;
 use yii2rails\domain\BaseEntity;
 use yii2rails\domain\data\Query;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
@@ -21,24 +21,24 @@ use yii2rails\extension\common\helpers\StringHelper;
 use yii2rails\extension\enum\enums\TimeEnum;
 use yii2rails\extension\web\helpers\ClientHelper;
 use yii2rails\extension\yii\helpers\ArrayHelper;
-use yii2module\account\domain\v3\behaviors\UserActivityFilter;
-use yii2module\account\domain\v3\enums\AccountEventEnum;
-use yii2module\account\domain\v3\events\AccountAuthenticationEvent;
-use yii2module\account\domain\v3\filters\token\BaseTokenFilter;
-use yii2module\account\domain\v3\filters\token\DefaultFilter;
-use yii2module\account\domain\v3\forms\LoginForm;
-use yii2module\account\domain\v3\helpers\AuthHelper;
-use yii2module\account\domain\v3\helpers\TokenHelper;
-use yii2module\account\domain\v3\interfaces\services\AuthInterface;
+use yii2bundle\account\domain\v3\behaviors\UserActivityFilter;
+use yii2bundle\account\domain\v3\enums\AccountEventEnum;
+use yii2bundle\account\domain\v3\events\AccountAuthenticationEvent;
+use yii2bundle\account\domain\v3\filters\token\BaseTokenFilter;
+use yii2bundle\account\domain\v3\filters\token\DefaultFilter;
+use yii2bundle\account\domain\v3\forms\LoginForm;
+use yii2bundle\account\domain\v3\helpers\AuthHelper;
+use yii2bundle\account\domain\v3\helpers\TokenHelper;
+use yii2bundle\account\domain\v3\interfaces\services\AuthInterface;
 use yii\web\ServerErrorHttpException;
-use yii2module\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
 
 /**
  * Class AuthService
  *
- * @package yii2module\account\domain\v3\services
+ * @package yii2bundle\account\domain\v3\services
  *
- * @property \yii2module\account\domain\v3\interfaces\repositories\AuthInterface $repository
+ * @property \yii2bundle\account\domain\v3\interfaces\repositories\AuthInterface $repository
  */
 class AuthService extends BaseService implements AuthInterface {
 

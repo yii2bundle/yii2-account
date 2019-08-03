@@ -1,15 +1,15 @@
 <?php
 
-namespace yii2module\account\domain\v2\helpers;
+namespace yii2bundle\account\domain\v2\helpers;
 
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\web\IdentityInterface;
 use yii2rails\extension\common\helpers\StringHelper;
 use yii2rails\extension\yii\helpers\ArrayHelper;
-use yii2module\account\domain\v2\dto\TokenDto;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\filters\token\BaseTokenFilter;
+use yii2bundle\account\domain\v2\dto\TokenDto;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\filters\token\BaseTokenFilter;
 
 class TokenHelper {
 	

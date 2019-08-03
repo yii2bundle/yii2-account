@@ -1,17 +1,17 @@
 <?php
 
-namespace yii2module\account\domain\v2\web;
+namespace yii2bundle\account\domain\v2\web;
 
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\UnauthorizedHttpException;
-use yii2module\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\base\InvalidValueException;
 use yii\filters\auth\AuthMethod;
 use yii\web\IdentityInterface;
-use yii2module\account\domain\v2\helpers\AuthHelper;
+use yii2bundle\account\domain\v2\helpers\AuthHelper;
 
 /**
  * @property-read User $model

@@ -1,22 +1,22 @@
 <?php
 
-namespace yii2module\account\domain\v2\services;
+namespace yii2bundle\account\domain\v2\services;
 
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\helpers\Helper;
 use yii2rails\domain\services\base\BaseService;
 use yii2rails\extension\enum\enums\TimeEnum;
-use yii2module\account\domain\v2\entities\ConfirmEntity;
-use yii2module\account\domain\v2\enums\AccountConfirmActionEnum;
-use yii2module\account\domain\v2\exceptions\ConfirmIncorrectCodeException;
-use yii2module\account\domain\v2\helpers\LoginHelper;
+use yii2bundle\account\domain\v2\entities\ConfirmEntity;
+use yii2bundle\account\domain\v2\enums\AccountConfirmActionEnum;
+use yii2bundle\account\domain\v2\exceptions\ConfirmIncorrectCodeException;
+use yii2bundle\account\domain\v2\helpers\LoginHelper;
 use Yii;
-use yii2module\account\domain\v2\forms\RegistrationForm;
+use yii2bundle\account\domain\v2\forms\RegistrationForm;
 use yii2rails\domain\helpers\ErrorCollection;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
-use yii2module\account\domain\v2\interfaces\repositories\LoginInterface;
-use yii2module\account\domain\v2\interfaces\services\RegistrationInterface;
+use yii2bundle\account\domain\v2\interfaces\repositories\LoginInterface;
+use yii2bundle\account\domain\v2\interfaces\services\RegistrationInterface;
 
 class RegistrationService extends BaseService implements RegistrationInterface {
 

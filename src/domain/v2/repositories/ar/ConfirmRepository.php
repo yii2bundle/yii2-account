@@ -1,14 +1,14 @@
 <?php
 
-namespace yii2module\account\domain\v2\repositories\ar;
+namespace yii2bundle\account\domain\v2\repositories\ar;
 
 use yii2rails\extension\activeRecord\repositories\base\BaseActiveArRepository;
-use yii2module\account\domain\v2\interfaces\repositories\ConfirmInterface;
-use yii2module\account\domain\v2\models\UserConfirm;
+use yii2bundle\account\domain\v2\interfaces\repositories\ConfirmInterface;
+use yii2bundle\account\domain\v2\models\UserConfirm;
 
 class ConfirmRepository extends BaseActiveArRepository implements ConfirmInterface {
 	
-	protected $modelClass = 'yii2module\account\domain\v2\models\UserConfirm';
+	protected $modelClass = 'yii2bundle\account\domain\v2\models\UserConfirm';
 	protected $primaryKey = false;
 	
 	public function uniqueFields() {

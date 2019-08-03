@@ -1,25 +1,25 @@
 <?php
 
-namespace yii2module\account\domain\v3\strategies\token;
+namespace yii2bundle\account\domain\v3\strategies\token;
 
 use yii\base\InvalidArgumentException;
-use yii2module\account\domain\v3\helpers\LoginTypeHelper;
-use yii2module\account\domain\v3\helpers\TokenHelper;
-use yii2module\account\domain\v3\strategies\token\handlers\EmailStrategy;
-use yii2module\account\domain\v3\strategies\token\handlers\JwtStrategy;
-use yii2module\account\domain\v3\strategies\token\handlers\LoginStrategy;
-use yii2module\account\domain\v3\strategies\token\handlers\PhoneStrategy;
-use yii2module\account\domain\v3\strategies\token\handlers\TokenStrategy;
+use yii2bundle\account\domain\v3\helpers\LoginTypeHelper;
+use yii2bundle\account\domain\v3\helpers\TokenHelper;
+use yii2bundle\account\domain\v3\strategies\token\handlers\EmailStrategy;
+use yii2bundle\account\domain\v3\strategies\token\handlers\JwtStrategy;
+use yii2bundle\account\domain\v3\strategies\token\handlers\LoginStrategy;
+use yii2bundle\account\domain\v3\strategies\token\handlers\PhoneStrategy;
+use yii2bundle\account\domain\v3\strategies\token\handlers\TokenStrategy;
 use yii2rails\domain\BaseEntity;
 use yii2rails\domain\data\Query;
 use yii2rails\domain\dto\WithDto;
 use yii2rails\domain\entities\relation\RelationEntity;
 use yii2rails\domain\enums\RelationEnum;
 use yii2rails\extension\scenario\base\BaseStrategyContextHandlers;
-use yii2module\account\domain\v3\strategies\token\handlers\One;
-use yii2module\account\domain\v3\strategies\token\handlers\Many;
-use yii2module\account\domain\v3\strategies\token\handlers\ManyToMany;
-use yii2module\account\domain\v3\strategies\token\handlers\HandlerInterface;
+use yii2bundle\account\domain\v3\strategies\token\handlers\One;
+use yii2bundle\account\domain\v3\strategies\token\handlers\Many;
+use yii2bundle\account\domain\v3\strategies\token\handlers\ManyToMany;
+use yii2bundle\account\domain\v3\strategies\token\handlers\HandlerInterface;
 
 /**
  * Class PaymentStrategy

@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\helpers\test;
+namespace yii2bundle\account\domain\v3\helpers\test;
 
 use yii2lab\test\helpers\BaseCacheTestHelper;
 

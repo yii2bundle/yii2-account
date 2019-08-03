@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\services;
+namespace yii2bundle\account\domain\v3\services;
 
 use Yii;
 use yii\authclient\BaseOAuth;
@@ -9,16 +9,16 @@ use yii\web\NotFoundHttpException;
 use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\domain\enums\Driver;
 use yii2rails\domain\helpers\factory\RepositoryFactoryHelper;
-use yii2module\account\domain\v3\entities\LoginEntity;
-use yii2module\account\domain\v3\interfaces\services\OauthInterface;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\interfaces\services\OauthInterface;
 use yii2rails\domain\services\base\BaseService;
 
 /**
  * Class OauthService
  * 
- * @package yii2module\account\domain\v3\services
+ * @package yii2bundle\account\domain\v3\services
  * 
- * @property-read \yii2module\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
  */
 class OauthService extends BaseService implements OauthInterface {
 	
@@ -27,7 +27,7 @@ class OauthService extends BaseService implements OauthInterface {
 		'rUser',
 	];
 	
-	/** @var \yii2module\account\domain\v3\interfaces\repositories\LoginInterface */
+	/** @var \yii2bundle\account\domain\v3\interfaces\repositories\LoginInterface */
 	private $_arLoginRepository;
 	
 	public function init() {
@@ -39,7 +39,7 @@ class OauthService extends BaseService implements OauthInterface {
 			]);
 		}
 		try {
-			/** @var \yii2module\account\domain\v3\interfaces\repositories\LoginInterface $arLoginRepository */
+			/** @var \yii2bundle\account\domain\v3\interfaces\repositories\LoginInterface $arLoginRepository */
 			$this->_arLoginRepository = RepositoryFactoryHelper::createObject('identity', Driver::ACTIVE_RECORD, \App::$domain->account);
 		} catch(\yii\db\Exception $e) {
 		

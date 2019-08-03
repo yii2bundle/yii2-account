@@ -1,11 +1,11 @@
 <?php
 
-namespace yii2module\account\domain\v3\forms\restorePassword;
+namespace yii2bundle\account\domain\v3\forms\restorePassword;
 
 use Yii;
 use yii\base\Model;
 use yii2bundle\geo\domain\validators\PhoneValidator;
-use yii2module\account\domain\v3\validators\PasswordValidator;
+use yii2bundle\account\domain\v3\validators\PasswordValidator;
 use yii2rails\domain\helpers\Helper;
 
 class UpdatePasswordForm extends Model {

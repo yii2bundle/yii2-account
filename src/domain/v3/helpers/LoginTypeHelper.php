@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\helpers;
+namespace yii2bundle\account\domain\v3\helpers;
 
 use yii2rails\extension\common\enums\RegexpPatternEnum;
 use yii2rails\extension\common\helpers\StringHelper;
@@ -69,7 +69,7 @@ class LoginTypeHelper  {
 	
 	public static function isToken($login) {
         $login = self::normalizeToken($login);
-		return preg_match('/^([0-9a-z]+)\s(\S+)$/i', $login);
+		return preg_match('/^([0-9a-z]+)\s+(\S+)$/i', $login);
 	}
 	
 	public static function isLogin($login) {

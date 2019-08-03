@@ -1,22 +1,22 @@
 <?php
 
-namespace yii2module\account\domain\v2\services;
+namespace yii2bundle\account\domain\v2\services;
 
 use Yii;
 use yii2rails\domain\data\Query;
 use yii2rails\domain\helpers\Helper;
 use yii2rails\domain\services\base\BaseActiveService;
-use yii2module\account\domain\v2\entities\SecurityEntity;
-use yii2module\account\domain\v2\forms\ChangeEmailForm;
-use yii2module\account\domain\v2\forms\ChangePasswordForm;
-use yii2module\account\domain\v2\interfaces\services\SecurityInterface;
+use yii2bundle\account\domain\v2\entities\SecurityEntity;
+use yii2bundle\account\domain\v2\forms\ChangeEmailForm;
+use yii2bundle\account\domain\v2\forms\ChangePasswordForm;
+use yii2bundle\account\domain\v2\interfaces\services\SecurityInterface;
 
 /**
  * Class SecurityService
  *
- * @package yii2module\account\domain\v2\services
+ * @package yii2bundle\account\domain\v2\services
  *
- * @property-read \yii2module\account\domain\v2\interfaces\repositories\SecurityInterface $repository
+ * @property-read \yii2bundle\account\domain\v2\interfaces\repositories\SecurityInterface $repository
  */
 class SecurityService extends BaseActiveService implements SecurityInterface {
 	

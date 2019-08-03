@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\helpers;
+namespace yii2bundle\account\domain\v3\helpers;
 
 use domain\mail\v1\enums\MailSocketEventEnum;
 use PHPSocketIO\Socket;
@@ -10,14 +10,14 @@ use yii\web\UnauthorizedHttpException;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\extension\console\enums\TypeMessageEnum;
 use yii2rails\extension\console\helpers\Output;
-use yii2module\account\domain\v3\entities\LoginEntity;
-use yii2module\account\domain\v3\entities\SocketConnectEntity;
-use yii2module\account\domain\v3\entities\SocketEventEntity;
-use yii2module\account\domain\v3\forms\LoginForm;
+use yii2bundle\account\domain\v3\entities\LoginEntity;
+use yii2bundle\account\domain\v3\entities\SocketConnectEntity;
+use yii2bundle\account\domain\v3\entities\SocketEventEntity;
+use yii2bundle\account\domain\v3\forms\LoginForm;
 use Workerman\Worker;
 use App;
 use PHPSocketIO\SocketIO as PHPSocketIO;
-use yii2module\account\domain\v3\helpers\SocketIOConnection;
+use yii2bundle\account\domain\v3\helpers\SocketIOConnection;
 
 class SocketIO {
 

@@ -1,13 +1,13 @@
 <?php
 
-namespace yii2module\account\domain\v2\interfaces\services;
+namespace yii2bundle\account\domain\v2\interfaces\services;
 
 use yii2rails\domain\interfaces\services\CrudInterface;
 
 /**
  * Interface LoginInterface
  *
- * @package yii2module\account\domain\v2\interfaces\services
+ * @package yii2bundle\account\domain\v2\interfaces\services
  *
  * @property integer $defaultStatus
  * @property string $defaultRole

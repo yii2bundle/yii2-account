@@ -1,16 +1,16 @@
 <?php
 
-namespace yii2module\account\domain\v3\interfaces\repositories;
+namespace yii2bundle\account\domain\v3\interfaces\repositories;
 
 use yii2rails\domain\interfaces\repositories\CrudInterface;
-use yii2module\account\domain\v3\entities\TokenEntity;
+use yii2bundle\account\domain\v3\entities\TokenEntity;
 
 /**
  * Interface TokenInterface
  * 
- * @package yii2module\account\domain\v3\interfaces\repositories
+ * @package yii2bundle\account\domain\v3\interfaces\repositories
  * 
- * @property-read \yii2module\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
  */
 interface TokenInterface extends CrudInterface {
 	

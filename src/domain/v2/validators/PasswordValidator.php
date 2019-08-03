@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v2\validators;
+namespace yii2bundle\account\domain\v2\validators;
 
 use Yii;
 use yii\validators\StringValidator;

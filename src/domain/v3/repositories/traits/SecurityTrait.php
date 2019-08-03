@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\repositories\traits;
+namespace yii2bundle\account\domain\v3\repositories\traits;
 
 use Yii;
 use yii\web\NotFoundHttpException;
@@ -8,7 +8,7 @@ use yii2rails\domain\BaseEntity;
 use yii2rails\domain\data\Query;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\domain\helpers\ErrorCollection;
-use yii2module\account\domain\v3\entities\SecurityEntity;
+use yii2bundle\account\domain\v3\entities\SecurityEntity;
 
 trait SecurityTrait {
 	

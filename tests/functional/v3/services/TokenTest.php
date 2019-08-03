@@ -5,8 +5,8 @@ namespace tests\functional\v3\services;
 use yii2lab\test\Test\Unit;
 use Yii;
 use yii\web\NotFoundHttpException;
-use yii2module\account\domain\v3\exceptions\InvalidIpAddressException;
-use yii2module\account\domain\v3\exceptions\NotFoundLoginException;
+use yii2bundle\account\domain\v3\exceptions\InvalidIpAddressException;
+use yii2bundle\account\domain\v3\exceptions\NotFoundLoginException;
 
 class TokenTest extends Unit
 {

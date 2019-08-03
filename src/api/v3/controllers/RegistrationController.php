@@ -1,19 +1,19 @@
 <?php
 
-namespace yii2module\account\api\v3\controllers;
+namespace yii2bundle\account\api\v3\controllers;
 
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii2lab\applicationTemplate\common\enums\ApplicationPermissionEnum;
 use yii2lab\rest\domain\rest\Controller;
-use yii2module\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
-use yii2module\account\domain\v3\forms\LoginForm;
+use yii2bundle\account\domain\v3\exceptions\ConfirmIncorrectCodeException;
+use yii2bundle\account\domain\v3\forms\LoginForm;
 use yii2rails\domain\exceptions\UnprocessableEntityHttpException;
 use yii2rails\domain\helpers\Helper;
 use yii2rails\extension\common\exceptions\AlreadyExistsException;
 use yii2rails\extension\common\exceptions\CreatedHttpExceptionException;
 use yii2rails\extension\web\helpers\Behavior;
-use yii2module\account\domain\v3\forms\registration\PersonInfoForm;
+use yii2bundle\account\domain\v3\forms\registration\PersonInfoForm;
 use yii2rails\domain\helpers\ErrorCollection;
 
 class RegistrationController extends Controller {

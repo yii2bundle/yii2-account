@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\console\forms;
+namespace yii2bundle\account\console\forms;
 
 use common\helpers\RBACRoles;
 use domain\v1\account\models\Subjects;

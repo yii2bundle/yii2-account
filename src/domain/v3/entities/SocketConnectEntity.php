@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v3\entities;
+namespace yii2bundle\account\domain\v3\entities;
 
 use Workerman\Connection\ConnectionInterface;
 use yii2rails\domain\BaseEntity;
@@ -8,7 +8,7 @@ use yii2rails\domain\BaseEntity;
 /**
  * Class SocketConnectEntity
  * 
- * @package yii2module\account\domain\v3\entities
+ * @package yii2bundle\account\domain\v3\entities
  *
  * @property $user_id
  * @property ConnectionInterface $connection

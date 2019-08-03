@@ -15,7 +15,7 @@ $this->title = Yii::t('account/security', 'email');
 ?>
 
 <?= Tabs::widget([
-	'items' => MenuHelper::gen('yii2module\account\module\helpers\SecurityMenu'),
+	'items' => MenuHelper::gen('yii2bundle\account\module\helpers\SecurityMenu'),
 ]) ?>
 
 <br/>

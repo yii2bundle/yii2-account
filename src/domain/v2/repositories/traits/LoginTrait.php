@@ -1,6 +1,6 @@
 <?php
 
-namespace yii2module\account\domain\v2\repositories\traits;
+namespace yii2bundle\account\domain\v2\repositories\traits;
 
 use Codeception\Module\Cli;
 use Yii;
@@ -11,18 +11,18 @@ use yii\web\IdentityInterface;
 use yii2rails\domain\Alias;
 use yii2rails\domain\BaseEntity;
 use yii2rails\extension\web\helpers\ClientHelper;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\entities\SecurityEntity;
-use yii2module\account\domain\v2\entities\TokenEntity;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\entities\SecurityEntity;
+use yii2bundle\account\domain\v2\entities\TokenEntity;
 use yii2tool\cleaner\domain\helpers\ClearHelper;
 
 /**
  * Trait LoginTrait
  *
- * @package yii2module\account\domain\v2\repositories\traits
+ * @package yii2bundle\account\domain\v2\repositories\traits
  * @property Alias $alias
  * @property ActiveRecordInterface $model
- * @property \yii2module\account\domain\v2\Domain $domain
+ * @property \yii2bundle\account\domain\v2\Domain $domain
  */
 trait LoginTrait {
 	

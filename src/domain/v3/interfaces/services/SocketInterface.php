@@ -1,16 +1,16 @@
 <?php
 
-namespace yii2module\account\domain\v3\interfaces\services;
+namespace yii2bundle\account\domain\v3\interfaces\services;
 
 use yii\base\ErrorException;
-use yii2module\account\domain\v3\entities\SocketEventEntity;
+use yii2bundle\account\domain\v3\entities\SocketEventEntity;
 
 /**
  * Interface SocketInterface
  * 
- * @package yii2module\account\domain\v3\interfaces\services
+ * @package yii2bundle\account\domain\v3\interfaces\services
  * 
- * @property-read \yii2module\account\domain\v3\Domain $domain
+ * @property-read \yii2bundle\account\domain\v3\Domain $domain
  */
 interface SocketInterface {
 

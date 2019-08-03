@@ -1,10 +1,10 @@
 <?php
 
-namespace yii2module\account\api\v2\controllers;
+namespace yii2bundle\account\api\v2\controllers;
 
 use yii2lab\rest\domain\rest\Controller;
 use yii2rails\extension\web\helpers\Behavior;
-use yii2module\account\api\v2\actions\registration\CreateAccountAction;
+use yii2bundle\account\api\v2\actions\registration\CreateAccountAction;
 
 class RegistrationController extends Controller
 {

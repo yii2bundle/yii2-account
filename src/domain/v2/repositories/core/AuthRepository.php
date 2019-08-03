@@ -1,12 +1,12 @@
 <?php
 
-namespace yii2module\account\domain\v2\repositories\core;
+namespace yii2bundle\account\domain\v2\repositories\core;
 
 use Yii;
 use yii2rails\extension\core\domain\repositories\base\BaseCoreRepository;
 use yii2rails\extension\web\helpers\ClientHelper;
-use yii2module\account\domain\v2\entities\LoginEntity;
-use yii2module\account\domain\v2\interfaces\repositories\AuthInterface;
+use yii2bundle\account\domain\v2\entities\LoginEntity;
+use yii2bundle\account\domain\v2\interfaces\repositories\AuthInterface;
 
 class AuthRepository extends BaseCoreRepository implements AuthInterface {
 	

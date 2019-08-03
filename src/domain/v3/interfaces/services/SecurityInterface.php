@@ -1,8 +1,8 @@
 <?php
 
-namespace yii2module\account\domain\v3\interfaces\services;
+namespace yii2bundle\account\domain\v3\interfaces\services;
 
-use yii2module\account\domain\v3\entities\SecurityEntity;
+use yii2bundle\account\domain\v3\entities\SecurityEntity;
 use yii2rails\domain\data\Query;
 use yii2rails\domain\interfaces\services\CrudInterface;
 

@@ -9,7 +9,7 @@ $config = [
 	'rbac' => 'yii2bundle\rbac\domain\Domain',
 	'jwt' => 'yii2rails\extension\jwt\Domain',
 	'account' => [
-		'class' => 'yii2module\account\domain\v3\Domain',
+		'class' => 'yii2bundle\account\domain\v3\Domain',
 		'primaryDriver' => Driver::FILEDB,
 	],
 ];
