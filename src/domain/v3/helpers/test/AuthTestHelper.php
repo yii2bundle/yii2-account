@@ -4,8 +4,8 @@ namespace yii2bundle\account\domain\v3\helpers\test;
 
 use Yii;
 use yii\web\UnauthorizedHttpException;
-use yii2lab\test\helpers\RestTestHelper;
-use yii2lab\test\helpers\TestHelper;
+use yii2tool\test\helpers\RestTestHelper;
+use yii2tool\test\helpers\TestHelper;
 use yii2rails\app\domain\helpers\EnvService;
 use yii2rails\extension\enum\enums\TimeEnum;
 use App;

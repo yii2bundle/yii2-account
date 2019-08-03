@@ -2,7 +2,7 @@
 
 namespace tests\functional\v3\services;
 
-use yii2lab\test\Test\Unit;
+use yii2tool\test\Test\Unit;
 use tests\functional\v3\enums\LoginEnum;
 use yii\web\ForbiddenHttpException;
 use yii\web\UnauthorizedHttpException;

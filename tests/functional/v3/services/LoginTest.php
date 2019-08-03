@@ -2,8 +2,8 @@
 
 namespace tests\functional\v3\services;
 
-use yii2lab\test\helpers\DataHelper;
-use yii2lab\test\Test\Unit;
+use yii2tool\test\helpers\DataHelper;
+use yii2tool\test\Test\Unit;
 use yii\web\NotFoundHttpException;
 use yii2rails\domain\BaseEntity;
 use yii2rails\domain\data\Query;

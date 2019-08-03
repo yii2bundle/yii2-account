@@ -2,7 +2,7 @@
 
 namespace tests\functional\v3\services;
 
-use yii2lab\test\Test\Unit;
+use yii2tool\test\Test\Unit;
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii2bundle\account\domain\v3\exceptions\InvalidIpAddressException;
