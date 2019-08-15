@@ -3,6 +3,7 @@
 namespace yii2bundle\account\domain\v3\helpers\test;
 
 use Yii;
+use yii\web\ForbiddenHttpException;
 use yii2lab\notify\domain\helpers\test\NotifyTestHelper;
 use yii2lab\rest\domain\entities\RequestEntity;
 use yii2lab\rest\domain\entities\ResponseEntity;
@@ -37,7 +38,11 @@ class RegistrationTestHelper
 
         AuthTestHelper::authByAccountManager();
         //self::requestActivationCode();
-        self::createAccount();
+        $responseEntity = self::createAccount();
+        if($responseEntity->status_code == 422 && $responseEntity->data[0]['field'] == 'phone') {
+            throw new ForbiddenHttpException('Need oAccountManage permission!');
+        }
+
         AuthTestHelper::loadPrevAuth();
     }
 
@@ -80,7 +85,7 @@ class RegistrationTestHelper
         $requestEntity = self::requestActivationCodeRequest($phone);
     }
 
-    private static function createAccount() {
+    private static function createAccount() : ResponseEntity {
         $phone = CurrentPhoneTestHelper::get();
         //$code = NotifyTestHelper::getActivationCodeByPhone($phone);
         $requestEntity = new RequestEntity;
@@ -97,6 +102,7 @@ class RegistrationTestHelper
             'birthday' => '2018-03-20',
         ];
         $responseEntity = RestTestHelper::sendRequest($requestEntity);
+        return $responseEntity;
     }
 
 }
