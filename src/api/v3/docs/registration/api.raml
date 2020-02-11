@@ -2,7 +2,7 @@ description: "Регистрация пользователя"
 /request-activation-code:
     post:
         description: "Запрос кода активации"
-        is: !include ../../../../../../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/create.raml
+        is: !include ../../../../../../../../vendor/zndoc/rest-api/src/is/create.raml
         body:
             application/json:
                 example: !include example/request-activation-code.json
@@ -21,7 +21,7 @@ description: "Регистрация пользователя"
 /create-account:
     post:
         description: "Создание аккаунта"
-        is: !include ../../../../../../../../vendor/yii2bundle/yii2-rest/src/domain/docs/is/create.raml
+        is: !include ../../../../../../../../vendor/zndoc/rest-api/src/is/create.raml
         body:
             application/json:
                 example: !include example/create-account.json
