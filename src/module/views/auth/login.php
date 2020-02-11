@@ -45,7 +45,7 @@ if(count($items) > 1) {
 		</div>
 		<div class="login-box-body">
 			<?= $loginForm ?>
-			<?= Html::a(Yii::t('main', 'go_to_frontend'), EnvService::getUrl(FRONTEND)) ?>
+			<?= Html::a(Yii::t('main', 'go_to_frontend'), $_ENV['WEB_DOMAIN_URL']) ?>
 		</div>
 	</div>
 
