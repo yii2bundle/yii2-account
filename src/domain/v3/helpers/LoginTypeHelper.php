@@ -68,7 +68,7 @@ class LoginTypeHelper  {
     }
 	
 	public static function isToken($login) {
-        $login = self::normalizeToken($login);
+        $login = trim($login);
 		return preg_match('/^([0-9a-z]+)\s+(\S+)$/i', $login);
 	}
 	
