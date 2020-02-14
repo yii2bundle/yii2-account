@@ -1,0 +1,17 @@
+description: "Профиль"
+/email:
+    put:
+        securedBy: [bearerAuth]
+        description: "Изменить почту"
+        is: !include /../../../vendor/zndoc/rest-api/src/is/update.raml
+        body:
+            application/json:
+                example: !include example/email/update-request-body.json
+/password:
+        put:
+            securedBy: [bearerAuth]
+            description: "Изменить пароль"
+            is: !include /../../../vendor/zndoc/rest-api/src/is/update.raml
+            body:
+                application/json:
+                    example: !include example/password/update-request-body.json
