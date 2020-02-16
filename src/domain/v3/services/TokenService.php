@@ -20,7 +20,7 @@ class TokenService extends BaseService implements TokenInterface {
 		    'profile' => 'auth',
 	    ],
     ];
-	
+
 	public function forge($userId, $ip, $expire = null) {
 		$tokenCotext = $this->getTokenContextInstance();
 		return $tokenCotext->forge($userId, $ip, $expire);
@@ -31,7 +31,7 @@ class TokenService extends BaseService implements TokenInterface {
 	    $identityId = $tokenCotext->getIdentityId($token);
 	    return $identityId;
     }
-    
+
     private function getTokenContextInstance() : TokenContext {
 	    $tokenCotext = new TokenContext;
 	    $tokenCotext->setStrategyDefinitions($this->tokenStrategyDefinitions);

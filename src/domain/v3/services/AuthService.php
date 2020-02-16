@@ -2,6 +2,9 @@
 
 namespace yii2bundle\account\domain\v3\services;
 
+use PhpLab\Bundle\Crypt\Entities\JwtEntity;
+use PhpLab\Bundle\Crypt\Repositories\Config\ProfileRepository;
+use PhpLab\Bundle\Crypt\Services\JwtService;
 use Yii;
 use yii\base\InvalidArgumentException;
 use yii\base\InvalidConfigException;
@@ -144,7 +147,9 @@ class AuthService extends BaseService implements AuthInterface {
 	public function breakSession() {
 		return \App::$domain->account->user->breakSession();
 	}
+
 	
+
 	private function authenticationByForm(LoginForm $model, string $ip = null) : LoginEntity {
 		if(empty($ip)) {
 			$ip = ClientHelper::ip();
@@ -159,6 +164,7 @@ class AuthService extends BaseService implements AuthInterface {
 		if(!$isValidPassword) {
 			$this->badPasswordException();
 		}
+		
 		$loginEntity->token = \App::$domain->account->token->forge($loginEntity->id, $ip);
 		
 		if(!$loginEntity instanceof IdentityInterface || empty($loginEntity->id)) {
