@@ -27,7 +27,7 @@ $this->title = Yii::t('account/registration', 'create_title');
 			data.activation_code = form.find('#registrationform-activation_code').val();
 			$.ajax({
 				method: 'post',
-				url: '<?= $_ENV['API_DOMAIN_URL'] . SL . ApiVersionConfig::defaultApiVersionSting() .'/registration/create-account' ?>',
+				url: '<?= $_ENV['API_URL'] . SL . ApiVersionConfig::defaultApiVersionSting() .'/registration/create-account' ?>',
 				dataType: 'json',
 				data: data,
 				success: function () {
