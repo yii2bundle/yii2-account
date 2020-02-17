@@ -10,6 +10,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
 class m180223_102252_create_user_security_table extends Migration {
 
 	public $table = 'user_security';
+    public $tableComment = 'Хэш пароля пользователя';
 
 	/**
 	 * @inheritdoc

@@ -5,6 +5,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
 class m170713_061213_create_user_confirm_table extends Migration
 {
 	public $table = 'user_confirm';
+    public $tableComment = 'Код активации';
 
 	/**
 	 * @inheritdoc

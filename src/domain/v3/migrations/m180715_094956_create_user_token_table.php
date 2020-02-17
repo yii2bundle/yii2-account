@@ -10,6 +10,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
 class m180715_094956_create_user_token_table extends Migration {
 
 	public $table = 'user_token';
+    public $tableComment = 'Токен пользователя';
 
 	/**
 	 * @inheritdoc

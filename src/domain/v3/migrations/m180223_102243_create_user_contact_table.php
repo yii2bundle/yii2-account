@@ -10,6 +10,7 @@ use yii2lab\db\domain\db\MigrationCreateTable as Migration;
 class m180223_102243_create_user_contact_table extends Migration {
 
 	public $table = 'user_contact';
+	public $tableComment = 'Контактные данные пользователя';
 
 	/**
 	 * @inheritdoc
